@@ -1,0 +1,6 @@
+.ropeproject
+.idea
+*.py[cod]
+*~
+*.swp
+*.swo

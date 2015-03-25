@@ -1,0 +1,10 @@
+{
+  "DOCUMENTATION": "Documentation",
+  "TALK": "Talk",
+  "REPORT_BUGS": "Report Bugs",
+  "SIGN_IN": "Sign in",
+  "SIGN_OUT": "Logout",
+  "DESCRIPTION": "An enhanced watchlist for Wikimedia projects.",
+  "SIGN_IN_BUTTON": "Sign in with OAuth",
+  "SIGNED_IN_MSG": "Welcome {{username}}, you are signed in. It may take a bit until your watchlist ist fully loaded."
+}

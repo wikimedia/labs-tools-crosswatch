@@ -1,0 +1,46 @@
+<div class="container">
+  <div ng-include="'components/navbar/navbar.html'"></div>
+
+  <div ng-if="ctrl.loggedin">
+    <div class="bs-header" id="content">
+      <div class="container">
+        <div class="col-md-9">
+          <h1>watchr</h1>
+          <p class="lead" translate="DESCRIPTION">
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div id="message-container"></div>
+  </div>
+
+  <div ng-if="!ctrl.loggedin">
+  <div class="jumbotron">
+    <h1>Welcome to watchr</h1>
+    <p class="lead" translate="DESCRIPTION"></p>
+    <p><a href="login" target="_blank" class="btn btn-primary btn-lg" role="button"><i class="fa fa-sign-in"></i>
+      &nbsp;<span translate="SIGN_IN_BUTTON"></span>
+    </a></p>
+  </div>
+  </div>
+
+
+  <div ng-if="ctrl.loggedin" ng-include="'components/watchlist/watchlist.html'"></div>
+
+  <div class="container">
+    <hr>
+
+    <div id="footer">
+      <p class="pull-right"><a href="//tools.wmflabs.org">
+        <img id="footer-icon" src="//tools.wmflabs.org/static/res/logos/powered-by-tool-labs.png" width="105" height="40" title="Powered by Wikimedia Tool Labs" alt="Powered by Wikimedia Tool Labs">
+      </a></p>
+      <p class="text-muted">
+        Maintained by <a href="//de.wikipedia.org/wiki/Benutzer:Sitic" title="sitic @ de.wikipedia">sitic</a>.
+        <a href="//github.com/sitic/watchr">Code</a> licensed under the <a href=//github.com/sitic/watchr/blob/master/LICENSE>MIT License</a>.
+      </p>
+    </div>
+  </div>
+</div>

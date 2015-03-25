@@ -1,0 +1,45 @@
+<nav class="navbar navbar-default" ng-controller="NavbarCtrl as ctrl">
+  <div class="container-fluid">
+    <form class="navbar-form navbar-left" role="language">
+      <button type="button" class="btn btn-default"
+              ng-model="ctrl.selectedLang"
+              ng-options="lang.key as lang.language for lang in ctrl.langs"
+              ng-change="ctrl.changeLanguage(ctrl.selectedLang)"
+              bs-select></button>
+    </form>
+    <div>
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="//en.wikipedia.org" target="_blank">
+            <i class="fa fa-info-circle"></i>&nbsp;<span translate="DOCUMENTATION"></span>
+          </a>
+        </li>
+        <li>
+          <a href="//de.wikipedia.org/wiki/Benutzer_Diskussion:Sitic" target="_blank">
+            <i class="fa fa-comments"></i>&nbsp;<span translate="TALK"></span>
+          </a>
+        </li>
+        <li>
+          <a href="//github.com/sitic/watchr/issues" target="_blank">
+            <i class="fa fa-bug"></i>&nbsp;<span translate="REPORT_BUGS"></span>
+          </a>
+        </li>
+        <li>
+          <a href="//github.com/sitic/watchr" target="_blank">
+            <i class="fa fa-github"></i>&nbsp;GitHub
+          </a>
+        </li>
+      </ul>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li ng-hide="ctrl.loggedin">
+        <a href="login" target="_blank" class="navbar-link"><i class="fa fa-sign-in"></i>
+          &nbsp;<span translate="SIGN_IN"></span></a>
+      </li>
+      <li ng-show="ctrl.loggedin">
+        <a href="logout" target="_self" class="navbar-link">
+          &nbsp;<span translate="SIGN_OUT"></span> <i class="fa fa-sign-out"></i></a>
+      </li>
+    </ul>
+  </div>
+</nav>

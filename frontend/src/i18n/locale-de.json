@@ -1,0 +1,10 @@
+{
+  "DOCUMENTATION": "Dokumentation",
+  "TALK": "Diskussion",
+  "REPORT_BUGS": "Bugs Melden",
+  "SIGN_IN": "Anmelden",
+  "SIGN_OUT": "Abmelden",
+  "DESCRIPTION": "Eine erweiterte Beobachtungsliste für Wikimedia Projekte.",
+  "SIGN_IN_BUTTON": "Mit OAuth anmelden",
+  "SIGNED_IN_MSG": "Willkommen {{username}}, du bist angemeldet. Unter Umständen dauert es kurz, bis deine Beobachtungsliste vollständig geladen ist."
+}

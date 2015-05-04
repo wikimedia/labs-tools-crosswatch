@@ -90,7 +90,7 @@ gulp.task('fonts', function () {
 });
 
 gulp.task('misc', function () {
-  return gulp.src(paths.src + '/**/*.ico')
+  return gulp.src(paths.src + '/{favicon.ico,toolinfo.json}')
     .pipe(gulp.dest(paths.dist + '/'));
 });
 

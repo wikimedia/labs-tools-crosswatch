@@ -4,7 +4,6 @@ angular.module('watchr')
   .controller('MainCtrl', function ($alert, socket, $rootScope, $translate, authService, $log) {
     var vm = this;
     vm.loggedin = authService.isloggedin();
-    vm.user = authService.user();
     showLoggedinAlert();
 
     $alert({
@@ -16,7 +15,6 @@ angular.module('watchr')
     });
 
     $rootScope.$on('login', function (event, msg) {
-      vm.user = msg;
       vm.loggedin = true;
       showLoggedinAlert();
     });

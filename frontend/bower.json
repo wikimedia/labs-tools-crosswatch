@@ -9,8 +9,8 @@
     "angular-sanitize": "1.3.x",
     "angular-sockjs": "0.0.x",
     "angular-strap": "2.1.x",
-    "angular-translate": "2.5.x",
-    "angular-translate-loader-static-files": "2.5.x",
+    "angular-translate": "2.6.x",
+    "angular-translate-loader-static-files": "2.6.x",
     "fontawesome": "~4.3.0",
     "sockjs-client": "~0.3.4",
     "angular-moment": "0.x.x"
@@ -20,5 +20,10 @@
   },
   "resolutions": {
     "angular": "1.3.x"
+  },
+  "overrides": {
+    "moment": {
+      "main": "min/moment-with-locales.min.js"
+    }
   }
 }

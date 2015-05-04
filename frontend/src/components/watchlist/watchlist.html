@@ -1,30 +1,21 @@
 <div ng-controller="WatchlistCtrl as ctrl">
-  <hr>
   <form class="form-inline" role="form">
     <div class="form-group">
-      <label>Search:</label>
+      <label><span translate="SEARCH"></span>:</label>
       <input type="text" class="form-control" ng-model="ctrl.searchText">
+    </div>
+    <br>
+    <div class="checkbox">
+      <label data-placement="bottom-left" data-type="info" data-animation="am-fade-and-scale" bs-tooltip="tooltip" bs-enabled="ctrl.flagsenable">
+        <input type="checkbox" ng-model="ctrl.flagsenable"> Check me to show flags instead of language names
+      </label>
     </div>
   </form>
   <hr>
   <ul class="example-animate-container">
-    <li class="mw-line-even mw-changeslist-line-watched"
-        ng-repeat="event in ctrl.res | orderBy:'-timestamp' | filter:ctrl.searchText">
-    <span class="mw-title">
-      <a href="{{event.projecturl}}/Special:Watchlist" class="mw-changelist-title">[{{event.project}}]</a>
-    </span>
-      <span class="mw-changeslist-separator">. .</span>
-      <span class="mw-title">
-      <a href="{{event.projecturl}}/index.php?oldid={{event.old_revid}}&diff={{event.revid}}" class="mw-changelist-title">{{event.title}}</a>
-    </span>
-      <span am-time-ago="event.timestamp"></span>
-      <span class="mw-changeslist-separator">. .</span>
-      <span>({{event.newlen - event.oldlen | numberformat}})</span>
-      <span class="mw-changeslist-separator">. .</span>
-      <a href="{{event.projecturl}}/Benutzer:{{event.user}}">{{event.user}}</a>
-      <span class="comment">
-        (<span ng-bind-html="event.parsedcomment"></span>)
-      </span>
+    <li class="watchlist"
+        ng-repeat="event in ctrl.watchlist| orderBy:'-timestamp' | filter:ctrl.searchText">
+      <watchlist-entry>{{event}}</watchlist-entry>
     </li>
   </ul>
 </div>

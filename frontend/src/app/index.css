@@ -23,46 +23,108 @@ body {
   text-align: center;
 }
 
+.mw-echo-notifications-badge {
+  min-width: 7px;
+  border-radius: 2px 2px 2px 2px;
+  padding: 0.25em 0.45em 0.2em;
+  margin-left: -4px;
+  text-align: center;
+  background-color: rgb(210, 210, 210);
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+.mw-echo-overlay {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  border: 1px solid silver;
+  background-color: rgb(255, 255, 255);
+  width: 450px;
+  min-height: 2em;
+  padding: 0;
+  color: rgb(109, 109, 109);
+  z-index: 100;
+  box-shadow: 0 3px 8px rgba(50, 50, 50, 0.35);
+}
+.mw-echo-notification{
+  list-style: none none;
+}
+.mw-echo-notifications{
+  margin:0;
+  padding:0;
+  list-style: none none;
+  overflow:auto;
+  background-color: rgb(238, 238,238);
+}
+.mw-echo-notification-wrapper {
+  display: block;
+  background-color: rgb(241, 241, 241);
+  border-bottom: 1px solid rgb(221, 221, 221);
+  padding: 15px 40px 10px 10px;
+  white-space: normal;
+  font-size: 13px;
+  line-height: 16px;
+  color: inherit;
+  text-decoration: inherit;
+}
+.mw-echo-icon {
+  width: 30px;
+  height: 30px;
+  float: left;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.mw-echo-content {
+  font-size: 13px;
+  font-weight:normal;
+  line-height: 16px;
+  overflow: hidden;
+}
+
+.watchlist{
+  list-style: none none;
+  padding-bottom: 8px;
+}
+
+.watchlist .left {
+  float: left;
+  width: 125px;
+}
+
+.watchlist .right {
+  width: auto;
+  overflow:hidden;
+  word-break: break-all;
+}
+
+.watchlist a.project {
+  color: #333;
+}
+
 span.comment{
-  font-style:italic
+  font-style:italic;
 }
 
-.autocomment{
-  color:gray
+span.autocomment{
+  color:gray;
 }
 
-.mw-changeslist-line-watched .mw-title
-{
+.strong {
   font-weight: bold;
 }
-.mw-changeslist-legend
-{
-  border: 1px solid #ddd;
-  clear: right;
-  float: right;
-  font-size: 85%;
-  line-height: 1.2em;
-  margin-bottom: 0.5em;
-  margin-left: 1em;
-  padding: 0.5em;
+
+.newpage, .minoredit, .botedit {
+  font-weight: bold;
 }
-.mw-changeslist-legend dl
+
+.mw-title
 {
-  margin-bottom: 0;
+  font-weight: bold;
+  color:#0645ad;
 }
-.mw-changeslist-legend dt
-{
-  float: left;
-  margin: 0 0.5em 0 0;
-}
-.mw-changeslist-legend dd
-{
-  margin-left: 1.5em;
-}
-.mw-changeslist-legend dt,.mw-changeslist-legend dd
-{
-  line-height: 1.3em;
-}
+
 
 /*
 a {

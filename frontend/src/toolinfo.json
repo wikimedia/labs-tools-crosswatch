@@ -1,0 +1,10 @@
+{
+    "name" : "watchr",
+    "title" : "watchr",
+    "description" : "A cross-wiki watchlist",
+    "url" : "https://tools.wmflabs.org/watchr/",
+    "keywords" : "watchlist, cross-wiki, echo, notification, multilingual, python, celery, angularjs",
+    "author" : "sitic",
+    "repository" : "https://github.com/sitic/watchr"
+}
+

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('watchr')
+angular.module('crosswatch')
   .controller('NavbarCtrl', function (translationList, $translate, $rootScope, authService, amMoment) {
     var vm = this;
     vm.langs = translationList;

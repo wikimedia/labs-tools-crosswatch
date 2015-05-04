@@ -1,5 +1,5 @@
 angular
-  .module('watchr')
+  .module('crosswatch')
   .directive('watchlistEntry', watchlistEntry);
 
 function watchlistEntry() {

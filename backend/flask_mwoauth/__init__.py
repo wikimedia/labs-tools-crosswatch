@@ -42,7 +42,7 @@ class MWOAuth(object):  # http://stackoverflow.com/a/26691512
                  clean_url='https://www.mediawiki.org/wiki',
                  consumer_key=None,
                  consumer_secret=None,
-                 toolname='watchr'):
+                 toolname='crosswatch'):
         if not consumer_key or not consumer_secret:
             raise Exception('MWOAuthBlueprintFactory needs consumer key and\
                             secret')

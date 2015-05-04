@@ -1,10 +1,9 @@
 {
-    "name" : "watchr",
-    "title" : "watchr",
+    "name" : "crosswatch",
+    "title" : "crosswatch",
     "description" : "A cross-wiki watchlist",
-    "url" : "https://tools.wmflabs.org/watchr/",
+    "url" : "https://tools.wmflabs.org/crosswatch/",
     "keywords" : "watchlist, cross-wiki, echo, notification, multilingual, python, celery, angularjs",
     "author" : "sitic",
-    "repository" : "https://github.com/sitic/watchr"
+    "repository" : "https://git.wikimedia.org/summary/labs%2Ftools%2Fcrosswatch"
 }
-

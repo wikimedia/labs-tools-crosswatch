@@ -1,6 +1,6 @@
 'use strict';
 angular
-  .module('watchr')
+  .module('crosswatch')
   .config(function ($provide, $translateProvider) {
 
     var translationList = [

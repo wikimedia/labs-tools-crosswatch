@@ -10,7 +10,7 @@ var $ = require('gulp-load-plugins')({
 
 gulp.task('base', ['html'], function() {
   return gulp.src(paths.dist + '/index.html')
-    .pipe($.replace('<base href="/">', '<base href="/watchr/" />'))
+    .pipe($.replace('<base href="/">', '<base href="/' + gulp.toolname + '/" />'))
     .pipe(gulp.dest(paths.dist))
     .pipe($.size());
 });
@@ -34,7 +34,7 @@ gulp.task('partials', function () {
       quotes: true
     }))
     .pipe($.angularTemplatecache('templateCacheHtml.js', {
-      module: 'watchr'
+      module: 'crosswatch'
     }))
     .pipe(gulp.dest(paths.tmp + '/partials/'));
 });

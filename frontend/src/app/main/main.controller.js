@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('watchr')
+angular.module('crosswatch')
   .controller('MainCtrl', function ($alert, socket, $rootScope, $translate, authService, $log) {
     var vm = this;
     vm.loggedin = authService.isloggedin();

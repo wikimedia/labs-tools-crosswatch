@@ -3,7 +3,7 @@
 describe('controllers', function(){
   var scope;
 
-  beforeEach(module('watchr'));
+  beforeEach(module('crosswatch'));
 
   beforeEach(inject(function($rootScope) {
     scope = $rootScope.$new();

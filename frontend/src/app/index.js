@@ -1,6 +1,6 @@
 'use strict';
 angular
-  .module('watchr', [
+  .module('crosswatch', [
     'ngAnimate',
     'ngSanitize',
     'ngCookies',
@@ -42,7 +42,7 @@ function socketFactory (socketFactory, $browser, $location) {
   var baseHref = $browser.baseHref();
   var sockjsUrl = baseHref + 'sockjs';
   if ($location.host() === 'localhost') { // debug – use tools backend when developing
-    sockjsUrl = 'https://tools.wmflabs.org/watchr/sockjs'
+    sockjsUrl = 'https://tools.wmflabs.org/crosswatch/sockjs'
   }
 
   return socketFactory({
@@ -51,7 +51,7 @@ function socketFactory (socketFactory, $browser, $location) {
 }
 
 function authService ($cookies, $rootScope, $log) {
-  $rootScope.$watch(function () { return $cookies.watchrUser;}, function (newValue) {
+  $rootScope.$watch(function () { return $cookies.crosswatchUser;}, function (newValue) {
     if (typeof(newValue) !== 'undefined') {
       $log.info('Singed in as ' + newValue);
       $rootScope.$emit('login', newValue);
@@ -59,15 +59,15 @@ function authService ($cookies, $rootScope, $log) {
   });
 
   this.tokens = function () {
-    return angular.fromJson(($cookies.watchrAuth).replace(/\\054/g, ','));
+    return angular.fromJson(($cookies.crosswatchAuth).replace(/\\054/g, ','));
   };
 
   this.user = function () {
-    return $cookies.watchrUser;
+    return $cookies.crosswatchUser;
   };
 
   this.isloggedin = function () {
-    return (typeof($cookies.watchrAuth) !== 'undefined');
+    return (typeof($cookies.crosswatchAuth) !== 'undefined');
   };
 
 }

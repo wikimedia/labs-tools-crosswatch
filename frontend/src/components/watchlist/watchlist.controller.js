@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('watchr')
+angular.module('crosswatch')
   .controller('WatchlistCtrl', function ($translate, socket, $log, dataService) {
     var vm = this;
     vm.watchlist = dataService.watchlist;

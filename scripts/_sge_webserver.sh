@@ -1,2 +1,3 @@
 #!/bin/bash
-exec portgrabber watchr $HOME/crosswatch/scripts/_sge_webserver_internal.sh
+cd `dirname $0`
+exec portgrabber crosswatch ./_sge_webserver_internal.sh

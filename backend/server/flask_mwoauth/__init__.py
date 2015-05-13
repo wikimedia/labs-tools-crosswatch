@@ -4,7 +4,7 @@
 # Requires flask-oauth
 #
 # (C) 2013 Merlijn van Deen <valhallasw@arctus.nl>
-# (C) 2015 Sitic
+# (C) 2015 Jan Lebert
 # Licensed under the MIT License // http://opensource.org/licenses/MIT
 #
 
@@ -12,7 +12,7 @@ __version__ = '0.1.35'
 
 import sys
 import urllib
-from flask import request, session, Blueprint, make_response
+from flask import request, session, Blueprint, make_response, redirect
 from flask_oauth import OAuth, OAuthRemoteApp, OAuthException, parse_response
 import json
 
@@ -42,7 +42,7 @@ class MWOAuth(object):  # http://stackoverflow.com/a/26691512
                  clean_url='https://www.mediawiki.org/wiki',
                  consumer_key=None,
                  consumer_secret=None,
-                 toolname='crosswatch'):
+                 toolname='mytool'):
         if not consumer_key or not consumer_secret:
             raise Exception('MWOAuthBlueprintFactory needs consumer key and\
                             secret')
@@ -96,8 +96,7 @@ class MWOAuth(object):  # http://stackoverflow.com/a/26691512
                          'secret': resp['oauth_token_secret']}
             mwo_token = json.dumps(mwo_token)
 
-            resp = make_response('This tab should close automatically.' +
-                                 '<script>self.close()</script>')
+            resp = make_response(redirect('/' + toolname + '/'))
             resp.set_cookie(self.toolname + 'Auth', mwo_token,
                             max_age=30*24*60*60,
                             path='/' + self.toolname + '/')
@@ -110,7 +109,7 @@ class MWOAuth(object):  # http://stackoverflow.com/a/26691512
 
         @self.bp.route('/logout')
         def logout():
-            resp = make_response('You are now logged out. Goodbye :-)')
+            resp = make_response(redirect('/' + toolname + '/'))
             session['mwo_token'] = None
             resp.set_cookie(self.toolname + 'Auth', '',
                             path='/' + self.toolname + '/', expires=0)

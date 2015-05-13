@@ -1,5 +1,4 @@
 #!/bin/bash
-source $HOME/.virtualenvs/build/bin/activate
-source ./paths.sh
-cd $FRONTEND
+cd `dirname $0`
+cd ../frontend
 gulp build

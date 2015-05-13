@@ -1,7 +1,6 @@
 #!/bin/bash
-source $HOME/.virtualenvs/backend-trusty/bin/activate
-source $HOME/crosswatch/scripts/paths.sh
+source $HOME/.virtualenvs/backend/bin/activate
+cd `dirname $0`
+cd ..
 export PORT=$1
-echo "running on port $PORT"
-cd $BACKEND
-python server.py $PORT
+python -m backend $PORT

@@ -1,37 +1,21 @@
+# -*- coding: utf-8 -*-
+# ISC License
+# Copyright (C) 2015 Jan Lebert
+from __future__ import absolute_import
 import socket
 from mwoauth import ConsumerToken
 
-# https://pypi.python.org/pypi/celerybeat-redis/0.0.7
 toolname = 'crosswatch'
 redis_server = 'tools-redis'
+
 if not socket.gethostname().startswith('tools'):
     redis_server = 'localhost'
 redis_port = 6379
 redis_db = 3
-redis_prefix = 'CHANGE THIS STRING' # random string
+redis_prefix = 'REPLACE THIS STRING'  # random string
+sql_user = 'REPLACE THIS STRING'
+sql_passwd = 'REPLACE THIS STRING'
 
-oauth_consumer_key = 'CHANGE THIS STRING'
-oauth_consumer_secret = 'CHANGE THIS STRING'
+oauth_consumer_key = 'REPLACE THIS STRING'
+oauth_consumer_secret = 'REPLACE THIS STRING'
 consumer_token = ConsumerToken(oauth_consumer_key, oauth_consumer_secret)
-
-
-class celeryconfig():
-    BROKER_URL = 'redis://{server}:{port}/{db}'.format(
-        server=redis_server, port=redis_port, db=redis_db)
-    CELERY_TASK_SERIALIZER = 'json'
-    CELERY_ACCEPT_CONTENT = ['json']
-    CELERY_IGNORE_RESULT=True
-    CELERY_DISABLE_RATE_LIMITS=True
-    CELERY_DEFAULT_QUEUE=config.toolname
-    CELERY_QUEUES=(
-        Queue(config.redis_prefix + 'q', Exchange(config.toolname),
-              routing_key=config.toolname),
-    )
-    BROKER_TRANSPORT_OPTIONS = {
-            'fanout_prefix': True,
-            'fanout_patterns': True,
-            'keyprefix_queue': redis_prefix + '.binding.%s',
-            'unacked_key': redis_prefix + '_unacked',
-            'unacked_index_key': redis_prefix + '_unacked_index_key',
-            'unacked_mutex_key': redis_prefix + '_unacked_mutex_key'
-            }

@@ -412,7 +412,8 @@ class Channel(virtual.Channel):
          'fanout_patterns',
          'socket_timeout',
          'max_connections',
-         'priority_steps')  # <-- do not add comma here!
+         'priority_steps',
+         'keyprefix_queue')  # <-- do not add comma here!
     )
 
     def __init__(self, *args, **kwargs):

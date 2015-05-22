@@ -23,17 +23,19 @@ While developing use `gulp serve` to preview changes and `gulp build` to
 build the application to `frontend/dist` for deployment.
 
 ##Backend
-Create a virtualenv and run
+First change `config.py` to use your credentials.
 ```
 cd backend
-pip install -r requirements.txt
 cp config.py.sample config.py
 ```
-Then change `config.py` to use your credentials.
+Then create a virtualenv and run
+```
+cd ..
+python setup.py install
+```
 
 Start the Tornado webserver on `$PORT` with
 ```
-cd ..
 python -m backend $PORT
 ```
 and the a celery worker:

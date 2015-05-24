@@ -7,7 +7,7 @@
   "DESCRIPTION": "An enhanced watchlist for Wikimedia projects.",
   "SIGN_IN_BUTTON": "Sign in with OAuth",
   "SEARCH": "Search",
-  "SIGNED_IN_MSG": "Welcome {{username}}, you are signed in. It may take a bit until your watchlist ist fully loaded.",
+  "SIGNED_IN_MSG": "Welcome {{username}}, you are signed in. It may take a bit until your watchlist is fully loaded.",
   "MINOREDIT_FLAG": "m",
   "BOTEDIT_FLAG": "b",
   "NEWPAGE_FLAG": "N"

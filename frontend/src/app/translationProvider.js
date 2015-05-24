@@ -6,6 +6,7 @@ angular
     var translationList = [
       {key: 'en', language: 'English', usecases: ['en_US', 'en_GB']},
       {key: 'de', language: 'Deutsch', usecases: ['de_DE', 'de_CH']},
+      {key: 'pt', language: 'português', usecases: ['pt_BR']}
     ];
 
     var availableLangs = [];

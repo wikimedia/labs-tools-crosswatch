@@ -108,13 +108,15 @@ def watchlistgetter(obj):
         days = 1
     params = {
         'list': "watchlist",
-        'wlallrev': "",
         'wltype': "edit|new",
         'wllimit': 500,
         'wlend': mw.timestamp(daysdelta=-days),
         'wlprop': "ids|flags|title|parsedcomment|user|timestamp|sizes|" +
         "notificationtimestamp|loginfo"
     }
+
+    if obj['allrev']:
+        params['wlallrev'] = ""
 
     for response in mw.query_gen(params):
         items = []

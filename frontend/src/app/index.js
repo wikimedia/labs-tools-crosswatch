@@ -96,6 +96,13 @@ function dataService ($filter, socket, authService, $log) {
   vm.watchlistperiod = 1.5;
 
   /**
+   * true: show all changes
+   * false: show only latest change
+   * @type {boolean}
+   */
+  vm.allrev = true;
+
+  /**
    * Array that contains all watchlist entries.
    * @type {Array}
    */
@@ -113,6 +120,16 @@ function dataService ($filter, socket, authService, $log) {
       entries[i].titlestyle = vm.titleStyle(entries[i].notificationtimestamp);
     }
     vm.watchlist.push.apply(vm.watchlist, entries);
+  };
+
+  /**
+   * Allrev option changed, reset watchlist and query it again
+   * @param allrev
+   */
+  vm.setAllrev = function (allrev) {
+    vm.allrev = allrev;
+    vm.watchlist = [];
+    vm.queryWatchlist();
   };
 
   /**
@@ -169,7 +186,8 @@ function dataService ($filter, socket, authService, $log) {
     if (authService.isloggedin()) {
       var watchlistQuery = {
         action: 'watchlist',
-        access_token: authService.tokens()
+        access_token: authService.tokens(),
+        allrev: vm.allrev
       };
       try {
         socket.send(angular.toJson(watchlistQuery));

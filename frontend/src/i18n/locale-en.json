@@ -10,5 +10,7 @@
   "SIGNED_IN_MSG": "Welcome {{username}}, you are signed in. It may take a bit until your watchlist is fully loaded.",
   "MINOREDIT_FLAG": "m",
   "BOTEDIT_FLAG": "b",
-  "NEWPAGE_FLAG": "N"
+  "NEWPAGE_FLAG": "N",
+  "OPTIONS": "Options",
+  "LASTREVONLY": "Show only the latest change per page"
 }

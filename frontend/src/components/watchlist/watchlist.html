@@ -1,14 +1,28 @@
 <div ng-controller="WatchlistCtrl as ctrl">
-  <form class="form-inline" role="form">
+  <form class="form-horizontal" role="form">
     <div class="form-group">
-      <label><span translate="SEARCH"></span>:</label>
-      <input type="text" class="form-control" ng-model="ctrl.searchText">
+      <label class="control-label col-xs-1">{{'SEARCH' | translate}}:</label>
+      <div class="col-xs-2">
+        <input type="text" class="form-control" ng-model="ctrl.searchText">
+      </div>
     </div>
-    <br>
-    <div class="checkbox">
-      <label data-placement="bottom-left" data-type="info" data-animation="am-fade-and-scale" bs-tooltip="tooltip" bs-enabled="ctrl.flagsenable">
-        <input type="checkbox" ng-model="ctrl.flagsenable"> Check me to show flags instead of language names
-      </label>
+    <div class="form-group">
+      <label class="control-label col-xs-1">{{'OPTIONS' | translate}}:</label>
+      <div class="col-xs-4">
+        <div class="checkbox">
+          <label data-placement="bottom-left" data-type="info" data-animation="am-fade-and-scale"
+                 bs-tooltip="tooltip" bs-enabled="ctrl.lastrevonly">
+            <input type="checkbox" ng-model="ctrl.lastrevonly" ng-change="ctrl.lastrevonlyChanged()">
+            {{'LASTREVONLY' | translate}}
+          </label>
+        </div>
+        <div class="checkbox">
+          <label data-placement="bottom-left" data-type="info" data-animation="am-fade-and-scale"
+                 bs-tooltip="tooltip" bs-enabled="ctrl.flagsenable">
+            <input type="checkbox" ng-model="ctrl.flagsenable"> Show flags instead of language names
+          </label>
+        </div>
+      </div>
     </div>
   </form>
   <hr>

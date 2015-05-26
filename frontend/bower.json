@@ -4,7 +4,6 @@
   "dependencies": {
     "angular": "1.3.x",
     "angular-animate": "1.3.x",
-    "angular-cookies": "1.3.x",
     "angular-route": "1.3.x",
     "angular-sanitize": "1.3.x",
     "angular-sockjs": "0.0.x",
@@ -13,7 +12,8 @@
     "angular-translate-loader-static-files": "2.6.x",
     "fontawesome": "~4.3.0",
     "sockjs-client": "~0.3.4",
-    "angular-moment": "0.x.x"
+    "angular-moment": "0.x.x",
+    "angular-local-storage": "0.2.x"
   },
   "devDependencies": {
     "angular-mocks": "1.3.x"

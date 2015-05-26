@@ -11,15 +11,16 @@
       <div class="col-xs-4">
         <div class="checkbox">
           <label data-placement="bottom-left" data-type="info" data-animation="am-fade-and-scale"
-                 bs-tooltip="tooltip" bs-enabled="ctrl.lastrevonly">
-            <input type="checkbox" ng-model="ctrl.lastrevonly" ng-change="ctrl.lastrevonlyChanged()">
+                 bs-tooltip="tooltip" bs-enabled="ctrl.config.lastrevonly">
+            <input type="checkbox" ng-model="ctrl.config.lastrevonly" ng-change="ctrl.lastrevonlyChanged()">
             {{'LASTREVONLY' | translate}}
           </label>
         </div>
         <div class="checkbox">
           <label data-placement="bottom-left" data-type="info" data-animation="am-fade-and-scale"
-                 bs-tooltip="tooltip" bs-enabled="ctrl.flagsenable">
-            <input type="checkbox" ng-model="ctrl.flagsenable"> Show flags instead of language names
+                 bs-tooltip="tooltip" bs-enabled="ctrl.config.flagsenable">
+            <input type="checkbox" ng-model="ctrl.config.flagsenable" ng-change="ctrl.saveConfig()">
+            Show flags instead of language names
           </label>
         </div>
       </div>

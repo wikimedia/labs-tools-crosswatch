@@ -97,10 +97,10 @@ class MWOAuth(object):  # http://stackoverflow.com/a/26691512
             mwo_token = json.dumps(mwo_token)
 
             resp = make_response(redirect('/' + toolname + '/'))
-            resp.set_cookie(self.toolname + 'Auth', mwo_token,
+            resp.set_cookie(self.toolname + '.auth', mwo_token,
                             max_age=30*24*60*60,
                             path='/' + self.toolname + '/')
-            resp.set_cookie(self.toolname + 'User', username,
+            resp.set_cookie(self.toolname + '.user', username,
                             max_age=30*24*60*60,
                             path='/' + self.toolname + '/')
             session.clear()
@@ -111,9 +111,9 @@ class MWOAuth(object):  # http://stackoverflow.com/a/26691512
         def logout():
             resp = make_response(redirect('/' + toolname + '/'))
             session['mwo_token'] = None
-            resp.set_cookie(self.toolname + 'Auth', '',
+            resp.set_cookie(self.toolname + '.auth', '',
                             path='/' + self.toolname + '/', expires=0)
-            resp.set_cookie(self.toolname + 'User', '',
+            resp.set_cookie(self.toolname + '.user', '',
                             path='/' + self.toolname + '/', expires=0)
             session.clear()
 

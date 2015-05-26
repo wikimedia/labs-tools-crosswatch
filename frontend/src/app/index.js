@@ -3,8 +3,8 @@ angular
   .module('crosswatch', [
     'ngAnimate',
     'ngSanitize',
-    'ngCookies',
     'ngRoute',
+    'LocalStorageModule',
     'mgcrea.ngStrap',
     'pascalprecht.translate',
     'bd.sockjs',
@@ -12,6 +12,7 @@ angular
   ])
   .config(routeConfig)
   .config(locationConfig)
+  .config(storageConfig)
   .factory('socket', socketFactory)
   .service('authService', authService)
   .service('dataService', dataService)
@@ -38,6 +39,12 @@ function locationConfig ($locationProvider) {
   });
 }
 
+function storageConfig (localStorageServiceProvider) {
+  localStorageServiceProvider
+    .setPrefix('crosswatch')
+    .setStorageCookie(30, '/crosswatch/');
+}
+
 function socketFactory (socketFactory, $browser, $location) {
   var baseHref = $browser.baseHref();
   var sockjsUrl = baseHref + 'sockjs';
@@ -50,30 +57,31 @@ function socketFactory (socketFactory, $browser, $location) {
   });
 }
 
-function authService ($cookies, $rootScope, $log) {
-  $rootScope.$watch(function () { return $cookies.crosswatchUser;}, function (newValue) {
-    if (typeof(newValue) !== 'undefined') {
+function authService (localStorageService, $rootScope, $log) {
+  $rootScope.$watch(function () { return localStorageService.cookie.get('user');}, function (newValue) {
+    if (newValue !== null) {
       $log.info('Singed in as ' + newValue);
       $rootScope.$emit('login', newValue);
     }
   });
 
   this.tokens = function () {
-    return angular.fromJson(($cookies.crosswatchAuth).replace(/\\054/g, ','));
+    return angular.fromJson(localStorageService.cookie.get('auth').replace(/\\054/g, ','));
   };
 
   this.user = function () {
-    return $cookies.crosswatchUser;
+    return localStorageService.cookie.get('user');
   };
 
   this.isloggedin = function () {
-    return (typeof($cookies.crosswatchAuth) !== 'undefined');
+    return (localStorageService.cookie.get('auth') !== null);
   };
 
 }
 
-function dataService ($filter, socket, authService, $log) {
+function dataService ($filter, socket, authService, localStorageService, $log) {
   var vm = this;
+
   vm.icons = {};
   vm.icons['wikibooks']   = "//upload.wikimedia.org/wikipedia/commons/f/fa/Wikibooks-logo.svg";
   vm.icons['wiktionary']  = "//upload.wikimedia.org/wikipedia/commons/e/ef/Wikitionary.svg";
@@ -96,17 +104,28 @@ function dataService ($filter, socket, authService, $log) {
   vm.watchlistperiod = 1.5;
 
   /**
-   * true: show all changes
-   * false: show only latest change
-   * @type {boolean}
-   */
-  vm.allrev = true;
-
-  /**
    * Array that contains all watchlist entries.
    * @type {Array}
    */
   vm.watchlist = [];
+
+
+  /**
+   * Initialize user settings
+   */
+  if (localStorageService.get('config') !== null) {
+    vm.config = localStorageService.get('config');
+  } else {
+    vm.config = {};
+
+    /**
+     * true: show only latest change
+     * false: show all changes
+     * @type {boolean}
+     */
+    vm.config.lastrevonly = false;
+    vm.config.flagsenable = false;
+  }
 
   /**
    * Process an array of new watchlist entries.
@@ -123,13 +142,19 @@ function dataService ($filter, socket, authService, $log) {
   };
 
   /**
-   * Allrev option changed, reset watchlist and query it again
-   * @param allrev
+   * Reset watchlist and query it again
    */
-  vm.setAllrev = function (allrev) {
-    vm.allrev = allrev;
+  vm.resetWatchlist = function () {
     vm.watchlist = [];
     vm.queryWatchlist();
+    vm.saveConfig();
+  };
+
+  /**
+   * Save user config to local storage
+   */
+  vm.saveConfig = function() {
+    localStorageService.set('config', vm.config);
   };
 
   /**
@@ -187,7 +212,7 @@ function dataService ($filter, socket, authService, $log) {
       var watchlistQuery = {
         action: 'watchlist',
         access_token: authService.tokens(),
-        allrev: vm.allrev
+        allrev: !vm.config.lastrevonly
       };
       try {
         socket.send(angular.toJson(watchlistQuery));

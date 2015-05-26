@@ -6,13 +6,12 @@ angular.module('crosswatch')
     vm.watchlist = dataService.watchlist;
     vm.echolist = dataService.echolist;
     vm.icons = dataService.icons;
-    vm.testicon = {};
     vm.flags = dataService.flags;
-
-    vm.lastrevonly = !dataService.allrev;
+    vm.config = dataService.config;
+    vm.saveConfig = dataService.saveConfig;
 
     vm.lastrevonlyChanged = function () {
-      dataService.setAllrev(!vm.lastrevonly);
+      dataService.resetWatchlist();
       vm.watchlist = dataService.watchlist;
     };
 

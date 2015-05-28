@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('crosswatch')
-  .controller('MainCtrl', function ($alert, socket, $rootScope, $translate, authService, $log) {
+  .controller('MainCtrl', function ($alert, socket, $rootScope, $translate, authService, $timeout, $log) {
     var vm = this;
     vm.loggedin = authService.isloggedin();
     showLoggedinAlert();
@@ -32,7 +32,7 @@ angular.module('crosswatch')
     });
 
     $rootScope.$on('$translateChangeSuccess', function () {
-      if (authService.isloggedin()) {
+      if (authService.isloggedin() && (typeof vm.loginAlert !== "undefined")) {
         vm.loginAlert.destroy();
         showLoggedinAlert();
       }

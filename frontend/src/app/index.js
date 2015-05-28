@@ -5,6 +5,7 @@ angular
     'ngSanitize',
     'ngRoute',
     'LocalStorageModule',
+    'angular-translate-storage',
     'mgcrea.ngStrap',
     'pascalprecht.translate',
     'bd.sockjs',
@@ -221,7 +222,7 @@ function dataService ($filter, socket, authService, localStorageService, $log) {
         socket.send(angular.toJson(watchlistQuery));
       } catch(err) {
         // INVALID_STATE_ERR when sockjs is not yet connected
-        if (err.message === 'INVALID_STATE_ERR') {
+        if (err.message === 'InvalidStateError: The connection has not been established yet') {
           $log.warn('Wachtlist queried before socketjs connected.');
         } else {
           $log.error(err);
@@ -231,9 +232,18 @@ function dataService ($filter, socket, authService, localStorageService, $log) {
   };
 }
 
-function runBlock (amMoment, $translate, socket, $rootScope, dataService, $log, $alert, $timeout) {
-  amMoment.changeLocale($translate.use());
+function runBlock (socket, $rootScope, dataService, $log, $alert, $timeout, $translate, amMoment, localStorageService) {
   var connectionError = true;
+
+  /**
+   * Set Moment.js language
+   * Strange bug, $translate.use() is sometimes undefined if loaded by angular-translate from local storage
+   */
+  if (typeof $translate.use() === "undefined") {
+    var lang = localStorageService.get('NG_TRANSLATE_LANG_KEY');
+    $translate.use(lang);
+    amMoment.changeLocale(lang);
+  }
 
   /**
    * Query watchlist on login.

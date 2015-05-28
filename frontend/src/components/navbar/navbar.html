@@ -3,7 +3,7 @@
     <form class="navbar-form navbar-left" role="language">
       <button type="button" class="btn btn-default"
               ng-model="ctrl.selectedLang"
-              ng-options="lang.key as lang.language for lang in ctrl.langs"
+              bs-options="lang.key as lang.language for lang in ctrl.langs"
               ng-change="ctrl.changeLanguage(ctrl.selectedLang)"
               bs-select></button>
     </form>

@@ -32,6 +32,7 @@ angular
       })
       .registerAvailableLanguageKeys(availableLangs, mappings)
       .determinePreferredLanguage()
-      .fallbackLanguage('en');
+      .fallbackLanguage('en')
+      .useStorage('translateStorage');
   })
 ;

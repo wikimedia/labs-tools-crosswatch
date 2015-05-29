@@ -239,11 +239,12 @@ function runBlock (socket, $rootScope, dataService, $log, $alert, $timeout, $tra
    * Set Moment.js language
    * Strange bug, $translate.use() is sometimes undefined if loaded by angular-translate from local storage
    */
-  if (typeof $translate.use() === "undefined") {
-    var lang = localStorageService.get('NG_TRANSLATE_LANG_KEY');
+  var lang = $translate.use();
+  if (typeof lang === "undefined") {
+    lang = localStorageService.get('NG_TRANSLATE_LANG_KEY');
     $translate.use(lang);
-    amMoment.changeLocale(lang);
   }
+  amMoment.changeLocale(lang);
 
   /**
    * Query watchlist on login.

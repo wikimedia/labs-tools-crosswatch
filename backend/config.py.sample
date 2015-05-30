@@ -8,6 +8,10 @@ from mwoauth import ConsumerToken
 toolname = 'crosswatch'
 redis_server = 'tools-redis'
 
+# mail config for celery error mails
+mail_server = 'tools-mail'
+email = 'tools.' + toolname + '@tools.wmflabs.org'
+
 if not socket.gethostname().startswith('tools'):
     redis_server = 'localhost'
 redis_port = 6379

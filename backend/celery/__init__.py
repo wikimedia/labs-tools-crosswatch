@@ -37,4 +37,10 @@ app.conf.update(
         'unacked_index_key': config.redis_prefix + '_unacked_index',
         'unacked_mutex_key': config.redis_prefix + '_unacked_mutex'
         },
+
+    CELERY_SEND_TASK_ERROR_EMAILS=True,
+    SERVER_EMAIL = config.email,
+    ADMINS = [(config.toolname, config.email)],
+    EMAIL_HOST = config.mail_server,
+    EMAIL_PORT = 25
 )

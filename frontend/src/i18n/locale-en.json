@@ -12,5 +12,8 @@
   "BOTEDIT_FLAG": "b",
   "NEWPAGE_FLAG": "N",
   "OPTIONS": "Options",
-  "LASTREVONLY": "Show only the latest change per page"
+  "LASTREVONLY": "Show only the latest change per page",
+  "TIMEPERIOD": "Show last",
+  "HOURS": "{{number}} hours",
+  "DAYS": "{{number}} days"
 }

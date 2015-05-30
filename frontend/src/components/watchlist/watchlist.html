@@ -1,18 +1,26 @@
 <div ng-controller="WatchlistCtrl as ctrl">
   <form class="form-horizontal" role="form">
     <div class="form-group">
-      <label class="control-label col-xs-1">{{'SEARCH' | translate}}:</label>
-      <div class="col-xs-2">
+      <label class="control-label col-md-1">{{'SEARCH' | translate}}:</label>
+      <div class="col-md-2">
         <input type="text" class="form-control" ng-model="ctrl.searchText">
+      </div>
+      <label class="control-label col-md-2">{{'TIMEPERIOD' | translate}}:</label>
+      <div class="col-md-1">
+        <button type="button" class="btn btn-default"
+                ng-model="ctrl.config.watchlistperiod"
+                bs-options="item.value as item.label for item in ctrl.periodList"
+                ng-change="ctrl.resetWatchlist()"
+                bs-select></button>
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-xs-1">{{'OPTIONS' | translate}}:</label>
-      <div class="col-xs-4">
+      <label class="control-label col-md-1">{{'OPTIONS' | translate}}:</label>
+      <div class="col-md-4">
         <div class="checkbox">
           <label data-placement="bottom-left" data-type="info" data-animation="am-fade-and-scale"
                  bs-tooltip="tooltip" bs-enabled="ctrl.config.lastrevonly">
-            <input type="checkbox" ng-model="ctrl.config.lastrevonly" ng-change="ctrl.lastrevonlyChanged()">
+            <input type="checkbox" ng-model="ctrl.config.lastrevonly" ng-change="ctrl.resetWatchlist()">
             {{'LASTREVONLY' | translate}}
           </label>
         </div>

@@ -215,7 +215,7 @@ function dataService ($filter, socket, authService, localStorageService, $log) {
       var watchlistQuery = {
         action: 'watchlist',
         access_token: authService.tokens(),
-        watchlistdays: vm.config.watchlistperiod,
+        watchlistperiod: vm.config.watchlistperiod,
         allrev: !vm.config.lastrevonly
       };
       try {

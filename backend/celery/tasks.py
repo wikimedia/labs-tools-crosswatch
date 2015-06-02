@@ -108,7 +108,7 @@ def watchlistgetter(obj):
         days = 1
     params = {
         'list': "watchlist",
-        'wltype': "edit|new",
+        'wltype': "edit|new|log",
         'wllimit': 500,
         'wlend': mw.timestamp(daysdelta=-days),
         'wlprop': "ids|flags|title|parsedcomment|user|timestamp|sizes|" +

@@ -15,6 +15,7 @@ angular
   .config(locationConfig)
   .config(storageConfig)
   .factory('socket', socketFactory)
+  .filter('urlEncode', urlEncodeFilter)
   .service('authService', authService)
   .service('dataService', dataService)
   .run(runBlock)
@@ -56,6 +57,13 @@ function socketFactory (socketFactory, $browser, $location) {
   return socketFactory({
     url: sockjsUrl
   });
+}
+
+/*
+ * Filter for encoding strings for use in URL query strings
+ */
+function urlEncodeFilter () {
+  return window.encodeURIComponent;
 }
 
 function authService (localStorageService, $rootScope, $log) {
@@ -136,12 +144,52 @@ function dataService ($filter, socket, authService, localStorageService, $log) {
    */
   vm.addWatchlistEntries = function (entries) {
     for (var i = 0; i < entries.length; i++) {
-      var byte_change = entries[i].newlen - entries[i].oldlen;
-      entries[i].bytes = vm.numberFormat(byte_change);
-      entries[i].bytestyle = vm.byteStyle(byte_change);
-      entries[i].titlestyle = vm.titleStyle(entries[i].notificationtimestamp);
+      if (entries[i].type === 'edit') {
+        var byte_change = entries[i].newlen - entries[i].oldlen;
+        entries[i].bytes = vm.numberFormat(byte_change);
+        entries[i].bytestyle = vm.byteStyle(byte_change);
+        entries[i].titlestyle = vm.titleStyle(entries[i].notificationtimestamp);
+      } else {
+        /*
+         * Make html partials used by the translation templates
+         */
+        entries[i].username = vm.usernameHTML(entries[i].projecturl, entries[i].user);
+        entries[i].page = vm.titleHTML(entries[i].projecturl, entries[i].title);
+
+        if (entries[i].logtype === 'move') {
+          entries[i].target_title = vm.titleHTML(entries[i].projecturl, entries[i].target_title);
+        } else if (entries[i].logaction === 'move_prot') {
+          entries[i].target_title = vm.titleHTML(entries[i].projecturl, entries[i].logparams['0']);
+        } else if (entries[i].logtype === 'protect') {
+          entries[i].protection_level = entries[i].logparams['0'];
+        }
+      }
     }
     vm.watchlist.push.apply(vm.watchlist, entries);
+  };
+
+  /**
+   * Build <a href> tag for a username
+   * TODO: Make a directive out of it?
+   * @param projecturl
+   * @param user
+   * @returns {string}
+   */
+  vm.usernameHTML = function (projecturl, user) {
+    var html = "<a href=\"" + projecturl + "/wiki/User:" + user + "\" target=\"_blank\">" + user + "</a>";
+    return html;
+  };
+
+  /**
+   * Build <a href> tag for a page
+   * TODO: Make a directive out of it?
+   * @param projecturl
+   * @param title
+   * @returns {string}
+   */
+  vm.titleHTML = function (projecturl, title) {
+    var html = "<a href=\"" + projecturl + "/wiki/" + title +"\" target=\"_blank\">" + title + "</a>";
+    return html;
   };
 
   /**

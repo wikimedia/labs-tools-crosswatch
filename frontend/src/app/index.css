@@ -86,6 +86,7 @@ body {
 .watchlist{
   list-style: none none;
   padding-bottom: 8px;
+  overflow: hidden;
 }
 
 .watchlist .left {
@@ -95,7 +96,6 @@ body {
 
 .watchlist .right {
   width: auto;
-  overflow:hidden;
   word-break: break-all;
 }
 

@@ -25,7 +25,7 @@ angular
 
     // translation config
     $translateProvider
-      .useSanitizeValueStrategy('escaped')
+      .useSanitizeValueStrategy('sanitizeParameters')
       .useStaticFilesLoader({
         prefix: 'i18n/locale-',
         suffix: '.json'

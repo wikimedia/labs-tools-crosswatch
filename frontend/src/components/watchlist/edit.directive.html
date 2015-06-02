@@ -1,0 +1,10 @@
+<span class="newpage" ng-if="::event.new" translate="NEWPAGE_FLAG"></span>
+<span class="minoredit" ng-if="::event.minor" translate="MINOREDIT_FLAG"></span>
+<span class="botedit" ng-if="::event.bot" translate="BOTEDIT_FLAG"></span>
+<a href="{{::event.projecturl}}/w/index.php?oldid={{::event.old_revid}}&diff={{::event.revid}}"
+   ng-class="::event.titlestyle"  target="_blank">{{::event.title}}</a>
+<span ng-class="::event.bytestyle">({{::event.bytes}})</span>
+<div>
+  <a href="{{::event.projecturl}}/wiki/User:{{::event.user | urlEncode}}"  target="_blank">{{::event.user}}</a>
+  <span ng-if="::event.parsedcomment" class="comment">(<span ng-bind-html="::event.parsedcomment"></span>)</span>
+</div>

@@ -105,7 +105,7 @@ def watchlistgetter(obj):
     if 'watchlistperiod' in obj:
         days = obj['watchlistperiod']
     else:
-        days = 1
+        days = 2
     params = {
         'list': "watchlist",
         'wltype': "edit|new|log",
@@ -115,7 +115,7 @@ def watchlistgetter(obj):
         "notificationtimestamp|loginfo"
     }
 
-    if obj['allrev']:
+    if 'allrev' in obj and obj['allrev']:
         params['wlallrev'] = ""
 
     for response in mw.query_gen(params):

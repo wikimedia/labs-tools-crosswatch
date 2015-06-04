@@ -20,7 +20,6 @@
 </span>
 <span ng-if="::event.logtype === 'block'">
   <span ng-switch="::event.logaction">
-    <!--{{event.logparams['expiry'] | amCalendar}}-->
     <span ng-switch-when="block" translate="LOGEVENT_BLOCK_BLOCK" translate-values="{{::event}}"></span>
     <span ng-switch-when="reblock" translate="LOGEVENT_BLOCK_REBLOCK" translate-values="{{::event}}"></span>
     <span ng-switch-when="unblock" translate="LOGEVENT_BLOCK_UNBLOCK" translate-values="{{::event}}"></span>

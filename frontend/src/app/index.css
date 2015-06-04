@@ -89,6 +89,10 @@ body {
   overflow: hidden;
 }
 
+.watchlist a{
+  color:#0645ad;
+}
+
 .watchlist .left {
   float: left;
   width: 125px;
@@ -96,6 +100,7 @@ body {
 
 .watchlist .right {
   width: auto;
+  overflow: hidden;
   word-break: break-all;
 }
 

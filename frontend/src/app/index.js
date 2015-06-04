@@ -16,6 +16,7 @@ angular
   .config(storageConfig)
   .factory('socket', socketFactory)
   .filter('urlEncode', urlEncodeFilter)
+  .filter('list', listFiler)
   .service('authService', authService)
   .service('dataService', dataService)
   .run(runBlock)
@@ -59,11 +60,29 @@ function socketFactory (socketFactory, $browser, $location) {
   });
 }
 
-/*
+/**
  * Filter for encoding strings for use in URL query strings
  */
 function urlEncodeFilter () {
   return window.encodeURIComponent;
+}
+
+/**
+ * Formats lists:
+ *   ["a", "b", "c"] -> "(a, b, c)"
+ *   [] -> "(–)"
+ */
+function listFiler () {
+  return function (list) {
+    list = list || [];
+    var result = list.join(', ');
+    if (result.length === 0) {
+      result = "–";
+    }
+    result = "(" + result + ")";
+
+    return result;
+  }
 }
 
 function authService (localStorageService, $rootScope, $log) {
@@ -143,53 +162,7 @@ function dataService ($filter, socket, authService, localStorageService, $log) {
    * @param entries
    */
   vm.addWatchlistEntries = function (entries) {
-    for (var i = 0; i < entries.length; i++) {
-      if (entries[i].type === 'edit') {
-        var byte_change = entries[i].newlen - entries[i].oldlen;
-        entries[i].bytes = vm.numberFormat(byte_change);
-        entries[i].bytestyle = vm.byteStyle(byte_change);
-        entries[i].titlestyle = vm.titleStyle(entries[i].notificationtimestamp);
-      } else {
-        /*
-         * Make html partials used by the translation templates
-         */
-        entries[i].username = vm.usernameHTML(entries[i].projecturl, entries[i].user);
-        entries[i].page = vm.titleHTML(entries[i].projecturl, entries[i].title);
-
-        if (entries[i].logtype === 'move') {
-          entries[i].target_title = vm.titleHTML(entries[i].projecturl, entries[i].target_title);
-        } else if (entries[i].logaction === 'move_prot') {
-          entries[i].target_title = vm.titleHTML(entries[i].projecturl, entries[i].logparams['0']);
-        } else if (entries[i].logtype === 'protect') {
-          entries[i].protection_level = entries[i].logparams['0'];
-        }
-      }
-    }
     vm.watchlist.push.apply(vm.watchlist, entries);
-  };
-
-  /**
-   * Build <a href> tag for a username
-   * TODO: Make a directive out of it?
-   * @param projecturl
-   * @param user
-   * @returns {string}
-   */
-  vm.usernameHTML = function (projecturl, user) {
-    var html = "<a href=\"" + projecturl + "/wiki/User:" + user + "\" target=\"_blank\">" + user + "</a>";
-    return html;
-  };
-
-  /**
-   * Build <a href> tag for a page
-   * TODO: Make a directive out of it?
-   * @param projecturl
-   * @param title
-   * @returns {string}
-   */
-  vm.titleHTML = function (projecturl, title) {
-    var html = "<a href=\"" + projecturl + "/wiki/" + title +"\" target=\"_blank\">" + title + "</a>";
-    return html;
   };
 
   /**
@@ -206,53 +179,6 @@ function dataService ($filter, socket, authService, localStorageService, $log) {
    */
   vm.saveConfig = function() {
     localStorageService.set('config', vm.config);
-  };
-
-  /**
-   * Formats the string for the number of changed bytes in a edit.
-   * @param x
-   * @returns human readable number
-   */
-  vm.numberFormat =  function (x) {
-    var result = $filter('number')(x);
-    if (x > 0) {
-      result = '+' + result;
-    }
-    return result;
-  };
-
-  /**
-   * Get span class name from the number of changed bytes in a edit.
-   * @param byte_change
-   * @returns span class name
-   */
-  vm.byteStyle = function (byte_change) {
-    var result;
-    if (byte_change <= -500) {
-      result = 'text-danger strong';
-    } else if (byte_change < 0) {
-      result = 'text-danger';
-    } else if (byte_change === 0) {
-      result = 'text-muted';
-    } else if (byte_change >= 500) {
-      result = 'text-success strong';
-    } else { // 0 < byte_change <= 500
-      result = 'text-success';
-    }
-    return result;
-  };
-
-  /**
-   * Returns style for the page title based on the notificationtimestamp
-   * @param timestamp
-   * @returns {*}
-   */
-  vm.titleStyle = function(timestamp) {
-    if (timestamp) {
-      return 'mw-title';
-    } else {
-      return '';
-    }
   };
 
   /**

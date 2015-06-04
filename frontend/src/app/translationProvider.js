@@ -26,6 +26,7 @@ angular
     // translation config
     $translateProvider
       .useSanitizeValueStrategy('sanitizeParameters')
+      .usePostCompiling(true)
       .useStaticFilesLoader({
         prefix: 'i18n/locale-',
         suffix: '.json'

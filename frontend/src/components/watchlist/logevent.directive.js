@@ -17,9 +17,7 @@ function watchlistLogevent() {
      */
     for (var prop in scope.event.logparams) {
       if (scope.event.logparams.hasOwnProperty(prop)) {
-        if ((isNumber(prop)) || (scope.event.hasOwnProperty(prop))) {
-          console.log(prop);
-        } else {
+        if (!(isNumber(prop)) && !(scope.event.hasOwnProperty(prop))) {
           scope.event[prop] = scope.event.logparams[prop];
         }
       }

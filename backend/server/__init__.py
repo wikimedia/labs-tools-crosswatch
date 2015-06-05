@@ -54,7 +54,8 @@ class SockConnection(SockJSConnection):
             subscriber.subscribe(redis_channel, self)
 
             data['redis_channel'] = redis_channel
-            celery_app.send_task('backend.celery.tasks.initial_task', (data, ))
+            celery_app.send_task('backend.celery.tasks.initial_task',
+                                 (data, ), expires=60)
 
 
 def run(port):

@@ -7,16 +7,15 @@
     "angular-route": "~1.4.0",
     "angular-sanitize": "~1.4.0",
     "angular-sockjs": "0.0.x",
-    "angular-strap": "~2.2.4",
     "angular-translate": "~2.7.0",
     "angular-translate-loader-static-files": "~2.7.0",
     "angular-translate-storage": "~0.0.3",
-    "fontawesome": "~4.3.0",
     "sockjs-client": "~1.0.0",
     "angular-moment": "0.x.x",
     "angular-local-storage": "0.2.x",
-    "bootstrap": "~3.3.4",
-    "angular-motion": "~0.4.2"
+    "angular-motion": "~0.4.2",
+    "angular-material": "~0.10.0",
+    "material-design-icons": "~2.0.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.0"
@@ -27,6 +26,9 @@
   "overrides": {
     "moment": {
       "main": "min/moment-with-locales.min.js"
+    },
+    "material-design-icons": {
+      "main": "./iconfont/*"
     }
   }
 }

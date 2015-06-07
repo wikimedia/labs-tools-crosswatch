@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('crosswatch')
-  .controller('NavbarCtrl', function (translationList, $translate, $rootScope, authService, amMoment, localStorageService) {
+  .controller('NavbarCtrl', function (translationList, $translate, $rootScope, authService, amMoment,
+                                      localStorageService) {
     var vm = this;
     vm.langs = translationList;
     vm.selectedLang = $translate.use();

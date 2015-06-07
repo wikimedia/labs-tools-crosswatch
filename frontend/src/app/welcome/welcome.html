@@ -1,0 +1,15 @@
+<header ng-include="'components/navbar/navbar.html'"></header>
+<div layout="column" flex class="md-padding" id="welcome">
+  <div layout="row" layout-align="center center" flex>
+    <md-card flex-sm="90">
+      <md-card-content layout="column" layout-align="center center">
+        <h1>crosswatch</h1>
+        <p class="text-center" translate="DESCRIPTION"></p>
+        <md-button href="login" target="_self" class="md-raised md-accent">
+          {{'SIGN_IN_BUTTON' | translate}}
+        </md-button>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>
+<ng-include src="'components/footer/footer.html'"></ng-include>

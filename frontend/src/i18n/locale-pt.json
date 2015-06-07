@@ -6,8 +6,6 @@
   "SIGN_OUT": "Sair",
   "DESCRIPTION": "Uma lista de páginas vigiadas aprimorada para os projetos Wikimedia.",
   "SIGN_IN_BUTTON": "Enrar com OAuth",
-  "SEARCH": "Pesquisa",
-  "SIGNED_IN_MSG": "Bem-vindo(a) {{username}}, você já está conectado. Pode levar algum tempo até que a sua lista de páginas vigiadas seja completamente carregada.",
   "MINOREDIT_FLAG": "m",
   "BOTEDIT_FLAG": "b",
   "NEWPAGE_FLAG": "N"

@@ -1,45 +1,22 @@
-<nav class="navbar navbar-default" ng-controller="NavbarCtrl as ctrl">
-  <div class="container-fluid">
-    <form class="navbar-form navbar-left" role="language">
-      <button type="button" class="btn btn-default"
-              ng-model="ctrl.selectedLang"
-              bs-options="lang.key as lang.language for lang in ctrl.langs"
-              ng-change="ctrl.changeLanguage(ctrl.selectedLang)"
-              bs-select></button>
-    </form>
-    <div>
-      <ul class="nav navbar-nav">
-        <li>
-          <a href="https://meta.wikimedia.org/wiki/Crosswatch" target="_blank">
-            <i class="fa fa-info-circle"></i>&nbsp;<span translate="DOCUMENTATION"></span>
-          </a>
-        </li>
-        <li>
-          <a href="https://meta.wikimedia.org/wiki/Talk:Crosswatch" target="_blank">
-            <i class="fa fa-comments"></i>&nbsp;<span translate="TALK"></span>
-          </a>
-        </li>
-        <li>
-          <a href="https://phabricator.wikimedia.org/project/view/1224/" target="_blank">
-            <i class="fa fa-bug"></i>&nbsp;<span translate="REPORT_BUGS"></span>
-          </a>
-        </li>
-        <li>
-          <a href="https://git.wikimedia.org/summary/labs%2Ftools%2Fcrosswatch" target="_blank">
-            <i class="fa fa-github"></i>&nbsp;Git
-          </a>
-        </li>
-      </ul>
-    </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li ng-hide="ctrl.loggedin">
-        <a href="login" target="_self" class="navbar-link"><i class="fa fa-sign-in"></i>
-          &nbsp;<span translate="SIGN_IN"></span></a>
-      </li>
-      <li ng-show="ctrl.loggedin">
-        <a href="logout" target="_self" class="navbar-link">
-          &nbsp;<span translate="SIGN_OUT"></span> <i class="fa fa-sign-out"></i></a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<md-toolbar layout="row" layout-align="center center" ng-controller="NavbarCtrl as ctrl" class="md-toolbar-tools">
+  <md-select ng-model="ctrl.selectedLang"
+             placeholder="Language"
+             ng-change="ctrl.changeLanguage(ctrl.selectedLang)">
+    <md-option ng-repeat="lang in ctrl.langs" value="{{lang.key}}">{{lang.language}}</md-option>
+  </md-select>
+  <md-button href="https://meta.wikimedia.org/wiki/Crosswatch" target="_blank" class="md-flat">
+    {{'DOCUMENTATION' | translate}}
+  </md-button>
+  <md-button href="https://meta.wikimedia.org/wiki/Talk:Crosswatch" target="_blank" class="md-flat">
+    {{'TALK' | translate}}
+  </md-button>
+  <md-button href="https://phabricator.wikimedia.org/project/view/1224/" target="_blank" class="md-flat">
+    {{'REPORT_BUGS' | translate}}
+  </md-button>
+  <md-button href="login" target="_self" class="md-flat" ng-hide="ctrl.loggedin">
+    {{'SIGN_IN' | translate}}
+  </md-button>
+  <md-button href="logout" target="_self" class="md-flat" ng-show="ctrl.loggedin">
+    {{'SIGN_OUT' | translate}}
+  </md-button>
+</md-toolbar>

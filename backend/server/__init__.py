@@ -85,7 +85,7 @@ def run(port):
     index_path = os.path.join(pwd_path, 'public/' + toolname + '/index.html')
     static_handlers = [
         (r"/()", StaticFileHandler, {"path": index_path}),
-        (r"/" + toolname + r"/()", StaticFileHandler, {"path": index_path}),
+        (r"/" + toolname + r"/\w*()", StaticFileHandler, {"path": index_path}),
         (r"/" + toolname, RedirectHandler, {"url": "/" + toolname + "/"}),
         (r"/(.*)", StaticFileHandler, {"path": static_path})
         ]

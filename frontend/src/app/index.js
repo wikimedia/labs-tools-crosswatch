@@ -16,7 +16,8 @@ angular
   .config(storageConfig)
   .factory('socket', socketFactory)
   .filter('urlEncode', urlEncodeFilter)
-  .filter('list', listFiler)
+  .filter('list', listFilter)
+  .filter('projects', projectsFilter)
   .service('authService', authService)
   .service('dataService', dataService)
   .run(runBlock)
@@ -72,7 +73,7 @@ function urlEncodeFilter () {
  *   ["a", "b", "c"] -> "(a, b, c)"
  *   [] -> "(–)"
  */
-function listFiler () {
+function listFilter () {
   return function (list) {
     list = list || [];
     var result = list.join(', ');
@@ -82,6 +83,19 @@ function listFiler () {
     result = "(" + result + ")";
 
     return result;
+  }
+}
+
+/**
+ * Filters watchlist based on selected / blacklisted wikis
+ */
+function projectsFilter () {
+  return function (items, projects) {
+    return items.filter(filter, projects)
+  };
+
+  function filter (item) {
+    return (this.indexOf(item.project) > -1);
   }
 }
 
@@ -107,7 +121,7 @@ function authService (localStorageService, $rootScope, $log) {
 
 }
 
-function dataService ($filter, socket, authService, localStorageService, $log) {
+function dataService (socket, authService, localStorageService, $log) {
   var vm = this;
 
   vm.icons = {};
@@ -136,7 +150,6 @@ function dataService ($filter, socket, authService, localStorageService, $log) {
    */
   vm.watchlist = [];
 
-
   /**
    * Initialize user settings
    */
@@ -144,11 +157,21 @@ function dataService ($filter, socket, authService, localStorageService, $log) {
     /**
      * true: show only latest change
      * false: show all changes
-     * @type {boolean}
      */
     lastrevonly: false,
+    /**
+     * Timeperiod for which the watchlist is retrieved in days
+     */
     watchlistperiod: 1.5,
-    flagsenable: false
+    flagsenable: false,
+    /**
+     * List of all known projects (wikis)
+     */
+    projectsList: false,
+    /**
+     * List of selected projects (wikis)
+     */
+    projectsSelected: false
   };
   if (localStorageService.get('config') !== null) {
     vm.config = localStorageService.get('config');
@@ -156,6 +179,9 @@ function dataService ($filter, socket, authService, localStorageService, $log) {
   } else {
     vm.config = Object.create(vm.defaultconfig);
   }
+  // Sadly no other way to do this right
+  vm.config.projectsList = vm.config.projectsList || [];
+  vm.config.projectsSelected = vm.config.projectsSelected || [];
 
   /**
    * Process an array of new watchlist entries.
@@ -163,6 +189,11 @@ function dataService ($filter, socket, authService, localStorageService, $log) {
    */
   vm.addWatchlistEntries = function (entries) {
     vm.watchlist.push.apply(vm.watchlist, entries);
+    var project = entries[0].project;
+    if (vm.config.projectsList.indexOf(project) === -1) {
+      vm.config.projectsList.push(project);
+      vm.config.projectsSelected.push(project);
+    }
   };
 
   /**

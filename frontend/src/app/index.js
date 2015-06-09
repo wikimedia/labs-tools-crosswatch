@@ -18,6 +18,7 @@ angular
   .filter('urlEncode', urlEncodeFilter)
   .filter('list', listFilter)
   .filter('projects', projectsFilter)
+  .filter('editflags', editflagsFilter)
   .service('authService', authService)
   .service('dataService', dataService)
   .run(runBlock)
@@ -99,6 +100,26 @@ function projectsFilter () {
   }
 }
 
+/**
+ * Filters watchlist based on editflags (minor, bot, registered)
+ */
+function editflagsFilter () {
+  return function (items, flags) {
+    return items.filter(filter, flags)
+  };
+
+  function filter (item) {
+    if (item.type === 'log') {
+      return true;
+    }
+    var minor = this.minor || !item.minor;
+    var bot = this.bot || !item.bot;
+    var anon = this.anon || !(item.anon === "");
+    var registered = this.registered || !(item.userid !== 0);
+    return (minor && bot && anon && registered);
+  }
+}
+
 function authService (localStorageService, $rootScope, $log) {
   $rootScope.$watch(function () { return localStorageService.cookie.get('user');}, function (newValue) {
     if (newValue !== null) {
@@ -165,6 +186,10 @@ function dataService (socket, authService, localStorageService, $log) {
     watchlistperiod: 1.5,
     flagsenable: false,
     /**
+     * Options to show minor, bot, anon and registered user edits
+     */
+    editflags: false,
+    /**
      * List of all known projects (wikis)
      */
     projectsList: false,
@@ -182,6 +207,12 @@ function dataService (socket, authService, localStorageService, $log) {
   // Sadly no other way to do this right
   vm.config.projectsList = vm.config.projectsList || [];
   vm.config.projectsSelected = vm.config.projectsSelected || [];
+  vm.config.editflags = vm.config.editflags || {
+      minor: true,
+      bot: false,
+      anon: true,
+      registered: true
+    };
 
   /**
    * Process an array of new watchlist entries.

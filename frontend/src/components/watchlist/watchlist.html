@@ -43,13 +43,41 @@
             Show flags instead of language names
           </label>
         </div>
+        <div class="checkbox">
+          <label data-placement="bottom-left" data-type="info" data-animation="am-fade-and-scale"
+                 bs-tooltip="tooltip" bs-enabled="ctrl.config.editflags.minor">
+            <input type="checkbox" ng-model="ctrl.config.editflags.minor" ng-change="ctrl.saveConfig()">
+            {{'MINOR_EDITS' | translate}}
+          </label>
+        </div>
+        <div class="checkbox">
+          <label data-placement="bottom-left" data-type="info" data-animation="am-fade-and-scale"
+                 bs-tooltip="tooltip" bs-enabled="ctrl.config.editflags.bot">
+            <input type="checkbox" ng-model="ctrl.config.editflags.bot" ng-change="ctrl.saveConfig()">
+            {{'BOT_EDITS' | translate}}
+          </label>
+        </div>
+        <div class="checkbox">
+          <label data-placement="bottom-left" data-type="info" data-animation="am-fade-and-scale"
+                 bs-tooltip="tooltip" bs-enabled="ctrl.config.editflags.anon">
+            <input type="checkbox" ng-model="ctrl.config.editflags.anon" ng-change="ctrl.saveConfig()">
+            {{'ANON_EDITS' | translate}}
+          </label>
+        </div>
+        <div class="checkbox">
+          <label data-placement="bottom-left" data-type="info" data-animation="am-fade-and-scale"
+                 bs-tooltip="tooltip" bs-enabled="ctrl.config.editflags.registered">
+            <input type="checkbox" ng-model="ctrl.config.editflags.registered" ng-change="ctrl.saveConfig()">
+            {{'USER_EDITS' | translate}}
+          </label>
+        </div>
       </div>
     </div>
   </form>
   <hr>
   <ul class="example-animate-container">
     <li class="watchlist"
-        ng-repeat="event in ctrl.watchlist| orderBy:'-timestamp' | filter:ctrl.searchText | projects:ctrl.config.projectsSelected">
+        ng-repeat="event in ctrl.watchlist | projects:ctrl.config.projectsSelected | editflags:ctrl.config.editflags | filter:ctrl.searchText | orderBy:'-timestamp'">
       <watchlist-entry></watchlist-entry>
     </li>
   </ul>

@@ -103,7 +103,7 @@ def watchlistgetter(obj):
                    access_token=obj['access_token'],
                    redis_channel=obj['redis_channel'])
     if 'watchlistperiod' in obj:
-        days = obj['watchlistperiod']
+        days = float(obj['watchlistperiod'])
     else:
         days = 2
     params = {
@@ -111,8 +111,8 @@ def watchlistgetter(obj):
         'wltype': "edit|new|log",
         'wllimit': 500,
         'wlend': mw.timestamp(daysdelta=-days),
-        'wlprop': "ids|flags|title|parsedcomment|user|timestamp|sizes|" +
-        "notificationtimestamp|loginfo"
+        'wlprop': "ids|flags|title|parsedcomment|userid|user|timestamp|" +
+        "sizes|notificationtimestamp|loginfo"
     }
 
     if 'allrev' in obj and obj['allrev']:

@@ -138,7 +138,7 @@ class MediaWiki(object):
         wiki = {
             'lang': lang,
             'langname': langname,
-            'url': site['url'],
+            'url': site['url'].replace("http://", "https://"),
             'dbname': site['dbname'],
             'group': site['code']
         }

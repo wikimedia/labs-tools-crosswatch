@@ -224,6 +224,7 @@ function dataService (socket, authService, localStorageService, $log) {
     if (vm.config.projectsList.indexOf(project) === -1) {
       vm.config.projectsList.push(project);
       vm.config.projectsSelected.push(project);
+      vm.saveConfig();
     }
   };
 
@@ -252,7 +253,8 @@ function dataService (socket, authService, localStorageService, $log) {
         action: 'watchlist',
         access_token: authService.tokens(),
         watchlistperiod: vm.config.watchlistperiod,
-        allrev: !vm.config.lastrevonly
+        allrev: !vm.config.lastrevonly,
+        projects: vm.config.projectsList
       };
       try {
         socket.send(angular.toJson(watchlistQuery));

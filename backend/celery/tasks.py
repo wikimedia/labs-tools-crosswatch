@@ -33,6 +33,12 @@ def initial_task(obj):
     username = mw.get_username()
     wikis = mw.get_wikis()
 
+    # Use cache of known projects to bypass sometimes blocking mysql check
+    preload_projects = obj.pop('projects', [])
+    for project in preload_projects:
+        obj['wiki'] = wikis[project]
+        watchlistgetter.delay(obj)
+
     db = MySQLdb.connect(
         host='centralauth.labsdb',
         user=config.sql_user,
@@ -47,7 +53,7 @@ def initial_task(obj):
             project = row[0]
             try:
                 wiki = wikis[project]
-                if 'closed' not in wiki:
+                if 'closed' not in wiki and project not in preload_projects:
                     projects.append(wiki)
             except KeyError:
                 logger.error("Could not find %s in list of wikis" % project)

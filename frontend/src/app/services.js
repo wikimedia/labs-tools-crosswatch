@@ -3,6 +3,7 @@ angular
   .module('crosswatch')
   .service('authService', authService)
   .service('dataService', dataService)
+  .factory('debounce', debounceService)
 ;
 
 function authService (localStorageService, $rootScope, $log) {
@@ -27,14 +28,22 @@ function authService (localStorageService, $rootScope, $log) {
 
 }
 
-function dataService (socket, authService, localStorageService, $log) {
+function dataService (socket, authService, localStorageService, $log, $filter, debounce) {
   var vm = this;
 
+  vm.watchlist = {};
   /**
    * Array that contains all watchlist entries.
-   * @type {Array}
    */
-  vm.watchlist = [];
+  vm.watchlist.original = [];
+  /**
+   * Array that contains the filtered watchlist entries.
+   */
+  vm.watchlist.filtered = [];
+  /**
+   * Part of watchlist.filtered which is displayed
+   */
+  vm.watchlist.active = [];
 
   /**
    * Initialize user settings
@@ -84,20 +93,58 @@ function dataService (socket, authService, localStorageService, $log) {
    * @param entries
    */
   vm.addWatchlistEntries = function (entries) {
-    vm.watchlist.push.apply(vm.watchlist, entries);
+    Array.prototype.push.apply(vm.watchlist.original, entries);
+    vm.watchlist.original.sort(function(a,b){
+      return new Date(b.timestamp) - new Date(a.timestamp);
+    });
+
     var project = entries[0].project;
     if (vm.config.projectsList.indexOf(project) === -1) {
       vm.config.projectsList.push(project);
       vm.config.projectsSelected.push(project);
       vm.saveConfig();
     }
+
+    vm.filterWatchlistDebounced();
   };
+
+  /**
+   * Display more watchlist entries
+   */
+  vm.moreWatchlistEntries = function () {
+    $log.info('showing 50 more watchlist entries');
+    var temp = vm.watchlist.filtered.slice(vm.watchlist.active.length, vm.watchlist.active.length + 50);
+    Array.prototype.push.apply(vm.watchlist.active, temp);
+  };
+
+  /**
+   * Filter watchlist
+   * @param searchtext
+   */
+  vm.filterWatchlist = function (searchtext) {
+    if (vm.watchlist.original.length === 0) {
+      return;
+    }
+
+    $log.info('showing first 100 watchlist entries');
+    vm.watchlist.filtered = $filter('watchlist')(vm.watchlist.original, vm.config);
+    if (typeof searchtext !== 'undefined') {
+      vm.watchlist.filtered = $filter('filter')(vm.watchlist.filtered, searchtext);
+    }
+    var temp = vm.watchlist.filtered.slice(0, 100);
+    vm.watchlist.active.length = 0;
+    Array.prototype.push.apply(vm.watchlist.active, temp);
+    $log.info(vm.watchlist.active.length);
+  };
+  vm.filterWatchlistDebounced = debounce(vm.filterWatchlist, 250);
 
   /**
    * Reset watchlist and query it again
    */
   vm.resetWatchlist = function () {
-    vm.watchlist.length = 0;
+    vm.watchlist.original = [];
+    vm.watchlist.filtered = [];
+    vm.watchlist.active.length = 0; /* preserve pointer, slow due to GC */
     vm.queryWatchlist();
     vm.saveConfig();
   };
@@ -132,5 +179,38 @@ function dataService (socket, authService, localStorageService, $log) {
         }
       }
     }
+  };
+}
+
+// Debounce function
+// From http://stackoverflow.com/a/13320016 by Pete BD
+function debounceService ($timeout, $q) {
+  // The service is actually this function, which we call with the func
+  // that should be debounced and how long to wait in between calls
+  return function debounce(func, wait, immediate) {
+    var timeout;
+    // Create a deferred object that will be resolved when we need to
+    // actually call the func
+    var deferred = $q.defer();
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        if(!immediate) {
+          deferred.resolve(func.apply(context, args));
+          deferred = $q.defer();
+        }
+      };
+      var callNow = immediate && !timeout;
+      if ( timeout ) {
+        $timeout.cancel(timeout);
+      }
+      timeout = $timeout(later, wait);
+      if (callNow) {
+        deferred.resolve(func.apply(context,args));
+        deferred = $q.defer();
+      }
+      return deferred.promise;
+    };
   };
 }

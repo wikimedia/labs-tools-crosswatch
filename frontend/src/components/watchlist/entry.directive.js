@@ -4,7 +4,6 @@ angular
 
 function watchlistEntry() {
   var directive = {
-    scope: true,
     templateUrl: 'components/watchlist/entry.directive.html',
     restrict: 'EA'
   };

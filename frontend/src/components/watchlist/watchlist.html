@@ -12,17 +12,20 @@
       </div>
       <div class="md-toolbar-tools" ng-show="showSearch">
         <md-input-container flex="flex" md-no-float>
-          <input type="text" placeholder="{{'SEARCH_WATCHLIST' | translate}}" ng-model="ctrl.searchText">
+          <input type="text" placeholder="{{'SEARCH_WATCHLIST' | translate}}" ng-model="searchText"
+                 ng-change="ctrl.search(searchText)" ng-model-options="{ debounce: 300 }">
         </md-input-container>
       </div>
     </md-toolbar>
-    <md-list>
-      <md-list-item ng-show="ctrl.watchlist.length === 0" layout="row" layout-align="center center">
+    <md-list ng-if="ctrl.watchlist.length === 0">
+      <md-list-item layout="row" layout-align="center center">
         <md-progress-circular md-mode="indeterminate"></md-progress-circular>
       </md-list-item>
-      <md-list-item layout="row"
-                    class="watchlist" id="watchlist"
-                    ng-repeat="event in ctrl.watchlist | projects:ctrl.config.projectsSelected | editflags:ctrl.config.editflags | filter:ctrl.searchText | orderBy:'-timestamp'">
+    </md-list>
+    <md-list infinite-scroll="ctrl.moreWatchlistEntries()" infinite-scroll-immediate-check="false"
+             infinite-scroll-distance="1">
+      <md-list-item layout="row" id="watchlist"
+                    ng-repeat="event in ctrl.watchlist track by event.id">
         <watchlist-entry></watchlist-entry>
         <md-divider></md-divider>
       </md-list-item>

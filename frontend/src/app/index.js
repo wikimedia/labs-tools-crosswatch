@@ -6,10 +6,11 @@ angular
     'ngRoute',
     'ngMaterial',
     'LocalStorageModule',
-    'angular-translate-storage',
     'pascalprecht.translate',
+    'angular-translate-storage',
     'bd.sockjs',
-    'angularMoment'
+    'angularMoment',
+    'infinite-scroll'
   ])
   .config(routeConfig)
   .config(locationConfig)

@@ -210,7 +210,8 @@ a img{
 }
 
 /* https://github.com/angular/material/issues/2769 */
-_:-ms-fullscreen, :root /* IE11 */ md-select-label *:first-child{
+_:-ms-fullscreen, :root /* IE11+ */ md-select-label :first-child{
   flex-basis: auto;
-  overflow: visible;
+  max-width: 100%;
+  overflow: hidden;
 }

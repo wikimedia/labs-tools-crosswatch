@@ -4,6 +4,7 @@
 # Copyright (C) 2015 Jan Lebert
 from __future__ import absolute_import
 
+from uuid import uuid4
 from contextlib import closing
 import MySQLdb
 
@@ -143,6 +144,9 @@ def watchlistgetter(obj):
                 item['minor'] = "m"
             if 'new' in item:
                 item['new'] = "n"
+
+            # random id
+            item['id'] = uuid4().hex[:8]
             items.append(item)
         message = {
             'msgtype': 'watchlist',

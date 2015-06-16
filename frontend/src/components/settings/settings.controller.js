@@ -1,10 +1,18 @@
 'use strict';
 
 angular.module('crosswatch')
-  .controller('SettingsCtrl', function ($translate, socket, $log, dataService, $rootScope) {
+  .controller('SettingsCtrl', function ($translate, $route, $log, dataService, $rootScope) {
     var vm = this;
     vm.config = dataService.config;
-    vm.saveConfig = dataService.saveConfig;
+    vm.oldconfig = vm.config;
+    vm.saveConfig = function () {
+      dataService.saveConfig();
+      dataService.filterWatchlist('watchlist', dataService.config);
+    };
+
+    vm.reload = function () {
+      $route.reload();
+    };
 
     updatePeriodList();
     $rootScope.$on('$translateChangeSuccess', updatePeriodList);

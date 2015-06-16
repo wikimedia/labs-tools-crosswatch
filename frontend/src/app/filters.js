@@ -3,6 +3,7 @@ angular
   .module('crosswatch')
   .filter('urlEncode', urlEncodeFilter)
   .filter('list', listFilter)
+  .filter('watchlist', watchlistFilter)
   .filter('projects', projectsFilter)
   .filter('editflags', editflagsFilter)
 ;
@@ -29,6 +30,45 @@ function listFilter () {
     result = "(" + result + ")";
 
     return result;
+  }
+}
+
+/**
+ * combined filter for watchlist
+ */
+function watchlistFilter () {
+  return function (items, config) {
+    return items.filter(filter, config);
+  };
+
+  function filter (item) {
+    var bool = projectsFilter(item, this.projectsSelected);
+
+    if (bool) {
+      bool = editsflagsFilter(item, this.editflags);
+    }
+    return bool;
+  }
+
+  /**
+   * Filters watchlist based on selected / blacklisted wikis
+   */
+  function projectsFilter (item, projects) {
+    return (projects.indexOf(item.project) > -1);
+  }
+
+  /**
+   * Filters watchlist based on editflags (minor, bot, registered)
+   */
+  function editsflagsFilter (item, flags) {
+    if (item.type === 'log') {
+      return true;
+    }
+    var minor = flags.minor || !item.minor;
+    var bot = flags.bot || !item.bot;
+    var anon = flags.anon || !(item.anon === "");
+    var registered = flags.registered || !(item.userid !== 0);
+    return (minor && bot && anon && registered);
   }
 }
 

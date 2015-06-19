@@ -126,15 +126,15 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
       return;
     }
 
-    $log.info('showing first 100 watchlist entries');
+    $log.info('showing first watchlist entries (maximum 100)');
     vm.watchlist.filtered = $filter('watchlist')(vm.watchlist.original, vm.config);
     if (typeof searchtext !== 'undefined') {
       vm.watchlist.filtered = $filter('filter')(vm.watchlist.filtered, searchtext);
     }
+
     var temp = vm.watchlist.filtered.slice(0, 100);
     vm.watchlist.active.length = 0;
     Array.prototype.push.apply(vm.watchlist.active, temp);
-    $log.info(vm.watchlist.active.length);
   };
   vm.filterWatchlistDebounced = debounce(vm.filterWatchlist, 250);
 

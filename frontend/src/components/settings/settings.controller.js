@@ -7,7 +7,7 @@ angular.module('crosswatch')
     vm.oldconfig = vm.config;
     vm.saveConfig = function () {
       dataService.saveConfig();
-      dataService.filterWatchlist('watchlist', dataService.config);
+      dataService.filterWatchlist();
     };
 
     vm.reload = function () {

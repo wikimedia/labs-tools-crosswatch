@@ -17,7 +17,7 @@
         </md-input-container>
       </div>
     </md-toolbar>
-    <md-list ng-if="ctrl.watchlist.length === 0">
+    <md-list ng-if="ctrl.watchlist.original.length === 0">
       <md-list-item layout="row" layout-align="center center">
         <md-progress-circular md-mode="indeterminate"></md-progress-circular>
       </md-list-item>
@@ -25,7 +25,7 @@
     <md-list infinite-scroll="ctrl.moreWatchlistEntries()" infinite-scroll-immediate-check="false"
              infinite-scroll-distance="1">
       <md-list-item layout="row" id="watchlist"
-                    ng-repeat="event in ctrl.watchlist track by event.id">
+                    ng-repeat="event in ctrl.watchlist.active track by event.id">
         <watchlist-entry></watchlist-entry>
         <md-divider></md-divider>
       </md-list-item>

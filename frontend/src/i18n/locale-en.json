@@ -49,5 +49,19 @@
   "OAUTH_FAILURE_CONTENT": "You have revoked the authorization for this application. Please logout and sign in again.",
   "CLOSE": "Close",
   "SERVER_ERROR_TITLE": "Sorry!",
-  "SERVER_ERROR_CONTENT": "No watchlist could be retrieved. Either you have no watchlist events for the selected time period or this is an internal server error."
+  "SERVER_ERROR_CONTENT": "No watchlist could be retrieved. Either you have no watchlist events for the selected time period or this is an internal server error.",
+  "NAMESPACES": "Namespaces",
+  "NS_0":  "Article",
+  "NS_1":  "Talk",
+  "NS_2":  "User",
+  "NS_3":  "User talk",
+  "NS_4":  "Project",
+  "NS_5":  "Project talk",
+  "NS_6":  "File",
+  "NS_7":  "File talk",
+  "NS_10": "Template",
+  "NS_11": "Template talk",
+  "NS_12": "Help",
+  "NS_13": "Help talk",
+  "NS_OTHER": "Other namespaces"
 }

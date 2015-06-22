@@ -3,7 +3,7 @@
 angular.module('crosswatch')
   .controller('WatchlistCtrl', function ($translate, socket, $log, dataService, $rootScope, $timeout, $scope) {
     var vm = this;
-    vm.watchlist = dataService.watchlist.active;
+    vm.watchlist = dataService.watchlist;
     vm.config = dataService.config;
     vm.moreWatchlistEntries = dataService.moreWatchlistEntries;
 

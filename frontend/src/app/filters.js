@@ -42,65 +42,60 @@ function watchlistFilter () {
   };
 
   function filter (item) {
-    var bool = projectsFilter(item, this.projectsSelected);
+    var bool = projectsFilterFunc(item, this.projectsSelected);
 
     if (bool) {
-      bool = editsflagsFilter(item, this.editflags);
+      bool = editsflagsFilterFunc(item, this.editflags);
+    }
+
+    if (bool) {
+      bool = namespaceFilterFunc(item, this.namespacesSelected, this.namespacesList)
     }
     return bool;
-  }
-
-  /**
-   * Filters watchlist based on selected / blacklisted wikis
-   */
-  function projectsFilter (item, projects) {
-    return (projects.indexOf(item.project) > -1);
-  }
-
-  /**
-   * Filters watchlist based on editflags (minor, bot, registered)
-   */
-  function editsflagsFilter (item, flags) {
-    if (item.type === 'log') {
-      return true;
-    }
-    var minor = flags.minor || !item.minor;
-    var bot = flags.bot || !item.bot;
-    var anon = flags.anon || !(item.anon === "");
-    var registered = flags.registered || !(item.userid !== 0);
-    return (minor && bot && anon && registered);
   }
 }
 
 /**
  * Filters watchlist based on selected / blacklisted wikis
  */
-function projectsFilter () {
-  return function (items, projects) {
-    return items.filter(filter, projects)
-  };
-
-  function filter (item) {
-    return (this.indexOf(item.project) > -1);
-  }
+function projectsFilterFunc (item, projects) {
+  return (projects.indexOf(item.project) > -1);
 }
 
 /**
  * Filters watchlist based on editflags (minor, bot, registered)
  */
+function editsflagsFilterFunc (item, flags) {
+  if (item.type === 'log') {
+    return true;
+  }
+  var minor = flags.minor || !item.minor;
+  var bot = flags.bot || !item.bot;
+  var anon = flags.anon || !(item.anon === "");
+  var registered = flags.registered || !(item.userid !== 0);
+  return (minor && bot && anon && registered);
+}
+
+/**
+ * Filter watchlist based on namespace
+ */
+function namespaceFilterFunc (item, namespaces, namespacesList) {
+  if (namespaces.indexOf(item.ns.toString()) > -1) {
+    return true;
+  } else if ((namespaces.indexOf("OTHER") > -1) && (namespacesList.indexOf(item.ns.toString())) === -1) {
+    return true;
+  }
+  return false;
+}
+
+function projectsFilter () {
+  return function (items, projects) {
+    return items.filter(projectsFilterFunc, projects)
+  };
+}
+
 function editflagsFilter () {
   return function (items, flags) {
-    return items.filter(filter, flags)
+    return items.filter(editsflagsFilterFunc, flags)
   };
-
-  function filter (item) {
-    if (item.type === 'log') {
-      return true;
-    }
-    var minor = this.minor || !item.minor;
-    var bot = this.bot || !item.bot;
-    var anon = this.anon || !(item.anon === "");
-    var registered = this.registered || !(item.userid !== 0);
-    return (minor && bot && anon && registered);
-  }
 }

@@ -1,61 +1,77 @@
 <div ng-controller="SettingsCtrl as ctrl" layout="row" layout-align="center start">
-  <md-whitefram class="md-whiteframe-z5 whitebox">
-    <div layout="row">
-      <div flex="50">
-        <div layout="column" class="md-padding">
-          <md-list>
-            <md-subheader class="md-no-sticky">{{'WIKIS' | translate}}</md-subheader>
-            <md-item id="projects">
-              <md-select ng-model="ctrl.config.projectsSelected" multiple="true" placeholder="Loading …"
-                         ng-change="ctrl.saveConfig()">
-                <md-option ng-repeat="item in ctrl.config.projectsList" value="{{item}}">{{item}}</md-option>
-              </md-select>
-            </md-item>
-            <md-subheader class="md-no-sticky">{{'FILTER' | translate}}</md-subheader>
-            <md-item layout="row">
-              <md-list flex="50">
-                <md-list-item>
-                  <p translate="MINOR_EDITS"></p>
-                  <md-checkbox ng-model="ctrl.config.editflags.minor" ng-change="ctrl.saveConfig()"></md-checkbox>
-                </md-list-item>
-                <md-list-item>
-                  <p translate="BOT_EDITS"></p>
-                  <md-checkbox ng-model="ctrl.config.editflags.bot" ng-change="ctrl.saveConfig()"></md-checkbox>
-                </md-list-item>
-              </md-list>
-              <md-list flex="50">
-                <md-list-item>
-                  <p translate="ANON_EDITS"></p>
-                  <md-checkbox ng-model="ctrl.config.editflags.anon" ng-change="ctrl.saveConfig()"></md-checkbox>
-                </md-list-item>
-                <md-list-item>
-                  <p translate="USER_EDITS"></p>
-                  <md-checkbox ng-model="ctrl.config.editflags.registered" ng-change="ctrl.saveConfig()"></md-checkbox>
-                </md-list-item>
-              </md-list>
-            </md-item>
+  <md-whitefram class="md-whiteframe-z5 whitebox" id="settings">
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="{{'FILTER' | translate}}">
+        <div layout="row">
+          <div flex="50">
+            <md-list layout="column" class="md-padding">
+              <md-subheader class="md-no-sticky">{{'WIKIS' | translate}}</md-subheader>
+              <md-item>
+                <md-select ng-model="ctrl.config.projectsSelected" multiple="true" placeholder="Loading …"
+                           ng-change="ctrl.saveConfig()">
+                  <md-option ng-repeat="item in ctrl.config.projectsList" value="{{item}}">{{item}}</md-option>
+                </md-select>
+              </md-item>
+              <md-subheader class="md-no-sticky">{{'NAMESPACES' | translate}}</md-subheader>
+              <md-item>
+                <md-select ng-model="ctrl.config.namespacesSelected" multiple="true" ng-change="ctrl.saveConfig()">
+                  <md-option ng-repeat="item in ctrl.namespacesList" value="{{item.value}}">{{item.label}}</md-option>
+                </md-select>
+              </md-item>
+            </md-list>
+          </div>
+          <md-divider role="vertical"></md-divider>
+          <md-list flex="50">
+            <div layout="column" class="md-padding">
+              <md-subheader class="md-no-sticky">{{'FILTER' | translate}}</md-subheader>
+              <md-item layout="row">
+                <md-list flex="50">
+                  <md-list-item>
+                    <p translate="MINOR_EDITS"></p>
+                    <md-checkbox ng-model="ctrl.config.editflags.minor" ng-change="ctrl.saveConfig()"></md-checkbox>
+                  </md-list-item>
+                  <md-list-item>
+                    <p translate="BOT_EDITS"></p>
+                    <md-checkbox ng-model="ctrl.config.editflags.bot" ng-change="ctrl.saveConfig()"></md-checkbox>
+                  </md-list-item>
+                </md-list>
+                <md-list flex="50">
+                  <md-list-item>
+                    <p translate="ANON_EDITS"></p>
+                    <md-checkbox ng-model="ctrl.config.editflags.anon" ng-change="ctrl.saveConfig()"></md-checkbox>
+                  </md-list-item>
+                  <md-list-item>
+                    <p translate="USER_EDITS"></p>
+                    <md-checkbox ng-model="ctrl.config.editflags.registered" ng-change="ctrl.saveConfig()"></md-checkbox>
+                  </md-list-item>
+                </md-list>
+              </md-item>
+            </div>
           </md-list>
         </div>
-      </div>
-      <md-divider role="vertical"></md-divider>
-      <md-list flex="50">
-        <div layout="column" class="md-padding">
-          <md-subheader class="md-no-sticky">{{'PREFERENCES' | translate}}</md-subheader>
-          <md-list-item>
-            <md-select ng-model="ctrl.config.watchlistperiod" placeholder="timeperiod" ng-change="ctrl.resetWatchlist()">
-              <md-option ng-repeat="item in ctrl.periodList" value="{{item.value}}">{{item.label}}</md-option>
-            </md-select>
-          </md-list-item>
-          <md-list-item>
-            <p translate="LASTREVONLY"></p>
-            <md-checkbox ng-model="ctrl.config.lastrevonly" ng-change="ctrl.resetWatchlist()"></md-checkbox>
-          </md-list-item>
-          <md-list-item>
-            <p translate="FLAGS"></p>
-            <md-checkbox ng-model="ctrl.config.flagsenable" ng-change="ctrl.saveConfig()"></md-checkbox>
-          </md-list-item>
+      </md-tab>
+      <md-tab label="{{'PREFERENCES' | translate}}">
+        <div layout="row">
+          <div flex="40">
+            <md-list layout="column" class="md-padding">
+              <md-item id="timeperiod">
+                <md-select ng-model="ctrl.config.watchlistperiod" placeholder="Timeperiod"
+                           ng-change="ctrl.resetWatchlist()">
+                  <md-option ng-repeat="item in ctrl.periodList" value="{{item.value}}" id="timeperiod">{{item.label}}</md-option>
+                </md-select>
+              </md-item>
+              <md-list-item>
+                <p translate="LASTREVONLY"></p>
+                <md-checkbox ng-model="ctrl.config.lastrevonly" ng-change="ctrl.resetWatchlist()"></md-checkbox>
+              </md-list-item>
+              <md-list-item>
+                <p translate="FLAGS"></p>
+                <md-checkbox ng-model="ctrl.config.flagsenable" ng-change="ctrl.saveConfig()"></md-checkbox>
+              </md-list-item>
+            </md-list>
+          </div>
         </div>
-      </md-list>
-    </div>
+      </md-tab>
+    </md-tabs>
   </md-whitefram>
 </div>

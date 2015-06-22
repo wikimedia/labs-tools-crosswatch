@@ -70,7 +70,11 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
     /**
      * List of selected projects (wikis)
      */
-    projectsSelected: false
+    projectsSelected: false,
+    /**
+     * List of namespaces shown in options list
+     */
+    namespacesList: ["0", "1", "2", "3", "4", "5", "6", "7", "10", "11", "12", "13", "OTHER"]
   };
   if (localStorageService.get('config') !== null) {
     vm.config = localStorageService.get('config');
@@ -87,6 +91,10 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
       anon: true,
       registered: true
     };
+  /**
+   * List of selected namespaces
+   */
+  vm.config.namespacesSelected = vm.config.namespacesSelected || vm.defaultconfig.namespacesList;
 
   /**
    * Process an array of new watchlist entries.

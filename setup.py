@@ -17,7 +17,7 @@ setup(
     keywords="private backend tornado celery",
     url="https://tools.wmflabs.org/crosswatch",
     packages=find_packages(exclude='frontend'),
-    install_requires=['eventlet',
+    install_requires=['gevent',
                       'kombu',
                       'requests-oauthlib',
                       'requests[security]',

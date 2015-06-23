@@ -12,7 +12,7 @@ __version__ = '0.1.35'
 
 import sys
 import urllib
-from flask import request, session, Blueprint, make_response, redirect
+from flask import request, session, Blueprint, make_response, redirect, render_template
 from flask_oauth import OAuth, OAuthRemoteApp, OAuthException, parse_response
 import json
 
@@ -96,7 +96,7 @@ class MWOAuth(object):  # http://stackoverflow.com/a/26691512
                          'secret': resp['oauth_token_secret']}
             mwo_token = json.dumps(mwo_token)
 
-            resp = make_response(redirect('/' + toolname + '/'))
+            resp = make_response(redirect('/' + self.toolname + '/'))
             resp.set_cookie(self.toolname + '.auth', mwo_token,
                             max_age=30*24*60*60,
                             path='/' + self.toolname + '/')
@@ -109,7 +109,7 @@ class MWOAuth(object):  # http://stackoverflow.com/a/26691512
 
         @self.bp.route('/logout')
         def logout():
-            resp = make_response(redirect('/' + toolname + '/'))
+            resp = make_response(render_template('logout.html', toolname=self.toolname))
             session['mwo_token'] = None
             resp.set_cookie(self.toolname + '.auth', '',
                             path='/' + self.toolname + '/', expires=0)
@@ -127,24 +127,9 @@ class MWOAuth(object):  # http://stackoverflow.com/a/26691512
         api_query['format'] = 'json'
         url = url or self.base_url
 
-        size = sum([sys.getsizeof(v) for k, v in api_query.iteritems()])
-
-        if size > (1024 * 8):
-            # if request is bigger than 8 kB (the limit is somewhat arbitrary,
-            # see https://www.mediawiki.org/wiki/API:Edit#Large_texts) then
-            # transmit as multipart message
-
-            req = self._prepare_long_request(url=url + "/api.php?",
-                                             api_query=api_query
-                                             )
-            return self.mwoauth.post(url + "/api.php?",
-                                     data=req.body,
-                                     content_type=req.headers['Content-Type']
-                                     ).data
-        else:
-            return self.mwoauth.post(url + "/api.php?" +
-                                     urllib.urlencode(api_query),
-                                     content_type="text/plain").data
+        return self.mwoauth.post(url + "/api.php?" +
+                                 urllib.urlencode(api_query),
+                                 content_type="text/plain").data
 
     def get_current_user(self, cached=True):
         if cached:

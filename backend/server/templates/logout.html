@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{{ toolname }}</title>
+    <script>
+        // Clear localstorage
+        var arr = [];
+        for (var i = 0; i < localStorage.length; i++){
+            // check if localstorage key starts with 'toolname'
+            if (localStorage.key(i).lastIndexOf('{{ toolname }}', 0) === 0) {
+                arr.push(localStorage.key(i));
+            }
+        }
+
+        for (var i = 0; i < arr.length; i++) {
+            localStorage.removeItem(arr[i]);
+        }
+        // redirect to main page
+        window.location.href = '/{{ toolname }}/';
+    </script>
+</head>
+<body>
+You are now logged out.
+</body>
+</html>

@@ -58,6 +58,12 @@ class SockConnection(SockJSConnection):
                                  (data, ), expires=60)
 
 
+class NoChacheStaticFileHandler(StaticFileHandler):
+    def set_extra_headers(self, path):
+        self.set_header('Cache-Control', 'no-store, no-cache, ' +
+                        'must-revalidate, max-age=0')
+
+
 def run(port):
     logging.basicConfig(level=logging.DEBUG,
                         format='%(asctime)s %(name)-12s %(levelname)-8s' +
@@ -84,8 +90,9 @@ def run(port):
     static_path = os.path.join(pwd_path, 'public')
     index_path = os.path.join(pwd_path, 'public/' + toolname + '/index.html')
     static_handlers = [
-        (r"/()", StaticFileHandler, {"path": index_path}),
-        (r"/" + toolname + r"/\w*()", StaticFileHandler, {"path": index_path}),
+        (r"/()", NoChacheStaticFileHandler, {"path": index_path}),
+        (r"/" + toolname + r"/\w*()", NoChacheStaticFileHandler,
+         {"path": index_path}),
         (r"/" + toolname, RedirectHandler, {"url": "/" + toolname + "/"}),
         (r"/(.*)", StaticFileHandler, {"path": static_path})
         ]

@@ -1,15 +1,12 @@
-/*
 html {
   font-size: 62.5%;
   line-height: 1.4;
-  background-color: #edecec;
 }
-*/
 
 body {
   background-color: #edecec;
   font-family: 'Roboto', sans-serif;
-  /* font-size: 1.6rem; */
+  font-size: 1.6rem;
 }
 
 div[role=main] {
@@ -89,42 +86,42 @@ a.md-button {
   border-bottom: none;
 }
 
-.text-success{
+.text-success {
   color:#3c763d
 }
-.text-danger{
+.text-danger {
   color:#a94442
 }
-.text-muted{
+.text-muted {
   color:#777
 }
 
-.whitebox{
+.whitebox {
   background-color: white;
   width: 100%;
   max-width: 1200px;
 }
 
-.watchlist{
+watchlist-entry {
   overflow: hidden;
   width: 100%;
 }
 
-.watchlist a{
+watchlist-entry a{
   color:#0645ad;
 }
 
-.watchlist .left {
+watchlist-entry .left {
   float: left;
   width: 125px;
   overflow: hidden;
 }
 
-.watchlist a.project {
+watchlist-entry a.project {
   color: rgba(0, 0, 0, 0.87);
 }
 
-.watchlist .right {
+watchlist-entry .right {
   overflow: hidden;
 }
 

@@ -125,6 +125,10 @@ watchlist-entry .right {
   overflow: hidden;
 }
 
+watchlist-entry:focus {
+  outline:none;
+}
+
 #watchlist:last-child md-divider {
   border-top: 0;
 }

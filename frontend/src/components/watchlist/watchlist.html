@@ -26,7 +26,7 @@
              infinite-scroll-distance="1">
       <md-list-item layout="row" id="watchlist"
                     ng-repeat="event in ctrl.watchlist.active track by event.id">
-        <watchlist-entry></watchlist-entry>
+        <watchlist-entry ng-click="event.clicked = !event.clicked" md-ink-ripple></watchlist-entry>
         <md-divider></md-divider>
       </md-list-item>
     </md-list>

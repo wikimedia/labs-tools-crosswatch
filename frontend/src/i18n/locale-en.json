@@ -63,5 +63,7 @@
   "NS_11": "Template talk",
   "NS_12": "Help",
   "NS_13": "Help talk",
-  "NS_OTHER": "Other namespaces"
+  "NS_OTHER": "Other namespaces",
+  "HISTORY": "history",
+  "CONTRIBS": "contribs"
 }

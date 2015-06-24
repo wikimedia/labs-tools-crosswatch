@@ -3,6 +3,9 @@
 ><span class="botedit" ng-if="::event.bot" translate="BOTEDIT_FLAG"></span>
 <a ng-href="{{::event.projecturl}}/w/index.php?oldid={{::event.old_revid}}&diff={{::event.revid}}"
    ng-class="::event.titlestyle"  target="_blank">{{::event.title}}</a>
+<span ng-if="event.clicked">
+  (<a href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&action=history" translate="HISTORY"></a>)
+</span>
 <span ng-class="::event.bytestyle">({{::event.bytes}})</span>
 <div>
   <user></user>

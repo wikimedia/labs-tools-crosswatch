@@ -16,6 +16,7 @@ angular
   .config(locationConfig)
   .config(storageConfig)
   .factory('socket', socketFactory)
+  .directive('stopEvent', stopEventDirective)
 ;
 
 function routeConfig ($routeProvider) {
@@ -56,4 +57,18 @@ function socketFactory (socketFactory, $browser, $location) {
   return socketFactory({
     url: sockjsUrl
   });
+}
+
+/**
+ * Stop click event propagation
+ */
+function stopEventDirective() {
+  return {
+    restrict: 'A',
+    link: function (scope, element, attr) {
+      element.bind('click', function (e) {
+        e.stopPropagation();
+      });
+    }
+  };
 }

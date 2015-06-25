@@ -6,9 +6,9 @@ function user() {
   var directive = {
     link: link,
     scope: true,
-    template: '<a href="{{::event.projecturl}}/wiki/User:{{::event.user | urlEncode}}"  target="_blank">{{::event.user}}</a> ' +
+    template: '<a href="{{::event.projecturl}}/wiki/User:{{::event.user | urlEncode}}" target="_blank">{{::event.user}}</a> ' +
     '<span ng-if="event.clicked">' +
-    '(<a href="{{::event.projecturl}}/wiki/Special:Contributions/{{::event.user | urlEncode}}" translate="CONTRIBS"></a>)' +
+    '(<a stop-event href="{{::event.projecturl}}/wiki/Special:Contributions/{{::event.user | urlEncode}}" target="_blank" translate="CONTRIBS"></a>)' +
     '</span>',
     restrict: 'E'
   };

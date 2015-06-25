@@ -37,6 +37,11 @@ div[role=footer] {
   min-width:100%;
 }
 
+/* https://github.com/angular/material/issues/3283 should be fixed in material 0.11.0 */
+.md-scroll-mask {
+  z-index: 0 !important;
+}
+
 md-input-container.md-default-theme .md-input {
   color: rgba(255,255,255,0.87);
   border-color: rgba(255,255,255,0.87);

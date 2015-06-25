@@ -72,8 +72,11 @@ def run(port):
     logging.info("Starting tornado server on port %d." % port)
 
     # Config sockjs
-    sockjsrouter = SockJSRouter(SockConnection,
-                                '/' + toolname + '/sockjs')
+    sockjs_settings = {
+        "sockjs_url": "https://tools-static.wmflabs.org/cdnjs/ajax/libs/sockjs-client/1.0.0/sockjs.min.js"
+    }
+    sockjsrouter = SockJSRouter(SockConnection, '/' + toolname + '/sockjs',
+                                user_settings=sockjs_settings)
 
     oauthapp = WSGIContainer(oauth_wsgi)
     # Config oauth consumer

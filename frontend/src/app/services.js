@@ -44,6 +44,10 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
    * Part of watchlist.filtered which is displayed
    */
   vm.watchlist.active = [];
+  /**
+   * loading spinner
+   */
+  vm.watchlist.loading = true;
 
   /**
    * Initialize user settings
@@ -143,6 +147,7 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
     var temp = vm.watchlist.filtered.slice(0, 100);
     vm.watchlist.active.length = 0;
     Array.prototype.push.apply(vm.watchlist.active, temp);
+    vm.watchlist.loading = false;
   };
   vm.filterWatchlistDebounced = debounce(vm.filterWatchlist, 250);
 

@@ -57,7 +57,7 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
      * true: show only latest change
      * false: show all changes
      */
-    lastrevonly: false,
+    lastrevonly: true,
     /**
      * Timeperiod for which the watchlist is retrieved in days
      */

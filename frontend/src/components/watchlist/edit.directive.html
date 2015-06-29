@@ -6,7 +6,7 @@
 <span ng-if="event.clicked">
   (<a stop-event href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&action=history" target="_blank" translate="HISTORY"></a>)
 </span>
-<span ng-class="::event.bytestyle">({{::event.bytes}})</span>
+<span dir="ltr" ng-class="::event.bytestyle">({{::event.bytes}})</span>
 <div>
   <user></user>
   <span ng-if="::event.parsedcomment" class="comment">(<span ng-bind-html="::event.parsedcomment"></span>)</span>

@@ -139,7 +139,8 @@ watchlist-entry:focus {
 }
 
 span.comment{
-  font-style:italic;
+  font-style: italic;
+  unicode-bidi: embed;
 }
 
 span.autocomment{

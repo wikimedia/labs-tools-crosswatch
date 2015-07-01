@@ -65,6 +65,10 @@
                 <md-checkbox ng-model="ctrl.config.lastrevonly" ng-change="ctrl.resetWatchlist()"></md-checkbox>
               </md-list-item>
               <md-list-item>
+                <p translate="ONELINE"></p>
+                <md-checkbox ng-model="ctrl.config.oneline" ng-change="ctrl.saveConfig()"></md-checkbox>
+              </md-list-item>
+              <md-list-item>
                 <p translate="FLAGS"></p>
                 <md-checkbox ng-model="ctrl.config.flagsenable" ng-change="ctrl.saveConfig()"></md-checkbox>
               </md-list-item>

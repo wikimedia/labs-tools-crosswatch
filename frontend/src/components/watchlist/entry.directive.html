@@ -1,15 +1,38 @@
-<div class="left">
-  <div am-time-ago="event.timestamp"></div>
-  <a href="{{::event.projecturl}}/wiki/Special:Watchlist" class="project"
-     title="{{::event.project}}" target="_blank">
+<div ng-if="ctrl.config.oneline" layout="row">
+  <div class="left">
+    <a href="{{::event.projecturl}}/wiki/Special:Watchlist" class="project"
+       title="{{::event.project}}" target="_blank">
     <span ng-if="::event.projectlang">
       <span ng-if="!ctrl.config.flagsenable || !ctrl.flagurl(event.projectlang)">{{::event.projectlangname}}&#32;</span>
       <img ng-if="ctrl.config.flagsenable && ctrl.flagurl(event.projectlang)" height="12px" ng-src="{{::ctrl.flagurl(event.projectlang)}}">
     </span>
-    <img height="16px" ng-src="{{::ctrl.icons[event.projectgroup]}}" alt="{{::event.projectgroup}}">
-  </a>
+      <img height="16px" ng-src="{{::ctrl.icons[event.projectgroup]}}" alt="{{::event.projectgroup}}">
+    </a>
+  </div>
+  <div>
+    <watchlist-edit type="oneline" ng-if="::event.type === 'edit' || event.type === 'new'"></watchlist-edit>
+    <span ng-if="::event.type === 'log'">
+      <span am-time-ago="event.timestamp"></span>
+      <span class="mw-changeslist-separator">. .</span>
+      <watchlist-logevent></watchlist-logevent>
+    </span>
+  </div>
 </div>
-<div class="right">
-  <watchlist-edit ng-if="::event.type === 'edit' || event.type === 'new'"></watchlist-edit>
-  <watchlist-logevent ng-if="::event.type === 'log'"></watchlist-logevent>
+<div ng-if="!ctrl.config.oneline" layout="row">
+  <div class="left">
+    <div am-time-ago="event.timestamp"></div>
+    <a href="{{::event.projecturl}}/wiki/Special:Watchlist" class="project"
+       title="{{::event.project}}" target="_blank">
+    <span ng-if="::event.projectlang">
+      <span ng-if="!ctrl.config.flagsenable || !ctrl.flagurl(event.projectlang)">{{::event.projectlangname}}&#32;</span>
+      <img ng-if="ctrl.config.flagsenable && ctrl.flagurl(event.projectlang)" height="12px" ng-src="{{::ctrl.flagurl(event.projectlang)}}">
+    </span>
+      <img height="16px" ng-src="{{::ctrl.icons[event.projectgroup]}}" alt="{{::event.projectgroup}}">
+    </a>
+  </div>
+  <div>
+    <watchlist-edit type="twolines" ng-if="::event.type === 'edit' || event.type === 'new'"></watchlist-edit>
+    <watchlist-logevent ng-if="::event.type === 'log'"></watchlist-logevent>
+  </div>
 </div>
+

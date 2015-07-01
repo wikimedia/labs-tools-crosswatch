@@ -1,0 +1,16 @@
+<span class="newpage" ng-if="::event.new" translate="NEWPAGE_FLAG"></span
+><span class="minoredit" ng-if="::event.minor" translate="MINOREDIT_FLAG"></span
+><span class="botedit" ng-if="::event.bot" translate="BOTEDIT_FLAG"></span>
+<a dir="ltr" href="{{::event.projecturl}}/w/index.php?oldid={{::event.old_revid}}&diff={{::event.revid}}"
+   ng-class="::event.titlestyle"  target="_blank">{{::event.title}}</a>
+<span ng-if="event.clicked">
+  (<a stop-event href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&action=history" target="_blank" translate="HISTORY"></a>)
+</span>
+<span am-time-ago="event.timestamp"></span>
+<span class="mw-changeslist-separator">. .</span>
+<span dir="ltr" ng-class="::event.bytestyle">({{::event.bytes}})</span>
+<span class="mw-changeslist-separator">. .</span>
+<span>
+  <user></user>
+  <span ng-if="::event.parsedcomment" class="comment">(<span ng-bind-html="::event.parsedcomment"></span>)</span>
+</span>

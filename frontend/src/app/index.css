@@ -107,6 +107,9 @@ a.md-button {
   max-width: 1200px;
 }
 
+.watchlist-list-item-oneline {
+  min-height: 32px;
+}
 watchlist-entry {
   overflow: hidden;
   width: 100%;
@@ -117,9 +120,7 @@ watchlist-entry a{
 }
 
 watchlist-entry .left {
-  float: left;
-  width: 125px;
-  overflow: hidden;
+  min-width: 8em;
 }
 
 watchlist-entry a.project {

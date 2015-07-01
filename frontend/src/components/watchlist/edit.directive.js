@@ -6,7 +6,9 @@ function watchlistEdit() {
   var directive = {
     link: link,
     scope: true,
-    templateUrl: 'components/watchlist/edit.directive.html',
+    templateUrl: function(elem, attr){
+      return 'components/watchlist/edit_' + attr.type + '.directive.html';
+    },
     restrict: 'E'
   };
   return directive;

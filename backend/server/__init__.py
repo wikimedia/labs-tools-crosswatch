@@ -56,6 +56,9 @@ class SockConnection(SockJSConnection):
             data['redis_channel'] = redis_channel
             celery_app.send_task('backend.celery.tasks.initial_task',
                                  (data, ), expires=60)
+        elif data[u'action'] == u'notifications_mark_read':
+            celery_app.send_task('backend.celery.tasks.notifications_mark_read',
+                                 (data, ), expires=60)
 
 
 class NoChacheStaticFileHandler(StaticFileHandler):

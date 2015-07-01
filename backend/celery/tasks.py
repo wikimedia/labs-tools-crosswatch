@@ -39,6 +39,7 @@ def initial_task(obj):
     for project in preload_projects:
         obj['wiki'] = wikis[project]
         watchlistgetter.delay(obj)
+        notificationgetter.delay(obj)
 
     db = MySQLdb.connect(
         host='centralauth.labsdb',
@@ -88,6 +89,7 @@ def check_editcount(obj, project_chunk, username):
             if result and int(result[0]) >= 1:
                 obj['wiki'] = wiki
                 watchlistgetter.delay(obj)
+                notificationgetter.delay(obj)
 
     db.close()
 
@@ -130,14 +132,14 @@ def watchlistgetter(obj):
         for item in response['watchlist']:
             item['project'] = obj['wiki']['dbname']
             item['projecturl'] = obj['wiki']['url']
+            item['projectgroup'] = obj['wiki']['group']
+            item['projectlang'] = obj['wiki']['lang']
+            item['projectlangname'] = obj['wiki']['langname']
 
             if 'commenthidden' in item:
                 item['parsedcomment'] = "<s>edit summary removed</s>"
             item['parsedcomment'] = fix_urls(item['parsedcomment'],
                                              obj['wiki']['url'])
-            item['projectgroup'] = obj['wiki']['group']
-            item['projectlang'] = obj['wiki']['lang']
-            item['projectlangname'] = obj['wiki']['langname']
             if 'bot' in item:
                 item['bot'] = "b"
             if 'minor' in item:
@@ -154,6 +156,72 @@ def watchlistgetter(obj):
         }
         if items:
             mw.publish(message)
+
+
+@app.task
+def notificationgetter(obj):
+    """
+    Get the echo notifications for a wiki
+    :param obj: dict with wiki and connection information
+    """
+    project = obj['wiki']['dbname']
+
+    # Now, accessing the API on behalf of a user
+    logger.info("Reading notifications for  " + project)
+    mw = MediaWiki(host=obj['wiki']['url'],
+                   access_token=obj['access_token'],
+                   redis_channel=obj['redis_channel'])
+    params = {
+        'action': "query",
+        'meta': "notifications",
+        'notprop': "list",
+        'notformat': "html",
+        'notalertunreadfirst': "",
+        'notmessagecontinue': ""
+        }
+    response = mw.query(params)
+
+    result = response['query']['notifications']['list']
+    if not result:
+        return
+
+    event = {
+        'msgtype': 'notification',
+        'project': obj['wiki']['dbname'],
+        'projecturl': obj['wiki']['url'],
+        'projectgroup': obj['wiki']['group'],
+        'projectlang': obj['wiki']['lang'],
+        'projectlangname': obj['wiki']['langname']
+    }
+    for item in result.values():
+        if 'read' in item:
+            continue
+
+        event['id'] = item['id']
+        # random id
+        event['uuid'] = uuid4().hex[:8]
+
+        event['comment'] = fix_urls(item['*'], obj['wiki']['url'])
+        event['timestamp'] = item['timestamp']['utcunix']
+
+        mw.publish(event)
+
+
+@app.task
+def notifications_mark_read(obj):
+    """
+    Mark echo notifications as read
+    """
+    mw = MediaWiki(access_token=obj['access_token'])
+    wikis = mw.get_wikis()
+    params = {'action': "echomarkread"}
+
+    for project, notifications in obj['notifications'].iteritems():
+        projecturl = wikis[project]['url']
+        mw = MediaWiki(host=projecturl, access_token=obj['access_token'])
+
+        payload = {'list': notifications}
+        mw.post(params, payload)
 
 
 if __name__ == '__main__':

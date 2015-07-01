@@ -1,0 +1,32 @@
+<div ng-controller="NotificationsCtrl as ctrl" layout="row" layout-align="center center" class="md-padding">
+  <md-whiteframe class="md-whiteframe-z5 whitebox" ng-if="ctrl.notifications.length">
+    <md-toolbar class='md-small-tall'>
+      <div class="md-toolbar-tools">
+        <h1>
+          <span translate="NOTIFICATIONS"></span>
+        </h1>
+        <div flex></div>
+        <md-button class="md-raised md-accent" translate="MARKALLREAD"
+                   ng-click="read = !read; ctrl.markNotificationsRead()" ng-disabled="read">
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-list>
+      <md-list-item layout="row" class="notifications" style="padding: 6px 16px;"
+                    ng-repeat="event in ctrl.notifications | orderBy:'-timestamp' track by event.uuid">
+        <div class="left">
+          <a href="{{::event.projecturl}}/wiki/Special:Notifications" class="project"
+             title="{{::event.project}}" target="_blank">
+            <span ng-if="::event.projectlang">
+              <span ng-if="!ctrl.config.flagsenable || !ctrl.flagurl(event.projectlang)">{{::event.projectlangname}}&#32;</span>
+              <img ng-if="ctrl.config.flagsenable && ctrl.flagurl(event.projectlang)" height="12px" ng-src="{{::ctrl.flagurl(event.projectlang)}}">
+            </span>
+            <img height="16px" ng-src="{{::ctrl.icons[event.projectgroup]}}" alt="{{::event.projectgroup}}">
+          </a>
+        </div>
+        <div ng-bind-html="::event.comment"></div>
+        <md-divider></md-divider>
+      </md-list-item>
+    </md-list>
+  </md-whiteframe>
+</div>

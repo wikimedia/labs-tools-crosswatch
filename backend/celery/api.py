@@ -55,19 +55,22 @@ class MediaWiki(object):
         time = now + delta
         return time.strftime("%Y%m%d%H%M%S")
 
+    def handle_response(self, response):
+        if 'error' in response:
+            logger.error(response['error'])
+            if response['error']['code'] == "mwoauth-invalid-authorization":
+                raise Exception("OAuth authentication failed")
+
+            raise Exception(str(response['error']))
+        if 'warnings' in response:
+            logger.warn("API-request warning: " + str(response['warnings']))
+
     def query(self, params):
         params['format'] = "json"
         response = requests.get(self.api_url, params=params, auth=self.auth,
                                 headers=self.headers).json()
 
-        if 'error' in response:
-            logger.error(response['error']['code'])
-            if response['error']['code'] == "mwoauth-invalid-authorization":
-                raise Exception("OAuth authentication failed")
-
-            raise Exception(str(response['error']['code']))
-        if 'warnings' in response:
-            logger.warn("API-request warning: " + str(response['warnings']))
+        self.handle_response(response)
         return response
 
     def query_gen(self, params):
@@ -90,6 +93,29 @@ class MediaWiki(object):
             if 'continue' not in response:
                 break
             last_continue = response['continue']
+
+    def post(self, params, payload, token_type='csrf'):
+        params['format'] = "json"
+        token = self.get_token(token_type)
+        payload['token'] = token
+
+        print params
+        print payload
+        response = requests.post(self.api_url,
+                                 params=params,
+                                 data=payload,
+                                 auth=self.auth,
+                                 headers=self.headers)
+
+        self.handle_response(json.loads(response.text))
+
+    def get_token(self, type='csrf'):
+        params = {'action': "query",
+                  'meta': "tokens",
+                  'type': type}
+        r = self.query(params)
+        token = r['query']['tokens'][type + 'token']
+        return token
 
     def get_username(self):
         try:

@@ -54,6 +54,7 @@ function socketFactory (socketFactory, $browser, $location) {
   if ($location.host() === 'localhost') { // debug – use tools backend when developing
     sockjsUrl = 'https://tools.wmflabs.org/crosswatch/sockjs'
   }
+
   return socketFactory({
     url: sockjsUrl
   });

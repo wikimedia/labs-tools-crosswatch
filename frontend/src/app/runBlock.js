@@ -56,6 +56,8 @@ function runBlock (socket, $rootScope, dataService, $log, $timeout, $translate, 
     var data = angular.fromJson(msg.data);
     if (data.msgtype === 'watchlist') {
       dataService.addWatchlistEntries(data.entires);
+    } else if (data.msgtype === 'notification') {
+      dataService.addNotificationEntries(data)
     } else if (data.msgtype === 'loginerror') {
       $log.error('login failed!');
 

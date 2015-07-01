@@ -66,5 +66,7 @@
   "NS_OTHER": "Other namespaces",
   "HISTORY": "history",
   "CONTRIBS": "contribs",
-  "ONELINE": "Traditional watchlist layout"
+  "ONELINE": "Traditional watchlist layout",
+  "NOTIFICATIONS": "Notifications",
+  "MARKALLREAD": "mark all as read"
 }

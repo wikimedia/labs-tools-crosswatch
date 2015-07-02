@@ -17,11 +17,12 @@
         <div class="left">
           <a href="{{::event.projecturl}}/wiki/Special:Notifications" class="project"
              title="{{::event.project}}" target="_blank">
-            <span ng-if="::event.projectlang">
-              <span ng-if="!ctrl.config.flagsenable || !ctrl.flagurl(event.projectlang)">{{::event.projectlangname}}&#32;</span>
-              <img ng-if="ctrl.config.flagsenable && ctrl.flagurl(event.projectlang)" height="12px" ng-src="{{::ctrl.flagurl(event.projectlang)}}">
-            </span>
             <img height="16px" ng-src="{{::ctrl.icons[event.projectgroup]}}" alt="{{::event.projectgroup}}">
+            <span ng-if="::event.projectlang">
+              <span ng-if="!ctrl.config.flagsenable || !ctrl.flagurl(event.projectlang)">{{::event.projectlangname}}</span>
+              <img ng-if="ctrl.config.flagsenable && ctrl.flagurl(event.projectlang)" height="13px" style="margin-bottom: 2px"
+                   ng-src="{{::ctrl.flagurl(event.projectlang)}}">
+            </span>
           </a>
         </div>
         <div ng-bind-html="::event.comment"></div>

@@ -45,7 +45,8 @@ class MediaWiki(object):
             raise Exception("No redis channel set to publish to")
         self.redis.publish(self.redis_channel, json.dumps(message))
 
-    def timestamp(self, daysdelta=0):
+    @staticmethod
+    def timestamp(daysdelta=0):
         """
         :param daysdelta: calculate timestamp in ´daysdelta´ days
         :return: MediaWIki timestamp format
@@ -55,7 +56,8 @@ class MediaWiki(object):
         time = now + delta
         return time.strftime("%Y%m%d%H%M%S")
 
-    def handle_response(self, response):
+    @staticmethod
+    def handle_response(response):
         if 'error' in response:
             logger.error(response['error'])
             if response['error']['code'] == "mwoauth-invalid-authorization":
@@ -96,16 +98,12 @@ class MediaWiki(object):
 
     def post(self, params, payload, token_type='csrf'):
         params['format'] = "json"
+
         token = self.get_token(token_type)
         payload['token'] = token
 
-        print params
-        print payload
-        response = requests.post(self.api_url,
-                                 params=params,
-                                 data=payload,
-                                 auth=self.auth,
-                                 headers=self.headers)
+        response = requests.post(self.api_url, params=params, data=payload,
+                                 auth=self.auth, headers=self.headers)
 
         self.handle_response(json.loads(response.text))
 

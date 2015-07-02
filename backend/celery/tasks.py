@@ -106,8 +106,6 @@ def watchlistgetter(obj):
     Get the watchlist for a wiki
     :param obj: dict with wiki and connection information
     """
-    logger.info("Reading watchlist items for wiki " +
-                obj['wiki']['dbname'])
     mw = MediaWiki(host=obj['wiki']['url'],
                    access_token=obj['access_token'],
                    redis_channel=obj['redis_channel'])
@@ -164,10 +162,6 @@ def notificationgetter(obj):
     Get the echo notifications for a wiki
     :param obj: dict with wiki and connection information
     """
-    project = obj['wiki']['dbname']
-
-    # Now, accessing the API on behalf of a user
-    logger.info("Reading notifications for  " + project)
     mw = MediaWiki(host=obj['wiki']['url'],
                    access_token=obj['access_token'],
                    redis_channel=obj['redis_channel'])
@@ -177,7 +171,8 @@ def notificationgetter(obj):
         'notprop': "list",
         'notformat': "html",
         'notalertunreadfirst': "",
-        'notmessagecontinue': ""
+        'notmessagecontinue': "",
+        'notlimit': 15
         }
     response = mw.query(params)
 

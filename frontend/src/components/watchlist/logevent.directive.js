@@ -5,7 +5,6 @@ angular
 function watchlistLogevent() {
   var directive = {
     link: link,
-    scope: true,
     templateUrl: 'components/watchlist/logevent.directive.html',
     restrict: 'E'
   };

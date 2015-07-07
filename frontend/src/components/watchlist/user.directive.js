@@ -6,9 +6,9 @@ function user() {
   var directive = {
     link: link,
     scope: true,
-    template: '<a href="{{::event.projecturl}}/wiki/User:{{::event.user | urlEncode}}" target="_blank">{{::event.user}}</a> ' +
+    template: '<a href="{{::event.projecturl}}/wiki/User:{{::user | urlEncode}}" target="_blank">{{::user}}</a> ' +
     '<span ng-if="event.clicked">' +
-    '(<a stop-event href="{{::event.projecturl}}/wiki/Special:Contributions/{{::event.user | urlEncode}}" target="_blank" translate="CONTRIBS"></a>)' +
+    '(<a stop-event href="{{::event.projecturl}}/wiki/Special:Contributions/{{::user | urlEncode}}" target="_blank" translate="CONTRIBS"></a>)' +
     '</span>',
     restrict: 'E'
   };
@@ -16,9 +16,9 @@ function user() {
 
   function link(scope, element, attrs) {
     if (typeof attrs.name !== 'undefined') {
-      scope.event.user = attrs.name;
+      scope.user = attrs.name;
+    } else {
+      scope.user = scope.event.user;
     }
-
-    scope.event.user = scope.event.user.replace("User:", "");
   }
 }

@@ -1,0 +1,37 @@
+/*** Browser fixes ***/
+::-webkit-input-placeholder { /* WebKit browsers */
+  color:    rgba(255,255,255,0.87);
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:    rgba(255,255,255,0.87);
+  opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color:    rgba(255,255,255,0.87);
+}
+
+/*** IE fixes  ***/
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+a img{
+  border: 0;
+}
+
+/* https://github.com/angular/material/issues/2213 */
+@media screen and (min-width:0\0) {
+  md-select .md-select-icon {
+    float: right;
+  }
+}
+
+/* https://github.com/angular/material/issues/2769 */
+_:-ms-fullscreen, :root /* IE11+ */ md-select-label :first-child{
+  flex-basis: auto;
+  max-width: 100%;
+  overflow: hidden;
+}

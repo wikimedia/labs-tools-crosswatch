@@ -12,4 +12,12 @@ angular.module('crosswatch')
     vm.search = function (text) {
       dataService.filterWatchlist(text);
     };
+
+    vm.clicked = function (event) {
+      if ((event.type === 'edit') && !event.diff) {
+        dataService.getDiff(event).then(function (diff) {
+          event.diff = diff;
+        })
+      }
+    }
   });

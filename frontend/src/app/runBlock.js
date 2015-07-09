@@ -58,6 +58,8 @@ function runBlock (socket, $rootScope, dataService, $log, $timeout, $translate, 
       dataService.addWatchlistEntries(data.entires);
     } else if (data.msgtype === 'notification') {
       dataService.addNotificationEntries(data)
+    } else if (data.msgtype === 'diff_response') {
+      dataService.diffResponseHandler(data)
     } else if (data.msgtype === 'loginerror') {
       $log.error('login failed!');
 
@@ -75,7 +77,7 @@ function runBlock (socket, $rootScope, dataService, $log, $timeout, $translate, 
           });
       });
     } else {
-      $log.error(data);
+      $log.error("Unhandled message: %o", data);
     }
 
     if (connectionError) {

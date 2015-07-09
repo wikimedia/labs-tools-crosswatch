@@ -28,7 +28,7 @@ function authService (localStorageService, $rootScope, $log) {
 
 }
 
-function dataService (socket, authService, localStorageService, $log, $filter, debounce) {
+function dataService (socket, authService, localStorageService, $log, $filter, debounce, $q) {
   var vm = this;
 
   vm.watchlist = {};
@@ -229,6 +229,53 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
     }
   };
 
+  /**
+   * callbacks with associated request ids
+   */
+  var callbacks = {};
+  var requestId = 0;
+  vm.getRequestId = function() {
+    return requestId++;
+  };
+
+  /**
+   * Get diff for a watchlist edit event
+   */
+  vm.getDiff = function (event) {
+    var request = {
+      action: 'diff',
+      access_token: authService.tokens(),
+      request_id: vm.getRequestId(),
+      projecturl: event.projecturl,
+      old_revid: event.old_revid,
+      revid: event.revid,
+      pageid: event.pageid
+    };
+    var deferred = $q.defer();
+    callbacks[request.request_id] = deferred;
+    socket.send(angular.toJson(request));
+    return deferred.promise.then(function(response) {
+      request.response = response;
+      return response;
+    });
+  };
+
+  /**
+   * Handle diff response from sockjs
+   */
+  vm.diffResponseHandler = function (data) {
+    if (angular.isDefined(callbacks[data.request_id])) {
+      var callback = callbacks[data.request_id];
+      delete callbacks[data.request_id];
+      callback.resolve(data.diff);
+    } else {
+      $log.error("No callback for diff: %o", data);
+    }
+  };
+
+  /**
+   * General data storage
+   */
   vm.icons = {};
   vm.icons['wikibooks']   = "//upload.wikimedia.org/wikipedia/commons/f/fa/Wikibooks-logo.svg";
   vm.icons['wiktionary']  = "//upload.wikimedia.org/wikipedia/commons/e/ef/Wikitionary.svg";

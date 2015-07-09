@@ -219,5 +219,32 @@ def notifications_mark_read(obj):
         mw.post(params, payload)
 
 
+@app.task
+def get_diff(obj):
+    """
+    Get a diff for a wiki page
+    """
+    mw = MediaWiki(host=obj['projecturl'],
+                   access_token=obj['access_token'],
+                   redis_channel=obj['redis_channel'])
+    params = {
+        'action': "query",
+        'prop': "revisions",
+        'rvstartid': obj['old_revid'],
+        'rvendid': obj['old_revid'],
+        'rvdiffto': obj['revid'],
+        'pageids': obj['pageid'],
+        'formatversion': 2
+        }
+    response = mw.query(params)
+    diff = response['query']['pages'][0]['revisions'][0]['diff']['body']
+
+    mw.publish({
+        'msgtype': 'diff_response',
+        'request_id': obj['request_id'],
+        'diff': diff
+    })
+
+
 if __name__ == '__main__':
     app.start()

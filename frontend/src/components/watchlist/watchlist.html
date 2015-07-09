@@ -27,7 +27,7 @@
       <md-list-item layout="row" id="watchlist" class="watchlist"
                     ng-class="(ctrl.config.oneline) ? 'watchlist-list-item-oneline' : ''"
                     ng-repeat="event in ctrl.watchlist.active track by event.id">
-        <watchlist-entry ng-click="event.clicked = !event.clicked" md-ink-ripple></watchlist-entry>
+        <watchlist-entry ng-click="event.clicked = !event.clicked; ctrl.clicked(event)" md-ink-ripple></watchlist-entry>
         <md-divider></md-divider>
       </md-list-item>
     </md-list>

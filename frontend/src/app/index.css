@@ -49,6 +49,48 @@ md-divider[role=vertical] {
   border-left-color: rgba(0, 0, 0, 0.12);
 }
 
+/** Add checkbox to multiple select, adapted from https://github.com/angular/material/issues/3244 **/
+md-select-menu[multiple] md-option {
+  padding-right: 48px;
+}
+
+md-select-menu[multiple] md-option:before {
+  transition: 240ms;
+  position: absolute;
+  top: 13px;
+  right: 16px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid;
+  border-radius: 2px;
+  content: ' ';
+  border-color: rgba(0, 0, 0, 0.54);
+  z-index: 1;
+}
+
+md-select-menu[multiple] md-option[selected]:before {
+  background-color: rgb(63,81,181);
+  border-color: rgb(63,81,181);
+}
+
+md-select-menu[multiple] md-option[selected]:after {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 15px;
+  right: 23px;
+  display: table;
+  width: 4px;
+  height: 12px;
+  border: 2px solid;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+  z-index: 2;
+  border-color: rgb(238,238,238);
+}
+
+/** Links **/
 a {
   color: #0645ad;
   text-decoration: none;

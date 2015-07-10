@@ -1,6 +1,6 @@
 <div ng-if="ctrl.config.oneline" layout="row">
   <div class="left">
-    <a href="{{::event.projecturl}}/wiki/Special:Watchlist" class="project"
+    <a stop-event href="{{::event.projecturl}}/wiki/Special:Watchlist" class="project"
        title="{{::event.project}}" target="_blank">
       <img height="16px" ng-src="{{::ctrl.icons[event.projectgroup]}}" alt="{{::event.projectgroup}}">
       <span ng-if="::event.projectlang">
@@ -22,7 +22,7 @@
 <div ng-if="!ctrl.config.oneline" layout="row">
   <div class="left">
     <div am-time-ago="event.timestamp"></div>
-    <a href="{{::event.projecturl}}/wiki/Special:Watchlist" class="project"
+    <a stop-event href="{{::event.projecturl}}/wiki/Special:Watchlist" class="project"
        title="{{::event.project}}" target="_blank">
       <img height="16px" ng-src="{{::ctrl.icons[event.projectgroup]}}" alt="{{::event.projectgroup}}">
       <span ng-if="::event.projectlang">

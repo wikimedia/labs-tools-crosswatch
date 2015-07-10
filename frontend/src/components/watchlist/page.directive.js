@@ -6,7 +6,7 @@ function page() {
   var directive = {
     link: link,
     scope: true,
-    template: '<a href="{{::event.projecturl}}/wiki/{{::event.title | urlEncode}}"  target="_blank">{{::event.title}}</a> ' +
+    template: '<a stop-event href="{{::event.projecturl}}/wiki/{{::event.title | urlEncode}}"  target="_blank">{{::event.title}}</a> ' +
     '<span ng-if="event.clicked">' +
     '(<a stop-event href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&action=history" target="_blank" translate="HISTORY"></a>)' +
     '</span>',

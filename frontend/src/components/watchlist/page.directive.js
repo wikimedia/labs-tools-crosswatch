@@ -6,9 +6,9 @@ function page() {
   var directive = {
     link: link,
     scope: true,
-    template: '<a stop-event href="{{::event.projecturl}}/wiki/{{::event.title | urlEncode}}"  target="_blank">{{::event.title}}</a> ' +
+    template: '<a stop-event href="{{::event.projecturl}}/wiki/{{::title | urlEncode}}"  target="_blank">{{::title}}</a> ' +
     '<span ng-if="event.clicked">' +
-    '(<a stop-event href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&action=history" target="_blank" translate="HISTORY"></a>)' +
+    '(<a stop-event href="{{::event.projecturl}}/w/index.php?title={{::title | urlEncode}}&action=history" target="_blank" translate="HISTORY"></a>)' +
     '</span>',
     restrict: 'E'
   };
@@ -16,7 +16,9 @@ function page() {
 
   function link(scope, element, attrs) {
     if (typeof attrs.title !== 'undefined') {
-      scope.event.title = attrs.title;
+      scope.title = attrs.title;
+    } else {
+      scope.title = scope.event.title;
     }
   }
 }

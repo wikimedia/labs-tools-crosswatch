@@ -125,6 +125,30 @@ a.md-button {
   max-width: 1200px;
 }
 
+.watchlist-container {
+  padding: 0;
+}
+
+md-list-item.watchlist {
+  border-left-width: 4px;
+  border-left-style: solid;
+  padding-left: 12px;
+}
+
+md-list-item.watchlist:first-child {
+  padding-top: 8px;
+}
+
+md-list-item.watchlist:last-child {
+  padding-bottom: 8px;
+}
+
+.watchlist:last-child md-divider,
+.notifications:last-child md-divider
+{
+  border-top: 0;
+}
+
 .watchlist-list-item-oneline {
   min-height: 32px;
 }
@@ -160,12 +184,6 @@ watchlist-entry:focus {
   outline:none;
 }
 
-.watchlist:last-child md-divider,
-.notifications:last-child md-divider
-{
-  border-top: 0;
-}
-
 span.comment{
   font-style: italic;
   unicode-bidi: embed;
@@ -181,6 +199,62 @@ span.autocomment{
 
 .newpage, .minoredit, .botedit {
   font-weight: bold;
+}
+
+.project-color-white {
+  border-left-color: white;
+}
+
+.project-color-pink {
+  border-left-color: #F06292;
+}
+
+.project-color-purple {
+  border-left-color: #CE93D8;
+}
+
+.project-color-deep-purple {
+  border-left-color: #9575CD;
+}
+
+.project-color-blue {
+  border-left-color: #64B5F6;
+}
+
+.project-color-cyan {
+  border-left-color: #4DD0E1;
+}
+
+.project-color-teal {
+  border-left-color: #4DB6AC;
+}
+
+.project-color-green {
+  border-left-color: #81C784;
+}
+
+.project-color-lime {
+  border-left-color: #DCE775;
+}
+
+.project-color-yellow {
+  border-left-color: #FFF176;
+}
+
+.project-color-amber {
+  border-left-color: #FFD54F;
+}
+
+.project-color-orange {
+  border-left-color: #FFB74D;
+}
+
+.project-color-brown {
+  border-left-color: #A1887F;
+}
+
+.project-color-blue-grey {
+  border-left-color: #90A4AE;
 }
 
 /** material design icons **/

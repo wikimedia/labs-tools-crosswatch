@@ -19,5 +19,5 @@ angular.module('crosswatch')
           event.diff = diff;
         })
       }
-    }
+    };
   });

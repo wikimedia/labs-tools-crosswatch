@@ -105,6 +105,14 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
    * List of selected namespaces
    */
   vm.config.namespacesSelected = vm.config.namespacesSelected || vm.defaultconfig.namespacesList;
+  /**
+   * Associative array from project to border color
+   */
+  vm.config.projectColors = vm.config.projectColors || {};
+
+
+  var colors = ['pink', 'deep-purple', 'blue', 'cyan', 'green', 'lime', 'orange', 'brown', 'blue-grey'];
+  var colorsIndex = 0;
 
   /**
    * Process an array of new watchlist entries.
@@ -120,6 +128,16 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
     if (vm.config.projectsList.indexOf(project) === -1) {
       vm.config.projectsList.push(project);
       vm.config.projectsSelected.push(project);
+      vm.saveConfig();
+    }
+
+    if (!vm.config.projectColors.hasOwnProperty(project)) {
+      vm.config.projectColors[project] = 'project-color-' + colors[colorsIndex];
+
+      colorsIndex += 1;
+      if (colorsIndex >= colors.length) {
+        colorsIndex = 0;
+      }
       vm.saveConfig();
     }
 

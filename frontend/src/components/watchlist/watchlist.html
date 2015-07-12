@@ -22,10 +22,10 @@
         <md-progress-circular md-mode="indeterminate"></md-progress-circular>
       </md-list-item>
     </md-list>
-    <md-list infinite-scroll="ctrl.moreWatchlistEntries()" infinite-scroll-immediate-check="false"
+    <md-list class="watchlist-container" infinite-scroll="ctrl.moreWatchlistEntries()" infinite-scroll-immediate-check="false"
              infinite-scroll-distance="1">
-      <md-list-item layout="row" id="watchlist" class="watchlist"
-                    ng-class="(ctrl.config.oneline) ? 'watchlist-list-item-oneline' : ''"
+      <md-list-item layout="row" class="watchlist"
+                    ng-class="[{'watchlist-list-item-oneline': ctrl.config.oneline}, ctrl.config.projectColors[event.project]]"
                     ng-repeat="event in ctrl.watchlist.active track by event.id">
         <watchlist-entry ng-click="event.clicked = !event.clicked; ctrl.clicked(event)" md-ink-ripple></watchlist-entry>
         <md-divider></md-divider>

@@ -95,7 +95,7 @@ def check_editcount(obj, project_chunk, username):
 
 
 def fix_urls(html, url):
-    a = u'<a stop-event target="_blank" href="' + url + u'/'
+    a = u'<a target="_blank" href="' + url + u'/'
     html = html.replace(u'<a href="/', a)
     return html
 

@@ -5,7 +5,6 @@ angular
   .filter('list', listFilter)
   .filter('watchlist', watchlistFilter)
   .filter('projects', projectsFilter)
-  .filter('editflags', editflagsFilter)
 ;
 
 /**
@@ -51,6 +50,10 @@ function watchlistFilter () {
     if (bool) {
       bool = namespaceFilterFunc(item, this.namespacesSelected, this.namespacesList)
     }
+
+    if (bool && this.hideOwnEdits) {
+      bool = usernameFilterFunc(item, this.username)
+    }
     return bool;
   }
 }
@@ -88,14 +91,15 @@ function namespaceFilterFunc (item, namespaces, namespacesList) {
   return false;
 }
 
+/**
+ * Filter out own edits
+ */
+function usernameFilterFunc (item, username) {
+  return item.user !== username;
+}
+
 function projectsFilter () {
   return function (items, projects) {
     return items.filter(projectsFilterFunc, projects)
-  };
-}
-
-function editflagsFilter () {
-  return function (items, flags) {
-    return items.filter(editsflagsFilterFunc, flags)
   };
 }

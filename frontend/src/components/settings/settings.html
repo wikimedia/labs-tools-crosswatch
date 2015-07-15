@@ -71,6 +71,10 @@
                 <md-checkbox ng-model="ctrl.config.lastrevonly" ng-change="ctrl.resetWatchlist()"></md-checkbox>
               </md-list-item>
               <md-list-item>
+                <p translate="HIDEOWNEDITS"></p>
+                <md-checkbox ng-model="ctrl.config.hideOwnEdits" ng-change="ctrl.saveConfig()"></md-checkbox>
+              </md-list-item>
+              <md-list-item>
                 <p translate="ONELINE"></p>
                 <md-checkbox ng-model="ctrl.config.oneline" ng-change="ctrl.saveConfig()"></md-checkbox>
               </md-list-item>

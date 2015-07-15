@@ -69,5 +69,6 @@
   "ONELINE": "Traditional watchlist layout",
   "NOTIFICATIONS": "Notifications",
   "MARKALLREAD": "mark all as read",
-  "STYLE": "Style"
+  "STYLE": "Style",
+  "HIDEOWNEDITS": "Hide my edits from the watchlist"
 }

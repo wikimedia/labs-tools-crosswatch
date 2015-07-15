@@ -68,6 +68,9 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
      * Timeperiod for which the watchlist is retrieved in days
      */
     watchlistperiod: 1.5,
+    /**
+     * Show flags instead of language names
+     */
     flagsenable: false,
     /**
      * Options to show minor, bot, anon and registered user edits
@@ -84,8 +87,17 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
     /**
      * List of namespaces shown in options list
      */
-    namespacesList: ["0", "1", "2", "3", "4", "5", "6", "7", "10", "11", "12", "13", "OTHER"]
+    namespacesList: ["0", "1", "2", "3", "4", "5", "6", "7", "10", "11", "12", "13", "OTHER"],
+    /**
+     * Username
+     */
+    username: "",
+    /**
+     * Filter out own edits
+     */
+    hideOwnEdits: false
   };
+  // Get config from localstorage or create from defaultconfig
   if (localStorageService.get('config') !== null) {
     vm.config = localStorageService.get('config');
     vm.config.__proto__ = vm.defaultconfig;
@@ -182,6 +194,7 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
     vm.watchlist.original = [];
     vm.watchlist.filtered = [];
     vm.watchlist.active.length = 0; /* preserve pointer, slow due to GC */
+    vm.notifications.length = 0;
     vm.queryWatchlist();
     vm.saveConfig();
   };

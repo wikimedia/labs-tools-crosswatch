@@ -15,6 +15,7 @@ function runBlock (socket, $rootScope, dataService, $log, $timeout, $translate, 
       $location.path('/welcome');
     }
     else {
+      dataService.config.username = authService.user();
       $location.path('/');
     }
   });

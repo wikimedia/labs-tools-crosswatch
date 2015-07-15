@@ -9,13 +9,15 @@
               <md-subheader class="md-no-sticky">{{'WIKIS' | translate}}</md-subheader>
               <md-item>
                 <md-select ng-model="ctrl.config.projectsSelected" multiple="true" placeholder="Loading …"
+                           aria-label="List of selected wikis"
                            ng-change="ctrl.saveConfig()">
                   <md-option ng-repeat="item in ctrl.config.projectsList" value="{{item}}">{{item}}</md-option>
                 </md-select>
               </md-item>
               <md-subheader class="md-no-sticky">{{'NAMESPACES' | translate}}</md-subheader>
               <md-item>
-                <md-select ng-model="ctrl.config.namespacesSelected" multiple="true" ng-change="ctrl.saveConfig()">
+                <md-select ng-model="ctrl.config.namespacesSelected" multiple="true" ng-change="ctrl.saveConfig()"
+                           aria-label="List of selected namespaces">
                   <md-option ng-repeat="item in ctrl.namespacesList" value="{{item.value}}">{{item.label}}</md-option>
                 </md-select>
               </md-item>

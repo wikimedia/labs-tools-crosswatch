@@ -5,7 +5,7 @@
    ng-class="::event.titlestyle"  target="_blank">{{::event.title}}</a>
 <span ng-if="event.clicked">
   (<a stop-event href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&action=history" target="_blank" translate="HISTORY"></a>)
-</span>
+</span>&#32;
 <span dir="ltr" ng-class="::event.bytestyle">({{::event.bytes}})</span>
 <div>
   <user></user>

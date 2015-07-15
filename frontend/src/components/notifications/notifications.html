@@ -1,5 +1,6 @@
 <div ng-controller="NotificationsCtrl as ctrl" layout="row" layout-align="center center" class="md-padding">
-  <md-whiteframe class="md-whiteframe-z5 whitebox" ng-if="ctrl.notifications.length">
+  <md-whiteframe class="md-whiteframe-z5" ng-class="(ctrl.config.oneline) ? 'whitebox-oneline' : 'whitebox'"
+                 ng-if="ctrl.notifications.length">
     <md-toolbar class='md-small-tall'>
       <div class="md-toolbar-tools">
         <h1>

@@ -9,7 +9,7 @@ function user() {
     template: '<a stop-event href="{{::event.projecturl}}/wiki/User:{{::user | urlEncode}}" target="_blank">{{::user}}</a> ' +
     '<span ng-if="event.clicked">' +
     '(<a stop-event href="{{::event.projecturl}}/wiki/Special:Contributions/{{::user | urlEncode}}" target="_blank" translate="CONTRIBS"></a>)' +
-    '</span>',
+    '</span>&#32;',
     restrict: 'E'
   };
   return directive;

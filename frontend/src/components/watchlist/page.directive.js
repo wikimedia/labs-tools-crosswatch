@@ -9,7 +9,7 @@ function page() {
     template: '<a stop-event href="{{::event.projecturl}}/wiki/{{::title | urlEncode}}"  target="_blank">{{::title}}</a> ' +
     '<span ng-if="event.clicked">' +
     '(<a stop-event href="{{::event.projecturl}}/w/index.php?title={{::title | urlEncode}}&action=history" target="_blank" translate="HISTORY"></a>)' +
-    '</span>',
+    '</span>&#32;',
     restrict: 'E'
   };
   return directive;

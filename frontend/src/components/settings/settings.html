@@ -1,5 +1,6 @@
 <div ng-controller="SettingsCtrl as ctrl" layout="row" layout-align="center start">
-  <md-whitefram class="md-whiteframe-z5 whitebox" id="settings">
+  <md-whitefram class="md-whiteframe-z5" ng-class="(ctrl.config.oneline) ? 'whitebox-oneline' : 'whitebox'"
+                id="settings">
     <md-tabs md-dynamic-height md-border-bottom>
       <md-tab label="{{'FILTER' | translate}}">
         <div layout="row">
@@ -46,6 +47,11 @@
                   </md-list-item>
                 </md-list>
               </md-item>
+              <md-subheader class="md-no-sticky">{{'STYLE' | translate}}</md-subheader>
+              <md-list-item>
+                <p translate="ONELINE"></p>
+                <md-checkbox ng-model="ctrl.config.oneline" ng-change="ctrl.saveConfig()"></md-checkbox>
+              </md-list-item>
             </div>
           </md-list>
         </div>

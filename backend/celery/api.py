@@ -56,14 +56,21 @@ class MediaWiki(object):
         time = now + delta
         return time.strftime("%Y%m%d%H%M%S")
 
-    @staticmethod
-    def handle_response(response):
+    def handle_response(self, response):
         if 'error' in response:
             logger.error(response['error'])
-            if response['error']['code'] == "mwoauth-invalid-authorization":
-                raise Exception("OAuth authentication failed")
 
-            raise Exception(str(response['error']))
+            if self.redis_channel:
+                if response['error']['code'] == u'mwoauth-invalid-authorization':
+                    self.publish({'msgtype': 'loginerror',
+                                  'errorinfo': response['error']['info']})
+                else:
+                    self.publish({'msgtype': 'apierror',
+                                  'errorcode': response['error']['code'],
+                                  'errorinfo': response['error']['info']})
+
+            raise Exception(response['error']['code'], str(response))
+
         if 'warnings' in response:
             logger.warn("API-request warning: " + str(response['warnings']))
 
@@ -76,20 +83,13 @@ class MediaWiki(object):
         return response
 
     def query_gen(self, params):
-        params['format'] = "json"
         params['action'] = "query"
         last_continue = {'continue': ""}
         while True:
             p = params.copy()
             p.update(last_continue)
-            response = requests.get(self.api_url, params=p, auth=self.auth,
-                                    headers=self.headers).json()
+            response = self.query(p)
 
-            if 'error' in response:
-                raise Exception(str(response['error']))
-            if 'warnings' in response:
-                warning = response['warnings']['query']['*']
-                logger.warn("API-request warning: " + warning)
             if 'query' in response:
                 yield response['query']
             if 'continue' not in response:
@@ -116,19 +116,13 @@ class MediaWiki(object):
         return token
 
     def get_username(self):
-        try:
-            params = {
-                'action': "query",
-                'meta': "userinfo",
-            }
-            response = self.query(params)
-            username = response['query']['userinfo']['name']
-            return username
-        except KeyError as e:
-            if response['error']['code'] == "mwoauth-invalid-authorization":
-                logger.error('mwoauth-invalid-authorization')
-                raise Exception("OAuth authentication failed")
-            raise e
+        params = {
+            'action': "query",
+            'meta': "userinfo",
+        }
+        response = self.query(params)
+        username = response['query']['userinfo']['name']
+        return username
 
     def get_wikis(self, use_cache=True):
         key = config.redis_prefix + 'cached_wikis'

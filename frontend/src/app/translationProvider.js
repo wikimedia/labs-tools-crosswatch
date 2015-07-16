@@ -1,17 +1,11 @@
 'use strict';
 angular
   .module('crosswatch')
-  .config(function ($provide, $translateProvider) {
-
-    var translationList = [
-      {key: 'en', language: 'English', usecases: ['en_US', 'en_GB']},
-      {key: 'de', language: 'Deutsch', usecases: ['de_DE', 'de_CH']},
-      {key: 'pt', language: 'português', usecases: ['pt_BR']}
-    ];
-
+  .value('textDirection', {dir: 'ltr'}) // can be 'ltr' or 'rtl'
+  .config(function ($translateProvider, translationList) {
     var availableLangs = [];
     var mappings = {};
-    // I know it's ugly, but javascript
+    // Create list of language codes and mappings
     for (var i = 0; i < translationList.length; i++) {
       availableLangs.push(translationList[i].key);
       if (translationList[i].hasOwnProperty('usescases')) {
@@ -21,15 +15,12 @@ angular
       }
     }
 
-    $provide.constant('translationList', translationList);
-
-    // translation config
     $translateProvider
       .useSanitizeValueStrategy('sanitizeParameters')
       .useStorage('translateStorage')
       .addInterpolation('customInterpolation')
       .useStaticFilesLoader({
-        prefix: 'i18n/locale-',
+        prefix: 'i18n/',
         suffix: '.json'
       })
       .registerAvailableLanguageKeys(availableLangs, mappings)
@@ -56,7 +47,8 @@ function customInterpolation ($interpolate, $translateSanitization) {
   };
 
   $translateInterpolator.interpolate = function (string, interpolationParams) {
-    string = string.replace(/(<([a-z\-]*)\s?[^>]*?>)/g, "$1</$2>");
+    // "<user> foo <user title={{bar|baz}}>" -> "<user></user> foo <user title=\"{{bar|baz}}\"></user>"
+    string = string.replace(/(<([a-z\-]*)\s?[^>]*?>)/g, "$1</$2>").replace(/({{[\w|]+}})>/g, "\"$1\">");
     interpolationParams = interpolationParams || {};
     interpolationParams = $translateSanitization.sanitize(interpolationParams, 'params');
 

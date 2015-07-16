@@ -2,7 +2,7 @@
 
 var gulp = require('gulp');
 
-gulp.toolname = 'crosswatch'
+gulp.toolname = 'crosswatch';
 
 gulp.paths = {
   src: 'src',

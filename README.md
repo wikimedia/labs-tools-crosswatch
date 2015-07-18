@@ -16,7 +16,7 @@ Install the local dependencies
 sudo npm install -g gulp bower
 cd frontend
 npm install
-bower install
+bower install --production
 ```
 
 While developing use `gulp serve` to preview changes and `gulp build` to

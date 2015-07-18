@@ -268,12 +268,12 @@ span.autocomment{
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url(//tools.wmflabs.org/crosswatch/fonts/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: url(//tools-static.wmflabs.org/cdnjs/ajax/libs/material-design-icons/2.0.0/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
   src: local('Material Icons'),
   local('MaterialIcons-Regular'),
-  url(//tools.wmflabs.org/crosswatch/fonts/MaterialIcons-Regular.woff2) format('woff2'),
-  url(//tools.wmflabs.org/crosswatch/fonts/MaterialIcons-Regular.woff) format('woff'),
-  url(//tools.wmflabs.org/crosswatch/fonts/MaterialIcons-Regular.ttf) format('truetype');
+  url(//tools-static.wmflabs.org/cdnjs/ajax/libs/material-design-icons/2.0.0/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+  url(//tools-static.wmflabs.org/cdnjs/ajax/libs/material-design-icons/2.0.0/iconfont/MaterialIcons-Regular.woff) format('woff'),
+  url(//tools-static.wmflabs.org/cdnjs/ajax/libs/material-design-icons/2.0.0/iconfont/MaterialIcons-Regular.ttf) format('truetype');
 }
 
 .material-icons {

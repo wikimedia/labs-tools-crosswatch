@@ -63,36 +63,23 @@ function runBlock (socket, $rootScope, dataService, $log, $timeout, $translate, 
       dataService.diffResponseHandler(data)
     } else if (data.msgtype === 'loginerror') {
       $log.error('login failed with: ' + data.errorinfo);
-
       $translate(['OAUTH_FAILURE_TITLE', 'OAUTH_FAILURE_CONTENT', 'CLOSE'], {error: data.errorinfo})
         .then(function (translations) {
-          var alert = $mdDialog.alert({
+          registerAlert({
             title: translations['OAUTH_FAILURE_TITLE'],
             content: translations['OAUTH_FAILURE_CONTENT'],
             ok: translations['CLOSE']
-          });
-
-          $mdDialog
-          .show( alert )
-          .finally(function() {
-            alert = undefined;
           });
         });
     } else if (data.msgtype === 'apierror') {
       $log.error('API error: ' + data.errorinfo);
       $translate(['SERVER_ERROR_TITLE', 'API_ERROR_CONTENT', 'CLOSE'], {errorcode: data.errorcode, errorinfo: data.errorinfo})
         .then(function (translations) {
-          var alert = $mdDialog.alert({
+          registerAlert({
             title: translations['SERVER_ERROR_TITLE'],
             content: translations['API_ERROR_CONTENT'],
             ok: translations['CLOSE']
           });
-
-          $mdDialog
-            .show(alert)
-            .finally(function () {
-              alert = undefined;
-            });
         });
     } else {
       $log.error("Unhandled message: %o", data);
@@ -110,18 +97,35 @@ function runBlock (socket, $rootScope, dataService, $log, $timeout, $translate, 
     if (connectionError) {
       $log.warn('No websocket message after 20 seconds.');
       $translate(['SERVER_ERROR_TITLE', 'SERVER_ERROR_CONTENT', 'CLOSE']).then(function (translations) {
-        var alert = $mdDialog.alert({
+        registerAlert({
           title: translations['SERVER_ERROR_TITLE'],
           content: translations['SERVER_ERROR_CONTENT'],
           ok: translations['CLOSE']
         });
-
-        $mdDialog
-          .show(alert)
-          .finally(function () {
-            alert = undefined;
-          });
       });
+    }
+  }
+
+  var currentAlert = false;
+  var alerts = [];
+  /**
+   * Register an $mdDialog alert and schedules it to be shown
+   * @param arg paramter for $mdDialog.alert()
+   */
+  function registerAlert (arg) {
+    var alert = $mdDialog.alert(arg);
+    alerts.push(alert);
+    showAlert();
+  }
+  function showAlert () {
+    if (!currentAlert && alerts.length) {
+      currentAlert = alerts.shift();
+      $mdDialog
+        .show(currentAlert)
+        .finally(function () {
+          currentAlert = false;
+          showAlert();
+        });
     }
   }
 }

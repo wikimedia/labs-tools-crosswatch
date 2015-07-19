@@ -31,8 +31,8 @@ def initial_task(obj):
 
     """
     mw = MediaWiki(access_token=obj['access_token'])
-    username = mw.get_username()
-    wikis = mw.get_wikis()
+    username = mw.username()
+    wikis = mw.wikis()
 
     # Use cache of known projects to bypass sometimes blocking mysql check
     preload_projects = obj.pop('projects', [])
@@ -208,7 +208,7 @@ def notifications_mark_read(obj):
     Mark echo notifications as read
     """
     mw = MediaWiki(access_token=obj['access_token'])
-    wikis = mw.get_wikis()
+    wikis = mw.wikis()
     params = {'action': "echomarkread"}
 
     for project, notifications in obj['notifications'].iteritems():
@@ -227,18 +227,8 @@ def get_diff(obj):
     mw = MediaWiki(host=obj['projecturl'],
                    access_token=obj['access_token'],
                    redis_channel=obj['redis_channel'])
-    params = {
-        'action': "query",
-        'prop': "revisions",
-        'rvstartid': obj['old_revid'],
-        'rvendid': obj['old_revid'],
-        'rvdiffto': obj['revid'],
-        'pageids': obj['pageid'],
-        'formatversion': 2
-        }
-    response = mw.query(params)
-    diff = response['query']['pages'][0]['revisions'][0]['diff']['body']
 
+    diff = mw.diff(obj['pageid'], obj['old_revid'], obj['revid'])
     mw.publish({
         'msgtype': 'diff_response',
         'request_id': obj['request_id'],

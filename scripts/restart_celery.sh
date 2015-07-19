@@ -8,6 +8,6 @@ do
 done
 for i in $(seq 1 ${num});
 do
-    jstart -N celery${i} -once -continuous -l h_vmem=3G -l release=trusty ./celery.grid.sh $i
+    jstart -N celery${i} -once -continuous -l h_vmem=2G -l release=trusty ./celery.grid.sh $i
     sleep 10
 done

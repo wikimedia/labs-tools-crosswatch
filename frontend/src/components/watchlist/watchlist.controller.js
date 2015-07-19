@@ -14,6 +14,8 @@ angular.module('crosswatch')
     };
 
     vm.clicked = function (event) {
+      event.showDiff = !event.showDiff;
+
       if ((event.type === 'edit') && !event.diff) {
         dataService.getDiff(event).then(function (diff) {
           event.diff = diff;

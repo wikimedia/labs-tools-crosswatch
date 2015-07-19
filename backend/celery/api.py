@@ -16,7 +16,6 @@ class MediaWiki(object):
     def __init__(self, host="https://en.wikipedia.org", path="/w/api.php",
                  access_token=None, redis_channel=None):
         self.api_url = host + path
-        self.wikis = {}
 
         user_agent = "crosswatch (https://tools.wmflabs.org/crosswatch;" +\
             "crosswatch@tools.wmflabs.org) python-requests/" +\
@@ -56,7 +55,7 @@ class MediaWiki(object):
         time = now + delta
         return time.strftime("%Y%m%d%H%M%S")
 
-    def handle_response(self, response):
+    def _handle_response(self, response):
         if 'error' in response:
             logger.error(response['error'])
 
@@ -79,7 +78,7 @@ class MediaWiki(object):
         response = requests.get(self.api_url, params=params, auth=self.auth,
                                 headers=self.headers).json()
 
-        self.handle_response(response)
+        self._handle_response(response)
         return response
 
     def query_gen(self, params):
@@ -105,7 +104,7 @@ class MediaWiki(object):
         response = requests.post(self.api_url, params=params, data=payload,
                                  auth=self.auth, headers=self.headers)
 
-        self.handle_response(json.loads(response.text))
+        self._handle_response(json.loads(response.text))
 
     def get_token(self, type='csrf'):
         params = {'action': "query",
@@ -115,7 +114,7 @@ class MediaWiki(object):
         token = r['query']['tokens'][type + 'token']
         return token
 
-    def get_username(self):
+    def username(self):
         params = {
             'action': "query",
             'meta': "userinfo",
@@ -124,7 +123,22 @@ class MediaWiki(object):
         username = response['query']['userinfo']['name']
         return username
 
-    def get_wikis(self, use_cache=True):
+    def diff(self, pageid, old_revid, new_revid):
+        params = {
+            'action': "query",
+            'prop': "revisions",
+            'rvstartid': old_revid,
+            'rvendid': old_revid,
+            'rvdiffto': new_revid,
+            'pageids': pageid,
+            'formatversion': 2
+        }
+
+        response = self.query(params)
+        diff = response['query']['pages'][0]['revisions'][0]['diff']['body']
+        return diff
+
+    def wikis(self, use_cache=True):
         key = config.redis_prefix + 'cached_wikis'
         wikis = self.redis.get(key)
         if use_cache and wikis:
@@ -132,29 +146,32 @@ class MediaWiki(object):
         else:
             # Cache miss, do api request and fill cache
             wikis = self._get_wikis()
-            self.redis.setex(key, 86400, json.dumps(wikis))  # 1 day exp.
+            self.redis.setex(key, 172800, json.dumps(wikis))  # 2 days exp.
 
         return wikis
 
     def _get_wikis(self):
         params = {'action': "sitematrix"}
         data = self.query(params)
+
+        wikis = {}
         for key, val in data['sitematrix'].items():
             if key == 'count':
                 continue
 
             if 'code' in val:
                 for site in val['site']:
-                    self._parse_sitematrix(site, val['code'], val['name'])
+                    wiki = self._create_wiki(site, val['code'], val['name'])
+                    wikis[site['dbname']] = wiki
             else:
                 for site in val:
-                    self._parse_sitematrix(site, '', '')
+                    wiki = self._create_wiki(site, '', '')
+                    wikis[site['dbname']] = wiki
+        return wikis
 
-        return self.wikis
-
-    def _parse_sitematrix(self, site, lang, langname):
+    def _create_wiki(self, site, langcode, langname):
         wiki = {
-            'lang': lang,
+            'lang': langcode,
             'langname': langname,
             'url': site['url'].replace("http://", "https://"),
             'dbname': site['dbname'],
@@ -166,5 +183,4 @@ class MediaWiki(object):
         inactive_wikis = ['closed', 'private', 'fishbowl']
         if any([key in site for key in inactive_wikis]):
             wiki['closed'] = True
-
-        self.wikis[site['dbname']] = wiki
+        return wiki

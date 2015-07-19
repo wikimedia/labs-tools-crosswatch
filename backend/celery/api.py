@@ -10,6 +10,9 @@ from redis import StrictRedis
 import json
 from datetime import datetime, timedelta
 
+from mw.api import Session as RevertsSession
+from mw.lib.reverts import api as reverts
+
 from .. import config
 from . import logger
 
@@ -19,10 +22,10 @@ class MediaWiki(object):
                  access_token=None, redis_channel=None):
         self.api_url = host + path
 
-        user_agent = "crosswatch (https://tools.wmflabs.org/crosswatch;" +\
+        self.user_agent = "crosswatch (https://tools.wmflabs.org/crosswatch;" +\
             "crosswatch@tools.wmflabs.org) python-requests/" +\
             requests.__version__
-        self.headers = {'User-Agent': user_agent}
+        self.headers = {'User-Agent': self.user_agent}
 
         if access_token:
             # Construct an auth object with the consumer and access tokens
@@ -41,6 +44,7 @@ class MediaWiki(object):
             db=config.redis_db,
             decode_responses=True
         )
+        self.ores_url = 'http://ores.wmflabs.org/scores'
 
     def publish(self, message):
         if not self.redis_channel:
@@ -187,3 +191,51 @@ class MediaWiki(object):
         if any([key in site for key in inactive_wikis]):
             wiki['closed'] = True
         return wiki
+
+    def ores_context_exists(self, dbname, model='reverted', cached=True):
+        """Checks if ORES context for a wiki exists"""
+        key = config.redis_prefix + 'ores' + model
+        if not self.redis.exists(key) or not cached:
+            self._ores_contexts(model)
+        return self.redis.sismember(key, dbname)
+
+    def _ores_contexts(self, model):
+        """Fill cache"""
+        pipe = self.redis.pipeline()
+        key = config.redis_prefix + 'ores' + model
+        pipe.delete(key)
+
+        contexts = requests.get(self.ores_url, headers=self.headers)
+        contexts.raise_for_status()
+        contexts = contexts.json()['contexts']
+
+        for context in contexts:
+            models = requests.get('{}/{}/'.format(self.ores_url, context),
+                                  headers=self.headers)
+            models.raise_for_status()
+            models = models.json()['models']
+
+            if model in models:
+                pipe.sadd(key, context)
+        pipe.expire(key, 172800)  # 2 days exp.
+        pipe.execute()
+
+    def ores_scores(self, dbname, revids, model='reverted'):
+        """Get ORES scores for revision ids"""
+        url = '{}/{}/{}/'.format(self.ores_url, dbname, model)
+
+        revids = '|'.join([str(id) for id in revids])
+        params = {'revids': revids}
+
+        response = requests.get(url, params=params, headers=self.headers)
+        response.raise_for_status()
+
+        return response.json()
+
+    def was_reverted(self, revision):
+        """
+        Checks if a revision was reverted
+        :param revision: a revision dict containing ‘revid’ and ‘pageid’
+        """
+        session = RevertsSession(self.api_url, user_agent=self.user_agent)
+        return reverts.check_rev(session, revision)

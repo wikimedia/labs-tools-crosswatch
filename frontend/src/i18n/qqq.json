@@ -48,5 +48,8 @@
   "EDIT": "Tooltip for edit icon",
   "UNDO": "Tooltip for undo icon",
   "WATCHLIST_REMOVE": "Tooltip for icon",
-  "WATCHLIST_ADD": "Tooltip for icon"
+  "WATCHLIST_ADD": "Tooltip for icon",
+  "ORES_OPTION": "Checkbox to enable the option. [[:meta:ORES]] is a service to predict edits which will likely be reverted.",
+  "ORES_TOOLTIP": "Tooltip for \"ORES_OPTION\"",
+  "ORES_PROBABILITY": "Probability (e.g. 87%), that the edit will be reverted. See also [[:meta:ORES]]."
 }

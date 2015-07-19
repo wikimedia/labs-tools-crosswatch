@@ -47,6 +47,10 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
    * loading spinner
    */
   vm.watchlist.loading = true;
+  /**
+   * Associative array which maps item id to item object
+   */
+  vm.watchlist.dict = {};
 
   /**
    * Array that contains new echo notifications.
@@ -94,7 +98,11 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
     /**
      * Filter out own edits
      */
-    hideOwnEdits: false
+    hideOwnEdits: false,
+    /**
+     * Automatically show diff for ORES predicted reverts
+     */
+    oresDiff: true
   };
   // Get config from localstorage or create from defaultconfig
   if (localStorageService.get('config') !== null) {
@@ -160,6 +168,10 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
     }
 
     vm.filterWatchlistDebounced();
+
+    for (var i=0; i < entries.length; i++) {
+      vm.watchlist.dict[entries[i].id] = entries[i];
+    }
   };
 
   /**
@@ -199,8 +211,10 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
   vm.resetWatchlist = function () {
     vm.watchlist.original = [];
     vm.watchlist.filtered = [];
+    vm.watchlist.dict = [];
     vm.watchlist.active.length = 0; /* preserve pointer, slow due to GC */
     vm.notifications.length = 0;
+    vm.watchlist.loading = true;
     vm.queryWatchlist();
     vm.saveConfig();
   };
@@ -295,6 +309,12 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
     } else {
       $log.error("No callback for diff: %o", data);
     }
+  };
+
+  vm.oresScoresHandler = function (data) {
+    vm.watchlist.dict[data.id].diff = data.diff;
+    vm.watchlist.dict[data.id].showDiff = vm.config.oresDiff;
+    vm.watchlist.dict[data.id].oresProbability = data.oresProbability;
   };
 
   /**

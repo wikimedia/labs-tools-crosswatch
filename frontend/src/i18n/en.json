@@ -77,5 +77,8 @@
   "EDIT": "Edit this page in new tab",
   "UNDO": "Revert this edit, opens new tab with preview",
   "WATCHLIST_REMOVE": "Remove this page from watchlist",
-  "WATCHLIST_ADD": "Add this page to watchlist"
+  "WATCHLIST_ADD": "Add this page to watchlist",
+  "ORES_OPTION": "Show diffs for ORES predicted reverts",
+  "ORES_TOOLTIP": "Automatically show diff for predicted reverts, see [[:meta:ORES]] for details.",
+  "ORES_PROBABILITY": "<a href=\"https://meta.wikimedia.org/wiki/ORES\">ORES</a> revert score: {{probability}}"
 }

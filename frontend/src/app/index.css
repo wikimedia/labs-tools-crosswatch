@@ -201,6 +201,10 @@ watchlist-entry .md-button.md-icon-button {
   border-radius: 50%;
 }
 
+watchlist-entry .ores {
+  margin-right: 18px;
+}
+
 span.comment{
   font-style: italic;
   unicode-bidi: embed;

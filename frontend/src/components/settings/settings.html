@@ -84,6 +84,10 @@
                 <p translate="FLAGS"></p>
                 <md-checkbox ng-model="ctrl.config.flagsenable" ng-change="ctrl.saveConfig()"></md-checkbox>
               </md-list-item>
+              <md-list-item title="{{'ORES_TOOLTIP' | translate}}">
+                <p translate="ORES_OPTION"></p>
+                <md-checkbox ng-model="ctrl.config.oresDiff" ng-change="ctrl.resetWatchlist()"></md-checkbox>
+              </md-list-item>
             </md-list>
           </div>
         </div>

@@ -38,25 +38,32 @@
       <watchlist-logevent ng-if="::event.type === 'log'"></watchlist-logevent>
     </div>
   </div>
-  <div stop-event layout="row" layout-align="end start" ng-if="event.showDiff && event.type === 'edit'">
-    <md-button class="md-icon-button" title="{{'EDIT' | translate}}"
-               href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&action=edit" target="_blank">
-      <md-icon md-font-library="material-icons">edit</md-icon>
-    </md-button>
-    <md-button class="md-icon-button" title="{{'UNDO' | translate}}"
-               href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&action=edit&undoafter={{::event.old_revid}}&undo={{::event.revid}}" target="_blank">
-      <md-icon md-font-library="material-icons">undo</md-icon>
-    </md-button>
-    <md-button class="md-icon-button" title="{{'WATCHLIST_REMOVE' | translate}}"
-               ng-hide="event.isUnwatched" ng-click="ctrl.watchPage(event, true)">
-      <md-icon md-font-library="material-icons">star</md-icon>
-    </md-button>
-    <md-button class="md-icon-button"  title="{{'WATCHLIST_ADD' | translate}}"
-               ng-show="event.isUnwatched" ng-click="ctrl.watchPage(event, false)">
-      <md-icon md-font-library="material-icons">star_border</md-icon>
-    </md-button>
+  <div layout="column" layout-align="start end" ng-if="event.showDiff && event.type === 'edit'">
+    <div stop-event layout="row" layout-align="end start">
+      <md-button class="md-icon-button" title="{{'EDIT' | translate}}"
+                 href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&action=edit" target="_blank">
+        <md-icon md-font-library="material-icons">edit</md-icon>
+      </md-button>
+      <md-button class="md-icon-button" title="{{'UNDO' | translate}}"
+                 href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&action=edit&undoafter={{::event.old_revid}}&undo={{::event.revid}}" target="_blank">
+        <md-icon md-font-library="material-icons">undo</md-icon>
+      </md-button>
+      <md-button class="md-icon-button" title="{{'WATCHLIST_REMOVE' | translate}}"
+                 ng-hide="event.isUnwatched" ng-click="ctrl.watchPage(event, true)">
+        <md-icon md-font-library="material-icons">star</md-icon>
+      </md-button>
+      <md-button class="md-icon-button"  title="{{'WATCHLIST_ADD' | translate}}"
+                 ng-show="event.isUnwatched" ng-click="ctrl.watchPage(event, false)">
+        <md-icon md-font-library="material-icons">star_border</md-icon>
+      </md-button>
+    </div>
+    <div>
+      <small ng-if="event.oresProbability" class="ores text-muted"
+             translate="ORES_PROBABILITY" translate-values='{probability: event.oresProbability}'></small>
+    </div>
   </div>
 </div>
+
 <table ng-if="event.showDiff && event.diff" class="diff diff-contentalign-left">
   <colgroup><col class="diff-marker">
     <col class="diff-content">

@@ -116,10 +116,10 @@ def watchlistgetter(**kwargs):
     redis_channel = kwargs['redis_channel']
     watchlistperiod = kwargs.get('watchlistperiod', False)
     allrev = kwargs.get('allrev', False)
-    
-    mw = MediaWiki(host=wiki['url'], access_token=access_token, 
+
+    mw = MediaWiki(host=wiki['url'], access_token=access_token,
                    redis_channel=redis_channel)
-    
+
     if watchlistperiod:
         days = float(watchlistperiod)
     else:
@@ -163,8 +163,12 @@ def watchlistgetter(**kwargs):
             'msgtype': 'watchlist',
             'entires': items
         }
-        if items:
-            mw.publish(message)
+        if not items:
+            return
+        mw.publish(message)
+
+        if mw.ores_context_exists(wiki['dbname']):
+            ores.delay(items, **kwargs)
 
 
 @app.task
@@ -173,8 +177,8 @@ def notificationgetter(**kwargs):
     wiki = kwargs['wiki']
     access_token = kwargs['access_token']
     redis_channel = kwargs['redis_channel']
-    
-    mw = MediaWiki(host=wiki['url'], access_token=access_token, 
+
+    mw = MediaWiki(host=wiki['url'], access_token=access_token,
                    redis_channel=redis_channel)
 
     params = {
@@ -278,6 +282,53 @@ def watch(**kwargs):
         'msgtype': 'response',
         'request_id': request_id,
         'data': not watchted
+    })
+
+
+@app.task
+def ores(items, **kwargs):
+    wiki = kwargs['wiki']
+    access_token = kwargs['access_token']
+    redis_channel = kwargs['redis_channel']
+
+    mw = MediaWiki(host=wiki['url'],
+                   access_token=access_token,
+                   redis_channel=redis_channel)
+
+    edits = {}
+    for item in items:
+        if item['type'] == 'edit':
+            edits[item['revid']] = item
+    if not edits:
+        return
+
+    response = mw.ores_scores(wiki['dbname'], edits.keys())
+    for revid, value in response.items():
+        if value['probability']['true'] >= 0.8:
+            revid = int(revid)
+            probablity = "{:.0%}".format(value['probability']['true'])
+            _ores_diff.delay(edits[revid], probablity, **kwargs)
+
+
+@app.task
+def _ores_diff(edit, probablity, **kwargs):
+    wiki = kwargs['wiki']
+    access_token = kwargs['access_token']
+    redis_channel = kwargs['redis_channel']
+
+    mw = MediaWiki(host=wiki['url'],
+                   access_token=access_token,
+                   redis_channel=redis_channel)
+
+    if mw.was_reverted(edit):
+        return
+
+    diff = mw.diff(edit['pageid'], edit['old_revid'], edit['revid'])
+    mw.publish({
+        'msgtype': "ores_scores",
+        'id': edit['id'],
+        'diff': diff,
+        'oresProbability': probablity
     })
 
 if __name__ == '__main__':

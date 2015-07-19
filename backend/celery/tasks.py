@@ -23,6 +23,14 @@ def chunks(l, n):
 
 
 @app.task
+def canary(obj):
+    """
+    A canary in a coal mine
+    """
+    mw = MediaWiki(redis_channel=obj['redis_channel'])
+    mw.publish({'msgtype': "canary"})
+
+@app.task
 def initial_task(obj):
     """
     Task called on login, start the chain to load the
@@ -63,6 +71,9 @@ def initial_task(obj):
 
     for chunk in chunks(projects, 50):
         check_editcount.delay(obj, chunk, username)
+
+    # Send back canary reply to show that the server is working
+    canary(obj)
 
 
 @app.task

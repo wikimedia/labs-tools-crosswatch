@@ -51,7 +51,7 @@
   "OAUTH_FAILURE_CONTENT": "Authentication failed, you might have revoked the authorization for this application. Please logout and sign in again. Error information: {{error}}",
   "CLOSE": "Close",
   "SERVER_ERROR_TITLE": "Server failure",
-  "SERVER_ERROR_CONTENT": "No watchlist could be retrieved. Either you have no watchlist events for the selected time period or this is an internal server error.",
+  "SERVER_ERROR_CONTENT": "No watchlist could be retrieved. This is an internal server error, please open a bug report if the problem persists.",
   "API_ERROR_CONTENT": "An API request failed with error code {{errorcode}} and error information: {{errorinfo}}",
   "NAMESPACES": "Namespaces",
   "NS_0":  "Article",

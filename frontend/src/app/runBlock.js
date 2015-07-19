@@ -37,7 +37,7 @@ function runBlock (socket, $rootScope, dataService, $log, $timeout, $translate, 
    */
   $rootScope.$on('login', function () {
     dataService.queryWatchlist();
-    $timeout(errorHandler, 20000); // show error if no watchlist after 20 secs
+    $timeout(errorHandler, 10000); // show error if no response after 10 secs
   });
 
   /**
@@ -61,6 +61,12 @@ function runBlock (socket, $rootScope, dataService, $log, $timeout, $translate, 
       dataService.addNotificationEntries(data)
     } else if (data.msgtype === 'diff_response') {
       dataService.diffResponseHandler(data)
+    } else if (data.msgtype === 'canary') {
+      connectionError = false;
+      // disable loading spinner after 20 sec (no watchlist entries for the time period)
+      $timeout(function () {
+        dataService.watchlist.loading = false;
+      }, 20000)
     } else if (data.msgtype === 'loginerror') {
       $log.error('login failed with: ' + data.errorinfo);
       $translate(['OAUTH_FAILURE_TITLE', 'OAUTH_FAILURE_CONTENT', 'CLOSE'], {error: data.errorinfo})

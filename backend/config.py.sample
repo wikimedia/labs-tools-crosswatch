@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-# ISC License
-# Copyright (C) 2015 Jan Lebert
-from __future__ import absolute_import
+"""Crosswatch config"""
+from __future__ import unicode_literals
+
 import socket
 from mwoauth import ConsumerToken
 

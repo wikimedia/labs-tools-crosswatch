@@ -2,6 +2,8 @@
 # ISC License
 # Copyright (C) 2015 Jan Lebert
 from __future__ import absolute_import
+from __future__ import unicode_literals
+
 import requests
 from requests_oauthlib import OAuth1
 from redis import StrictRedis
@@ -60,7 +62,7 @@ class MediaWiki(object):
             logger.error(response['error'])
 
             if self.redis_channel:
-                if response['error']['code'] == u'mwoauth-invalid-authorization':
+                if response['error']['code'] == 'mwoauth-invalid-authorization':
                     self.publish({'msgtype': 'loginerror',
                                   'errorinfo': response['error']['info']})
                 else:

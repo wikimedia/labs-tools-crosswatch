@@ -3,6 +3,7 @@
 # ISC License
 # Copyright (C) 2015 Jan Lebert
 from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from uuid import uuid4
 from contextlib import closing
@@ -14,40 +15,36 @@ from .api import MediaWiki
 
 
 def chunks(l, n):
-    """
-    Yield successive n-sized chunks from l.
-
-    """
+    """Yield successive n-sized chunks from l."""
     for i in xrange(0, len(l), n):
         yield l[i:i+n]
 
 
 @app.task
-def canary(obj):
-    """
-    A canary in a coal mine
-    """
-    mw = MediaWiki(redis_channel=obj['redis_channel'])
+def canary(redis_channel=None, **kwargs):
+    """A canary in a coal mine"""
+    mw = MediaWiki(redis_channel=redis_channel)
     mw.publish({'msgtype': "canary"})
 
 @app.task
-def initial_task(obj):
+def initial_task(**kwargs):
     """
     Task called on login, start the chain to load the
     watchlist, notifications etc.
-    :param obj: dict with redis channel and oauth keys
-
     """
-    mw = MediaWiki(access_token=obj['access_token'])
+    access_token = kwargs['access_token']
+    preload_projects = kwargs.get('projects', [])
+    redis_channel = kwargs.get('redis_channel', None)
+
+    mw = MediaWiki(access_token=access_token, redis_channel=redis_channel)
     username = mw.username()
     wikis = mw.wikis()
 
     # Use cache of known projects to bypass sometimes blocking mysql check
-    preload_projects = obj.pop('projects', [])
     for project in preload_projects:
-        obj['wiki'] = wikis[project]
-        watchlistgetter.delay(obj)
-        notificationgetter.delay(obj)
+        wiki = wikis[project]
+        watchlistgetter.delay(wiki=wiki, **kwargs)
+        notificationgetter.delay(wiki=wiki, **kwargs)
 
     db = MySQLdb.connect(
         host='centralauth.labsdb',
@@ -70,21 +67,19 @@ def initial_task(obj):
     db.close()
 
     for chunk in chunks(projects, 50):
-        check_editcount.delay(obj, chunk, username)
+        check_editcount.delay(chunk, username, **kwargs)
 
     # Send back canary reply to show that the server is working
-    canary(obj)
+    canary(redis_channel=redis_channel)
 
 
 @app.task
-def check_editcount(obj, project_chunk, username):
+def check_editcount(project_chunk, username, **kwargs):
     """
     Starts the watchlist- and notificationgetter if the
     user has made more than one edit to a project
-    :param obj: The dict from tornado
     :param project_chunk: list of projets
-    :param username:
-
+    :param username: username
     """
     db = MySQLdb.connect(
         host='s4.labsdb',
@@ -98,30 +93,32 @@ def check_editcount(obj, project_chunk, username):
             result = cur.fetchone()
 
             if result and int(result[0]) >= 1:
-                obj['wiki'] = wiki
-                watchlistgetter.delay(obj)
-                notificationgetter.delay(obj)
+                watchlistgetter.delay(wiki=wiki, **kwargs)
+                notificationgetter.delay(wiki=wiki, **kwargs)
 
     db.close()
 
 
 def fix_urls(html, url):
-    a = u'<a target="_blank" href="' + url + u'/'
-    html = html.replace(u'<a href="/', a)
+    a = '<a target="_blank" href="' + url + '/'
+    html = html.replace('<a href="/', a)
     return html
 
 
 @app.task
-def watchlistgetter(obj):
-    """
-    Get the watchlist for a wiki
-    :param obj: dict with wiki and connection information
-    """
-    mw = MediaWiki(host=obj['wiki']['url'],
-                   access_token=obj['access_token'],
-                   redis_channel=obj['redis_channel'])
-    if 'watchlistperiod' in obj:
-        days = float(obj['watchlistperiod'])
+def watchlistgetter(**kwargs):
+    """Get the watchlist for a wiki"""
+    wiki = kwargs['wiki']
+    access_token = kwargs['access_token']
+    redis_channel = kwargs['redis_channel']
+    watchlistperiod = kwargs.get('watchlistperiod', False)
+    allrev = kwargs.get('allrev', False)
+    
+    mw = MediaWiki(host=wiki['url'], access_token=access_token, 
+                   redis_channel=redis_channel)
+    
+    if watchlistperiod:
+        days = float(watchlistperiod)
     else:
         days = 2
     params = {
@@ -133,22 +130,22 @@ def watchlistgetter(obj):
         "sizes|notificationtimestamp|loginfo"
     }
 
-    if 'allrev' in obj and obj['allrev']:
+    if allrev:
         params['wlallrev'] = ""
 
     for response in mw.query_gen(params):
         items = []
         for item in response['watchlist']:
-            item['project'] = obj['wiki']['dbname']
-            item['projecturl'] = obj['wiki']['url']
-            item['projectgroup'] = obj['wiki']['group']
-            item['projectlang'] = obj['wiki']['lang']
-            item['projectlangname'] = obj['wiki']['langname']
+            item['project'] = wiki['dbname']
+            item['projecturl'] = wiki['url']
+            item['projectgroup'] = wiki['group']
+            item['projectlang'] = wiki['lang']
+            item['projectlangname'] = wiki['langname']
 
             if 'commenthidden' in item:
                 item['parsedcomment'] = "<s>edit summary removed</s>"
             item['parsedcomment'] = fix_urls(item['parsedcomment'],
-                                             obj['wiki']['url'])
+                                             wiki['url'])
             if 'bot' in item:
                 item['bot'] = "b"
             if 'minor' in item:
@@ -168,14 +165,15 @@ def watchlistgetter(obj):
 
 
 @app.task
-def notificationgetter(obj):
-    """
-    Get the echo notifications for a wiki
-    :param obj: dict with wiki and connection information
-    """
-    mw = MediaWiki(host=obj['wiki']['url'],
-                   access_token=obj['access_token'],
-                   redis_channel=obj['redis_channel'])
+def notificationgetter(**kwargs):
+    """Get the echo notifications for a wiki"""
+    wiki = kwargs['wiki']
+    access_token = kwargs['access_token']
+    redis_channel = kwargs['redis_channel']
+    
+    mw = MediaWiki(host=wiki['url'], access_token=access_token, 
+                   redis_channel=redis_channel)
+
     params = {
         'action': "query",
         'meta': "notifications",
@@ -193,11 +191,11 @@ def notificationgetter(obj):
 
     event = {
         'msgtype': 'notification',
-        'project': obj['wiki']['dbname'],
-        'projecturl': obj['wiki']['url'],
-        'projectgroup': obj['wiki']['group'],
-        'projectlang': obj['wiki']['lang'],
-        'projectlangname': obj['wiki']['langname']
+        'project': wiki['dbname'],
+        'projecturl': wiki['url'],
+        'projectgroup': wiki['group'],
+        'projectlang': wiki['lang'],
+        'projectlangname': wiki['langname']
     }
     for item in result.values():
         if 'read' in item:
@@ -207,42 +205,49 @@ def notificationgetter(obj):
         # random id
         event['uuid'] = uuid4().hex[:8]
 
-        event['comment'] = fix_urls(item['*'], obj['wiki']['url'])
+        event['comment'] = fix_urls(item['*'], wiki['url'])
         event['timestamp'] = item['timestamp']['utcunix']
 
         mw.publish(event)
 
 
 @app.task
-def notifications_mark_read(obj):
-    """
-    Mark echo notifications as read
-    """
-    mw = MediaWiki(access_token=obj['access_token'])
+def notifications_mark_read(**kwargs):
+    """Mark echo notifications as read"""
+    access_token = kwargs['access_token']
+    redis_channel = kwargs['redis_channel']
+    notifications = kwargs.get('notifications', {})
+
+    mw = MediaWiki(access_token=access_token, redis_channel=redis_channel)
     wikis = mw.wikis()
-    params = {'action': "echomarkread"}
 
-    for project, notifications in obj['notifications'].iteritems():
+    for project, notifications in notifications.iteritems():
         projecturl = wikis[project]['url']
-        mw = MediaWiki(host=projecturl, access_token=obj['access_token'])
+        mw = MediaWiki(host=projecturl, access_token=access_token,
+                       redis_channel=redis_channel)
 
+        params = {'action': "echomarkread"}
         payload = {'list': notifications}
         mw.post(params, payload)
 
 
 @app.task
-def get_diff(obj):
-    """
-    Get a diff for a wiki page
-    """
-    mw = MediaWiki(host=obj['projecturl'],
-                   access_token=obj['access_token'],
-                   redis_channel=obj['redis_channel'])
+def get_diff(access_token=None, redis_channel=None, **kwargs):
+    """Get a diff for a wiki page"""
+    projecturl = kwargs['projecturl']
+    pageid = kwargs['pageid']
+    old_revid = kwargs['old_revid']
+    revid = kwargs['revid']
+    request_id = kwargs['request_id']
 
-    diff = mw.diff(obj['pageid'], obj['old_revid'], obj['revid'])
+    mw = MediaWiki(host=projecturl,
+                   access_token=access_token,
+                   redis_channel=redis_channel)
+
+    diff = mw.diff(pageid, old_revid, revid)
     mw.publish({
         'msgtype': 'diff_response',
-        'request_id': obj['request_id'],
+        'request_id': request_id,
         'diff': diff
     })
 

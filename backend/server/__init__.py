@@ -8,6 +8,7 @@ running on https://tools.wmflabs.org/crosswatch
 # ISC License
 # Copyright (C) 2014 Jan Lebert
 from __future__ import absolute_import
+from __future__ import unicode_literals
 import os
 
 import logging
@@ -46,7 +47,7 @@ class SockConnection(SockJSConnection):
 
     def on_message(self, message):
         data = json.loads(message)
-        if data[u'action'] == u'watchlist':
+        if data['action'] == 'watchlist':
             redis_channel = str(uuid4())
             self.channels.append(redis_channel)
 
@@ -55,17 +56,17 @@ class SockConnection(SockJSConnection):
 
             data['redis_channel'] = redis_channel
             celery_app.send_task('backend.celery.tasks.initial_task',
-                                 (data, ), expires=60)
-        elif data[u'action'] == u'notifications_mark_read':
+                                 kwargs=data, expires=60)
+        elif data['action'] == 'notifications_mark_read':
             celery_app.send_task('backend.celery.tasks.notifications_mark_read',
-                                 (data, ), expires=60)
-        elif data[u'action'] == u'diff':
+                                 kwargs=data, expires=60)
+        elif data['action'] == 'diff':
             redis_channel = str(uuid4())
             self.channels.append(redis_channel)
             subscriber.subscribe(redis_channel, self)
 
             data['redis_channel'] = redis_channel
-            celery_app.send_task('backend.celery.tasks.get_diff', (data, ))
+            celery_app.send_task('backend.celery.tasks.get_diff', kwargs=data)
 
 
 class NoChacheStaticFileHandler(StaticFileHandler):

@@ -2,6 +2,8 @@
 # ISC License
 # Copyright (C) 2015 Jan Lebert
 from __future__ import absolute_import
+from __future__ import unicode_literals
+
 from celery import Celery
 from celery.utils.log import get_task_logger
 from kombu import Exchange, Queue

@@ -39,34 +39,25 @@ subscriber = SockJSSubscriber(RedisClient(
 
 class SockConnection(SockJSConnection):
     def on_open(self, info):
-        self.channels = []
+        self.channel = str(uuid4())
+        subscriber.subscribe(self.channel, self)
 
     def on_close(self):
-        for channel in self.channels:
-            subscriber.unsubscribe(channel, self)
+        subscriber.unsubscribe(self.channel, self)
 
     def on_message(self, message):
         data = json.loads(message)
+        data['redis_channel'] = self.channel
         if data['action'] == 'watchlist':
-            redis_channel = str(uuid4())
-            self.channels.append(redis_channel)
-
-            logging.info('New redis channel ' + redis_channel)
-            subscriber.subscribe(redis_channel, self)
-
-            data['redis_channel'] = redis_channel
             celery_app.send_task('backend.celery.tasks.initial_task',
                                  kwargs=data, expires=60)
         elif data['action'] == 'notifications_mark_read':
             celery_app.send_task('backend.celery.tasks.notifications_mark_read',
                                  kwargs=data, expires=60)
         elif data['action'] == 'diff':
-            redis_channel = str(uuid4())
-            self.channels.append(redis_channel)
-            subscriber.subscribe(redis_channel, self)
-
-            data['redis_channel'] = redis_channel
             celery_app.send_task('backend.celery.tasks.get_diff', kwargs=data)
+        else:
+            logging.error('Unrecognized action for message: ' + str(data))
 
 
 class NoChacheStaticFileHandler(StaticFileHandler):

@@ -47,8 +47,11 @@ function customInterpolation ($interpolate, $translateSanitization) {
   };
 
   $translateInterpolator.interpolate = function (string, interpolationParams) {
-    // "<user> foo <user title={{bar|baz}}>" -> "<user></user> foo <user title=\"{{bar|baz}}\"></user>"
-    string = string.replace(/(<([a-z\-]*)\s?[^>]*?>)/g, "$1</$2>").replace(/({{[\w|]+}})>/g, "\"$1\">");
+    /**
+     * Closes html tags in translation strings (but not for <a> tags) and adds quotation marks.
+     * For example: "<user> foo <user title={{bar|baz}}>" -> "<user></user> foo <user title=\"{{bar|baz}}\"></user>"
+     */
+    string = string.replace(/(<([a-z\-]{2,})\s?[^>]*?>)/g, "$1</$2>").replace(/({{[\w|]+}})>/g, "\"$1\">");
     interpolationParams = interpolationParams || {};
     interpolationParams = $translateSanitization.sanitize(interpolationParams, 'params');
 

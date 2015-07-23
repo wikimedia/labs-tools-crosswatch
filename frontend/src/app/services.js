@@ -6,13 +6,17 @@ angular
   .factory('debounce', debounceService)
 ;
 
-function authService (localStorageService, $rootScope, $log) {
-  $rootScope.$watch(function () { return localStorageService.cookie.get('user');}, function (newValue) {
-    if (newValue !== null) {
-      $log.info('Singed in as ' + newValue);
-      $rootScope.$emit('login', newValue);
+function authService (localStorageService) {
+  this.isLoggedIn = function () {
+    // check if cookie is from latest consumer version
+    var version = localStorageService.cookie.get('version');
+    if (version !== 1) {
+      localStorageService.cookie.clearAll();
+      return false;
     }
-  });
+
+    return (localStorageService.cookie.get('auth') !== null);
+  };
 
   this.tokens = function () {
     return angular.fromJson(localStorageService.cookie.get('auth').replace(/\\054/g, ','));
@@ -21,11 +25,6 @@ function authService (localStorageService, $rootScope, $log) {
   this.user = function () {
     return localStorageService.cookie.get('user');
   };
-
-  this.isloggedin = function () {
-    return (localStorageService.cookie.get('auth') !== null);
-  };
-
 }
 
 function dataService (socket, authService, localStorageService, $log, $filter, debounce, $q) {
@@ -125,6 +124,13 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
 
   var colors = ['pink', 'deep-purple', 'blue', 'cyan', 'green', 'lime', 'orange', 'brown', 'blue-grey'];
   var colorsIndex = 0;
+
+  /**
+   * Save user config to local storage
+   */
+  vm.saveConfig = function() {
+    localStorageService.set('config', vm.config);
+  };
 
   /**
    * Process an array of new watchlist entries.
@@ -229,17 +235,10 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
   };
 
   /**
-   * Save user config to local storage
-   */
-  vm.saveConfig = function() {
-    localStorageService.set('config', vm.config);
-  };
-
-  /**
    * If logged in, query watchlist.
    */
   vm.queryWatchlist = function () {
-    if (authService.isloggedin()) {
+    if (authService.isLoggedIn()) {
       var watchlistQuery = {
         action: 'watchlist',
         access_token: authService.tokens(),
@@ -261,7 +260,7 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
   };
 
   /**
-   * callbacks with associated request ids
+   * Callbacks with associated request ids
    */
   var callbacks = {};
   var requestId = 0;
@@ -270,35 +269,29 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
   };
 
   /**
-   * Get diff for a watchlist edit event
+   * Send requests to sockjs server, returns a promise
    */
-  vm.getDiff = function (event) {
-    var request = {
-      action: 'diff',
-      access_token: authService.tokens(),
-      request_id: vm.getRequestId(),
-      projecturl: event.projecturl,
-      old_revid: event.old_revid,
-      revid: event.revid,
-      pageid: event.pageid
-    };
+  vm.query = function (params) {
+    params.request_id = vm.getRequestId();
+    params.access_token = authService.tokens();
+
     var deferred = $q.defer();
-    callbacks[request.request_id] = deferred;
-    socket.send(angular.toJson(request));
+    callbacks[params.request_id] = deferred;
+    socket.send(angular.toJson(params));
     return deferred.promise.then(function(response) {
-      request.response = response;
+      params.response = response;
       return response;
     });
   };
 
   /**
-   * Handle diff response from sockjs
+   * Resolves query promises
    */
-  vm.diffResponseHandler = function (data) {
+  vm.responseHandler = function (data) {
     if (angular.isDefined(callbacks[data.request_id])) {
       var callback = callbacks[data.request_id];
       delete callbacks[data.request_id];
-      callback.resolve(data.diff);
+      callback.resolve(data.data);
     } else {
       $log.error("No callback for diff: %o", data);
     }

@@ -246,11 +246,36 @@ def get_diff(access_token=None, redis_channel=None, **kwargs):
 
     diff = mw.diff(pageid, old_revid, revid)
     mw.publish({
-        'msgtype': 'diff_response',
+        'msgtype': 'response',
         'request_id': request_id,
-        'diff': diff
+        'data': diff
     })
 
+
+@app.task
+def watch(**kwargs):
+    access_token = kwargs['access_token']
+    redis_channel = kwargs['redis_channel']
+    request_id = kwargs['request_id']
+    projecturl = kwargs['projecturl']
+    title = kwargs['title']
+    watchted = kwargs['status']
+
+    mw = MediaWiki(host=projecturl,
+                   access_token=access_token,
+                   redis_channel=redis_channel)
+
+    params = {'action': "watch"}
+    payload = {'titles': title}
+    if watchted:
+        payload['unwatch'] = ""
+    mw.post(params, payload, token_type='watch')
+
+    mw.publish({
+        'msgtype': 'response',
+        'request_id': request_id,
+        'data': not watchted
+    })
 
 if __name__ == '__main__':
     app.start()

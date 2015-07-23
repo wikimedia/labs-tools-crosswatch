@@ -1,43 +1,62 @@
-<div ng-if="ctrl.config.oneline" layout="row">
-  <div class="left">
-    <a stop-event href="{{::event.projecturl}}/wiki/Special:Watchlist" class="project"
-       title="{{::event.project}}" target="_blank">
-      <img height="16px" ng-src="{{::ctrl.icons[event.projectgroup]}}" alt="{{::event.projectgroup}}">
+<div layout="row" layout-align="space-between start">
+  <div ng-if="ctrl.config.oneline" layout="row">
+    <div class="left">
+      <a stop-event href="{{::event.projecturl}}/wiki/Special:Watchlist" class="project"
+         title="{{::event.project}}" target="_blank">
+        <img height="16px" ng-src="{{::ctrl.icons[event.projectgroup]}}" alt="{{::event.projectgroup}}">
       <span ng-if="::event.projectlang">
         <span ng-if="!ctrl.config.flagsenable || !ctrl.flagurl(event.projectlang)">{{::event.projectlangname}}</span>
         <img ng-if="ctrl.config.flagsenable && ctrl.flagurl(event.projectlang)" height="13px" style="margin-bottom: 2px"
              ng-src="{{::ctrl.flagurl(event.projectlang)}}">
       </span>
-    </a>
-  </div>
-  <div>
-    <watchlist-edit type="oneline" ng-if="::event.type === 'edit' || event.type === 'new'"></watchlist-edit>
+      </a>
+    </div>
+    <div>
+      <watchlist-edit type="oneline" ng-if="::event.type === 'edit' || event.type === 'new'"></watchlist-edit>
     <span ng-if="::event.type === 'log'">
       <span am-time-ago="event.timestamp"></span>
       <span class="mw-changeslist-separator">. .</span>
       <watchlist-logevent></watchlist-logevent>
     </span>
+    </div>
   </div>
-</div>
-<div ng-if="!ctrl.config.oneline" layout="row">
-  <div class="left">
-    <div am-time-ago="event.timestamp"></div>
-    <a stop-event href="{{::event.projecturl}}/wiki/Special:Watchlist" class="project"
-       title="{{::event.project}}" target="_blank">
-      <img height="16px" ng-src="{{::ctrl.icons[event.projectgroup]}}" alt="{{::event.projectgroup}}">
+  <div ng-if="!ctrl.config.oneline" layout="row">
+    <div class="left">
+      <div am-time-ago="event.timestamp"></div>
+      <a stop-event href="{{::event.projecturl}}/wiki/Special:Watchlist" class="project"
+         title="{{::event.project}}" target="_blank">
+        <img height="16px" ng-src="{{::ctrl.icons[event.projectgroup]}}" alt="{{::event.projectgroup}}">
       <span ng-if="::event.projectlang">
         <span ng-if="!ctrl.config.flagsenable || !ctrl.flagurl(event.projectlang)">{{::event.projectlangname}}</span>
         <img ng-if="ctrl.config.flagsenable && ctrl.flagurl(event.projectlang)" height="13px" style="margin-bottom: 2px"
              ng-src="{{::ctrl.flagurl(event.projectlang)}}">
       </span>
-    </a>
+      </a>
+    </div>
+    <div>
+      <watchlist-edit type="twolines" ng-if="::event.type === 'edit' || event.type === 'new'"></watchlist-edit>
+      <watchlist-logevent ng-if="::event.type === 'log'"></watchlist-logevent>
+    </div>
   </div>
-  <div>
-    <watchlist-edit type="twolines" ng-if="::event.type === 'edit' || event.type === 'new'"></watchlist-edit>
-    <watchlist-logevent ng-if="::event.type === 'log'"></watchlist-logevent>
+  <div stop-event layout="row" layout-align="end start" ng-if="event.showDiff && event.type === 'edit'">
+    <md-button class="md-icon-button" title="{{'EDIT' | translate}}"
+               href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&action=edit" target="_blank">
+      <md-icon md-font-library="material-icons">edit</md-icon>
+    </md-button>
+    <md-button class="md-icon-button" title="{{'UNDO' | translate}}"
+               href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&action=edit&undoafter={{::event.old_revid}}&undo={{::event.revid}}" target="_blank">
+      <md-icon md-font-library="material-icons">undo</md-icon>
+    </md-button>
+    <md-button class="md-icon-button" title="{{'WATCHLIST_REMOVE' | translate}}"
+               ng-hide="event.isUnwatched" ng-click="ctrl.watchPage(event, true)">
+      <md-icon md-font-library="material-icons">star</md-icon>
+    </md-button>
+    <md-button class="md-icon-button"  title="{{'WATCHLIST_ADD' | translate}}"
+               ng-show="event.isUnwatched" ng-click="ctrl.watchPage(event, false)">
+      <md-icon md-font-library="material-icons">star_border</md-icon>
+    </md-button>
   </div>
 </div>
-
 <table ng-if="event.showDiff && event.diff" class="diff diff-contentalign-left">
   <colgroup><col class="diff-marker">
     <col class="diff-content">
@@ -47,4 +66,3 @@
   <tbody ng-bind-html="::event.diff">
   </tbody>
 </table>
-

@@ -37,12 +37,16 @@
   "NS_11": "MediaWiki namespace name",
   "NS_12": "MediaWiki namespace name",
   "NS_13": "MediaWiki namespace name",
-  "NS_OTHER": "Other MediaWiki namespaces",
-  "HISTORY": "Link to page history",
-  "CONTRIBS": "Link to user contributions",
+  "NS_OTHER": "Option for unlisted namespace names",
+  "HISTORY": "Link to page history (short form)",
+  "CONTRIBS": "Link to user contributions (short form)",
   "ONELINE": "Checkbox to show a MediaWiki style layout",
   "NOTIFICATIONS": "Section title for list of Echo notifications",
   "MARKALLREAD": "Mark all notifications as read",
   "STYLE": "Section title for a list of options to change design settings",
-  "HIDEOWNEDITS": "Checkbox to hide own edits from the watchlist"
+  "HIDEOWNEDITS": "Checkbox to hide own edits from the watchlist",
+  "EDIT": "Tooltip for edit icon",
+  "UNDO": "Tooltip for undo icon",
+  "WATCHLIST_REMOVE": "Tooltip for icon",
+  "WATCHLIST_ADD": "Tooltip for icon"
 }

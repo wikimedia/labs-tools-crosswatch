@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-WSGI container for OAuth login/logout handling.
-"""
+"""WSGI container for OAuth login/logout handling."""
 # ISC License
 # Copyright (C) 2015 Jan Lebert
 from __future__ import absolute_import
@@ -19,7 +17,8 @@ mwoauth = MWOAuth(base_url='https://en.wikipedia.org/w',
                   clean_url='https://en.wikipedia.org/wiki',
                   consumer_key=oauth_consumer_key,
                   consumer_secret=oauth_consumer_secret,
-                  toolname=toolname)
+                  toolname=toolname,
+                  consumer_version="1.0")
 
 app.register_blueprint(mwoauth.bp,  url_prefix='/' + toolname)
 

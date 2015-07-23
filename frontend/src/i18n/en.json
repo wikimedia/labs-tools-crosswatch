@@ -73,5 +73,9 @@
   "NOTIFICATIONS": "Notifications",
   "MARKALLREAD": "mark all as read",
   "STYLE": "Style",
-  "HIDEOWNEDITS": "Hide my edits from the watchlist"
+  "HIDEOWNEDITS": "Hide my edits from the watchlist",
+  "EDIT": "Edit this page in new tab",
+  "UNDO": "Revert this edit, opens new tab with preview",
+  "WATCHLIST_REMOVE": "Remove this page from watchlist",
+  "WATCHLIST_ADD": "Add this page to watchlist"
 }

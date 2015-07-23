@@ -11,7 +11,7 @@ function runBlock (socket, $rootScope, dataService, $log, $timeout, $translate, 
    * Redirect if not logged in
    */
   $rootScope.$on('$routeChangeStart', function (event) {
-    if (!authService.isloggedin()) {
+    if (!authService.isLoggedIn()) {
       $location.path('/welcome');
     }
     else {
@@ -59,8 +59,8 @@ function runBlock (socket, $rootScope, dataService, $log, $timeout, $translate, 
       dataService.addWatchlistEntries(data.entires);
     } else if (data.msgtype === 'notification') {
       dataService.addNotificationEntries(data)
-    } else if (data.msgtype === 'diff_response') {
-      dataService.diffResponseHandler(data)
+    } else if (data.msgtype === 'response') {
+      dataService.responseHandler(data)
     } else if (data.msgtype === 'canary') {
       connectionError = false;
       // disable loading spinner after 20 sec (no watchlist entries for the time period)

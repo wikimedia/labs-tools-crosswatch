@@ -56,6 +56,8 @@ class SockConnection(SockJSConnection):
                                  kwargs=data, expires=60)
         elif data['action'] == 'diff':
             celery_app.send_task('backend.celery.tasks.get_diff', kwargs=data)
+        elif data['action'] == 'watch':
+            celery_app.send_task('backend.celery.tasks.watch', kwargs=data)
         else:
             logging.error('Unrecognized action for message: ' + str(data))
 

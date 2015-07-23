@@ -10,7 +10,6 @@
 
 __version__ = '0.1.35'
 
-import sys
 import urllib
 from flask import request, session, Blueprint, make_response, redirect, render_template
 from flask_oauth import OAuth, OAuthRemoteApp, OAuthException, parse_response
@@ -36,18 +35,20 @@ class MWOAuthRemoteApp(OAuthRemoteApp):
         return data
 
 
-class MWOAuth(object):  # http://stackoverflow.com/a/26691512
+class MWOAuth(object):
     def __init__(self,
                  base_url='https://www.mediawiki.org/w',
                  clean_url='https://www.mediawiki.org/wiki',
                  consumer_key=None,
                  consumer_secret=None,
-                 toolname='mytool'):
+                 toolname='crosswatch',
+                 consumer_version="1.0"):
         if not consumer_key or not consumer_secret:
             raise Exception('MWOAuthBlueprintFactory needs consumer key and\
                             secret')
         self.base_url = base_url
         self.toolname = toolname
+        self.consumer_version = consumer_version
 
         self.oauth = OAuth()
         self.mwoauth = MWOAuthRemoteApp(self.oauth, 'mw.org',
@@ -103,6 +104,9 @@ class MWOAuth(object):  # http://stackoverflow.com/a/26691512
             resp.set_cookie(self.toolname + '.user', username,
                             max_age=30*24*60*60,
                             path='/' + self.toolname + '/')
+            resp.set_cookie(self.toolname + '.version', consumer_version,
+                            max_age=30*24*60*60,
+                            path='/' + self.toolname + '/')
             session.clear()
 
             return resp
@@ -114,6 +118,8 @@ class MWOAuth(object):  # http://stackoverflow.com/a/26691512
             resp.set_cookie(self.toolname + '.auth', '',
                             path='/' + self.toolname + '/', expires=0)
             resp.set_cookie(self.toolname + '.user', '',
+                            path='/' + self.toolname + '/', expires=0)
+            resp.set_cookie(self.toolname + '.version', '',
                             path='/' + self.toolname + '/', expires=0)
             session.clear()
 

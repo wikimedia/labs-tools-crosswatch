@@ -17,9 +17,36 @@ angular.module('crosswatch')
       event.showDiff = !event.showDiff;
 
       if ((event.type === 'edit') && !event.diff) {
-        dataService.getDiff(event).then(function (diff) {
+        vm.getDiff(event).then(function (diff) {
           event.diff = diff;
         })
       }
+    };
+
+    vm.watchPage = function (event, currentStatus) {
+      var request = {
+        action: 'watch',
+        projecturl: event.projecturl,
+        status: currentStatus,
+        title: event.title
+      };
+      dataService.query(request).then(function (status) {
+        // only change icon status if server gives no errors
+        event.isUnwatched = !status;
+      })
+    };
+
+    /**
+     * Get diff for a watchlist edit event
+     */
+    vm.getDiff = function (event) {
+      var request = {
+        action: 'diff',
+        projecturl: event.projecturl,
+        old_revid: event.old_revid,
+        revid: event.revid,
+        pageid: event.pageid
+      };
+      return dataService.query(request);
     };
   });

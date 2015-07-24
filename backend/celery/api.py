@@ -38,7 +38,8 @@ class MediaWiki(object):
         self.redis = StrictRedis(
             host=config.redis_server,
             port=config.redis_port,
-            db=config.redis_db
+            db=config.redis_db,
+            decode_responses=True
         )
 
     def publish(self, message):

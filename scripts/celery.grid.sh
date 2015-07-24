@@ -1,4 +1,5 @@
 #!/bin/bash
-source $HOME/.virtualenvs/backend/bin/activate
+venv=$HOME/.virtualenvs/backend/bin
+source ${venv}/activate
 cd `dirname $0`
-celery -A backend worker -l info -n crosswatch$1.%n --concurrency=500 -P gevent
+${venv}/celery -A backend worker -l info -n crosswatch$1.%n --concurrency=500 -P gevent

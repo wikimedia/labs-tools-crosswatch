@@ -22,13 +22,16 @@ setup(
                       'requests-oauthlib',
                       'requests[security]',
                       'mwoauth',
-                      'MySQL-python',
-                      'flask-oauth',
+                      'mysqlclient',
+                      'flask-oauthlib',
+                      'flask',
                       'sockjs-tornado',
                       'tornado-redis',
                       'tornado',
                       'celery',
-                      'redis'
+                      'redis',
+                      'future',
+                      'six' # celery won't start without it in python3
                       ],
     dependency_links=[
         "git+https://gerrit.wikimedia.org/r/p/labs/tools/crosswatch.git@kombu#egg=kombu-3.0.26"  # NOQA

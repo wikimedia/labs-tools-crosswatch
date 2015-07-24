@@ -1,38 +1,17 @@
 #!/usr/bin/env python
 # MediaWiki OAuth connector for Flask
 #
-# Requires flask-oauth
+# Requires flask-oauthlib
 #
 # (C) 2013 Merlijn van Deen <valhallasw@arctus.nl>
 # (C) 2015 Jan Lebert
 # Licensed under the MIT License // http://opensource.org/licenses/MIT
 #
 
-__version__ = '0.1.35'
-
-import urllib
+from future.moves.urllib.parse import urlencode
 from flask import request, session, Blueprint, make_response, redirect, render_template
-from flask_oauth import OAuth, OAuthRemoteApp, OAuthException, parse_response
+from flask_oauthlib.client import OAuth, OAuthException
 import json
-
-
-class MWOAuthRemoteApp(OAuthRemoteApp):
-    def handle_oauth1_response(self):
-        """Handles an oauth1 authorization response.  The return value of
-        this method is forwarded as first argument to the handling view
-        function.
-        """
-        client = self.make_client()
-        resp, content = client.request('%s&oauth_verifier=%s' % (
-            self.expand_url(self.access_token_url),
-            request.args['oauth_verifier'],
-        ), self.access_token_method)
-        print resp, content
-        data = parse_response(resp, content)
-        if not self.status_okay(resp):
-            raise OAuthException('Invalid response from ' + self.name,
-                                 type='invalid_response', data=data)
-        return data
 
 
 class MWOAuth(object):
@@ -50,18 +29,22 @@ class MWOAuth(object):
         self.toolname = toolname
         self.consumer_version = consumer_version
 
+        request_url_params = {'title': 'Special:OAuth/initiate',
+                              'oauth_callback': 'oob'}
+        access_token_params = {'title': 'Special:OAuth/token'}
         self.oauth = OAuth()
-        self.mwoauth = MWOAuthRemoteApp(self.oauth, 'mw.org',
-            base_url = base_url + "/index.php",
-            request_token_url=base_url + "/index.php",
-            request_token_params = {'title': 'Special:OAuth/initiate',
-                                    'oauth_callback': 'oob'},
-            access_token_url=base_url + "/index.php?title=Special:OAuth/token",
+        self.mwoauth = self.oauth.remote_app(
+            'mw.org',
+            base_url=base_url + "/index.php",
+            request_token_url=base_url + "/index.php?" +
+                              urlencode(request_url_params),
+            request_token_params=None,
+            access_token_url=base_url + "/index.php?" +
+                             urlencode(access_token_params),
             authorize_url=clean_url + '/Special:OAuth/authorize',
             consumer_key=consumer_key,
             consumer_secret=consumer_secret,
         )
-        self.oauth.remote_apps['mw.org'] = self.mwoauth
 
         @self.mwoauth.tokengetter
         def get_mwo_token(token=None):
@@ -71,19 +54,18 @@ class MWOAuth(object):
 
         @self.bp.route('/login')
         def login():
-            redirector = self.mwoauth.authorize()
+            uri_params = {'oauth_consumer_key': self.mwoauth.consumer_key}
+            redirector = self.mwoauth.authorize(**uri_params)
 
             if 'next' in request.args:
                 oauth_token = session[self.mwoauth.name + '_oauthtok'][0]
                 session[oauth_token + '_target'] = request.args['next']
 
-            redirector.headers['Location'] += "&oauth_consumer_key=" +\
-                self.mwoauth.consumer_key
             return redirector
 
         @self.bp.route('/oauth-callback')
-        @self.mwoauth.authorized_handler
-        def oauth_authorized(resp):
+        def oauth_authorized():
+            resp = self.mwoauth.authorized_response()
             if resp is None:
                 return 'You denied the request to sign in.'
             session['mwo_token'] = (
@@ -134,7 +116,7 @@ class MWOAuth(object):
         url = url or self.base_url
 
         return self.mwoauth.post(url + "/api.php?" +
-                                 urllib.urlencode(api_query),
+                                 urlencode(api_query),
                                  content_type="text/plain").data
 
     def get_current_user(self, cached=True):

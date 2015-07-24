@@ -4,6 +4,7 @@
 # Copyright (C) 2015 Jan Lebert
 from __future__ import absolute_import
 from __future__ import unicode_literals
+from builtins import range
 
 from uuid import uuid4
 from contextlib import closing
@@ -16,7 +17,7 @@ from .api import MediaWiki
 
 def chunks(l, n):
     """Yield successive n-sized chunks from l."""
-    for i in xrange(0, len(l), n):
+    for i in range(0, len(l), n):
         yield l[i:i+n]
 
 
@@ -49,7 +50,8 @@ def initial_task(**kwargs):
     db = MySQLdb.connect(
         host='centralauth.labsdb',
         user=config.sql_user,
-        passwd=config.sql_passwd
+        passwd=config.sql_passwd,
+        charset='utf8'
     )
 
     projects = []
@@ -57,7 +59,7 @@ def initial_task(**kwargs):
         cur.execute("SELECT lu_wiki FROM centralauth_p.localuser WHERE lu_name=%s;", [username])  # NOQA
         result = cur.fetchall()
         for row in result:
-            project = row[0]
+            project = row[0].decode("utf-8")
             try:
                 wiki = wikis[project]
                 if 'closed' not in wiki and project not in preload_projects:
@@ -84,7 +86,8 @@ def check_editcount(project_chunk, username, **kwargs):
     db = MySQLdb.connect(
         host='s4.labsdb',
         user=config.sql_user,
-        passwd=config.sql_passwd
+        passwd=config.sql_passwd,
+        charset='utf8'
     )
     with closing(db.cursor()) as cur:
         for wiki in project_chunk:
@@ -221,7 +224,7 @@ def notifications_mark_read(**kwargs):
     mw = MediaWiki(access_token=access_token, redis_channel=redis_channel)
     wikis = mw.wikis()
 
-    for project, notifications in notifications.iteritems():
+    for project, notifications in notifications.items():
         projecturl = wikis[project]['url']
         mw = MediaWiki(host=projecturl, access_token=access_token,
                        redis_channel=redis_channel)

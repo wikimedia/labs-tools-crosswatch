@@ -4,7 +4,7 @@
     <span ng-switch-when="delete" translate="LOGEVENT_DELETE_DELETE" translate-values="event" translate-interpolation="custom" translate-compile></span>
     <span ng-switch-when="restore" translate="LOGEVENT_DELETE_RESTORE" translate-values="event" translate-interpolation="custom" translate-compile></span>
     <span ng-switch-when="revision" translate="LOGEVENT_DELETE_REVISION" translate-values="event" translate-interpolation="custom" translate-compile></span>
-    <span ng-switch-default>{{event}}</span> <!-- debug fallback -->
+    <span ng-switch-default><code>{{event}}</code></span> <!-- debug fallback -->
   </span>
 </span>
 <span ng-switch-when="protect">
@@ -13,7 +13,7 @@
     <span ng-switch-when="move_prot" translate="LOGEVENT_PROTECT_MOVE" translate-values="event" translate-interpolation="custom" translate-compile></span>
     <span ng-switch-when="protect" translate="LOGEVENT_PROTECT_PROTECT" translate-values="event" translate-interpolation="custom" translate-compile></span>
     <span ng-switch-when="unprotect" translate="LOGEVENT_PROTECT_UNPROTECT" translate-values="event" translate-interpolation="custom" translate-compile></span>
-    <span ng-switch-default>{{event}}</span> <!-- debug fallback -->
+    <span ng-switch-default><code>{{event}}</code></span> <!-- debug fallback -->
   </span>
 </span>
 <span ng-switch-when="move">
@@ -24,15 +24,15 @@
     <span ng-switch-when="block" translate="LOGEVENT_BLOCK_BLOCK" translate-values="event" translate-interpolation="custom" translate-compile></span>
     <span ng-switch-when="reblock" translate="LOGEVENT_BLOCK_REBLOCK" translate-values="event" translate-interpolation="custom" translate-compile></span>
     <span ng-switch-when="unblock" translate="LOGEVENT_BLOCK_UNBLOCK" translate-values="event" translate-interpolation="custom" translate-compile></span>
-    <span ng-switch-default>{{event}}</span> <!-- debug fallback -->
+    <span ng-switch-default><code>{{event}}</code></span> <!-- debug fallback -->
   </span>
 </span>
 <span ng-switch-when="rights">
   <span ng-switch="::event.logaction">
     <span ng-switch-when="autopromote" translate="LOGEVENT_RIGHTS_AUTOPROMOTE" translate-values="event" translate-interpolation="custom" translate-compile></span>
-    <span ng-switch-when="erevoke">{{::event}} <!-- TODO, seems to be unused by WMF --></span>
+    <span ng-switch-when="erevoke"><code>{{event}}</code> <!-- TODO, seems to be unused by WMF --></span>
     <span ng-switch-when="rights" translate="LOGEVENT_RIGHTS_RIGHTS" translate-values="event" translate-interpolation="custom" translate-compile></span>
-    <span ng-switch-default>{{event}}</span> <!-- debug fallback -->
+    <span ng-switch-default><code>{{event}}</code></span> <!-- debug fallback -->
   </span>
 </span>
 <span ng-switch-when="upload">
@@ -40,14 +40,14 @@
     <span ng-switch-when="overwrite" translate="LOGEVENT_UPLOAD_OVERWRITE" translate-values="event" translate-interpolation="custom" translate-compile></span>
     <span ng-switch-when="revert" translate="LOGEVENT_UPLOAD_REVERT" translate-values="event" translate-interpolation="custom" translate-compile></span>
     <span ng-switch-when="upload" translate="LOGEVENT_UPLOAD_UPLOAD" translate-values="event" translate-interpolation="custom" translate-compile></span>
-    <span ng-switch-default>{{event}}</span> <!-- debug fallback -->
+    <span ng-switch-default><code>{{event}}</code></span> <!-- debug fallback -->
   </span>
 </span>
 <span ng-switch-when="import">
   <span ng-switch="::event.logaction">
     <span ng-switch-when="interwiki" translate="LOGEVENT_IMPORT_INTERWIKI" translate-values="event" translate-interpolation="custom" translate-compile></span>
     <span ng-switch-when="upload" translate="LOGEVENT_IMPORT_UPLOAD" translate-values="event" translate-interpolation="custom" translate-compile></span>
-    <span ng-switch-default>{{event}}</span> <!-- debug fallback -->
+    <span ng-switch-default><code>{{event}}</code></span> <!-- debug fallback -->
   </span>
 </span>
 <span ng-switch-when="merge">
@@ -58,11 +58,20 @@
     <span ng-switch-when="create" translate="LOGEVENT_NEWUSERS_CREATE" translate-values="event" translate-interpolation="custom" translate-compile></span>
     <span ng-switch-when="create2" translate="LOGEVENT_NEWUSERS_CREATE2" translate-values="event" translate-interpolation="custom" translate-compile></span>
     <span ng-switch-when="byemail" translate="LOGEVENT_NEWUSERS_BYEMAIL" translate-values="event" translate-interpolation="custom" translate-compile></span>
-    <span ng-switch-default>{{event}}</span> <!-- debug fallback -->
+    <span ng-switch-default><code>{{event}}</code></span> <!-- debug fallback -->
   </span>
 </span>
 <span ng-switch-when="renameuser">
   <span translate="LOGEVENT_RENAMEUSER" translate-values="event" translate-interpolation="custom" translate-compile></span>
 </span>
+<span ng-switch-when="pagetranslation">
+  <span ng-switch="::event.logaction">
+    <span ng-switch-when="mark" translate="LOGEVENT_TRANSLATION_MARK" translate-values="event" translate-interpolation="custom" translate-compile></span>
+    <span ng-switch-when="associate" translate="LOGEVENT_TRANSLATION_ASSOCIATE" translate-values="event" translate-interpolation="custom" translate-compile></span>
+    <span ng-switch-when="dissociate" translate="LOGEVENT_TRANSLATION_DISSOCIATE" translate-values="event" translate-interpolation="custom" translate-compile></span>
+    <span ng-switch-default><code>{{event}}</code></span> <!-- debug fallback -->
+  </span>
+</span>
+<span ng-switch-default><code>{{event}}</code></span> <!-- debug fallback -->
 </span>
 <span ng-if="::event.parsedcomment" class="comment">(<comment></comment>)</span>

@@ -27,6 +27,7 @@ def canary(redis_channel=None, **kwargs):
     mw = MediaWiki(redis_channel=redis_channel)
     mw.publish({'msgtype': "canary"})
 
+
 @app.task
 def initial_task(**kwargs):
     """
@@ -38,13 +39,13 @@ def initial_task(**kwargs):
     redis_channel = kwargs.get('redis_channel', None)
 
     mw = MediaWiki(access_token=access_token, redis_channel=redis_channel)
-    username = mw.username()
+    username = mw.user_info().name
     wikis = mw.wikis()
 
     # Use cache of known projects to bypass sometimes blocking mysql check
     for project in preload_projects:
         wiki = wikis[project]
-        watchlistgetter.delay(wiki=wiki, **kwargs)
+        watchlistgetter.delay(wiki=wiki, username=username, **kwargs)
         notificationgetter.delay(wiki=wiki, **kwargs)
 
     db = MySQLdb.connect(
@@ -96,7 +97,7 @@ def check_editcount(project_chunk, username, **kwargs):
             result = cur.fetchone()
 
             if result and int(result[0]) >= 1:
-                watchlistgetter.delay(wiki=wiki, **kwargs)
+                watchlistgetter.delay(wiki=wiki, username=username, **kwargs)
                 notificationgetter.delay(wiki=wiki, **kwargs)
 
     db.close()
@@ -166,6 +167,9 @@ def watchlistgetter(**kwargs):
         if not items:
             return
         mw.publish(message)
+
+        if wiki.get('flaggedrevs', False):
+            flagged_revs.delay(params, items, **kwargs)
 
         if mw.ores_context_exists(wiki['dbname']):
             ores.delay(items, **kwargs)
@@ -330,6 +334,51 @@ def _ores_diff(edit, probablity, **kwargs):
         'diff': diff,
         'oresProbability': probablity
     })
+
+
+@app.task
+def flagged_revs(watchlist_params, items, **kwargs):
+    wiki = kwargs['wiki']
+    access_token = kwargs['access_token']
+    redis_channel = kwargs['redis_channel']
+    username = kwargs['username']
+
+    mw = MediaWiki(host=wiki['url'],
+                   access_token=access_token,
+                   redis_channel=redis_channel)
+
+    if 'review' not in mw.user_rights(username):
+        return
+
+    params = {
+        'prop': "flagged",
+        'generator': "watchlist"
+    }
+    for key in watchlist_params:
+        if key.startswith('wl'):
+            params['g' + key] = watchlist_params[key]
+
+    unstable = {}
+    for response in mw.query_gen(params):
+        for pageid, item in response['pages'].items():
+            flagged = item.get('flagged', {})
+            if 'pending_since' in flagged:
+                unstable[int(pageid)] = flagged['stable_revid']
+    if not unstable:
+        return
+
+    for pageid, stable_revid in unstable.items():
+        for item in items:
+            if item['type'] == 'edit' and pageid == item['pageid'] and \
+                            stable_revid < item['revid']:
+                diff = mw.diff(pageid, item['old_revid'], item['revid'])
+                mw.publish({
+                    'msgtype': "flaggedrevs",
+                    'id': item['id'],
+                    'diff': diff,
+                    'stableRevid': stable_revid
+                })
+
 
 if __name__ == '__main__':
     app.start()

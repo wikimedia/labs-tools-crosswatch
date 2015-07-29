@@ -1,5 +1,5 @@
 <div ng-controller="SettingsCtrl as ctrl" layout="row" layout-align="center start">
-  <md-whitefram class="md-whiteframe-z5" ng-class="(ctrl.config.oneline) ? 'whitebox-oneline' : 'whitebox'"
+  <md-whiteframe class="md-whiteframe-z5" ng-class="(ctrl.config.oneline) ? 'whitebox-oneline' : 'whitebox'"
                 id="settings">
     <md-tabs md-dynamic-height md-border-bottom>
       <md-tab label="{{'FILTER' | translate}}">
@@ -60,7 +60,7 @@
       </md-tab>
       <md-tab label="{{'PREFERENCES' | translate}}">
         <div layout="row">
-          <div flex="40">
+          <div flex="50">
             <md-list layout="column" class="md-padding">
               <md-item id="timeperiod">
                 <md-select ng-model="ctrl.config.watchlistperiod" placeholder="Timeperiod"
@@ -80,6 +80,10 @@
                 <p translate="ONELINE"></p>
                 <md-checkbox ng-model="ctrl.config.oneline" ng-change="ctrl.saveConfig()"></md-checkbox>
               </md-list-item>
+            </md-list>
+          </div>
+          <div flex="50">
+            <md-list layout="column" class="md-padding">
               <md-list-item>
                 <p translate="FLAGS"></p>
                 <md-checkbox ng-model="ctrl.config.flagsenable" ng-change="ctrl.saveConfig()"></md-checkbox>
@@ -88,10 +92,14 @@
                 <p translate="ORES_OPTION"></p>
                 <md-checkbox ng-model="ctrl.config.oresDiff" ng-change="ctrl.resetWatchlist()"></md-checkbox>
               </md-list-item>
+              <md-list-item title="{{'FLAGGEDREVS_TOOLTIP' | translate}}">
+                <p translate="FLAGGEDREVS_OPTION"></p>
+                <md-checkbox ng-model="ctrl.config.flaggedrevsDiff" ng-change="ctrl.resetWatchlist()"></md-checkbox>
+              </md-list-item>
             </md-list>
           </div>
         </div>
       </md-tab>
     </md-tabs>
-  </md-whitefram>
+  </md-whiteframe>
 </div>

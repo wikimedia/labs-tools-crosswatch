@@ -63,6 +63,8 @@ function runBlock (socket, $rootScope, dataService, $log, $timeout, $translate, 
       dataService.responseHandler(data)
     } else if (data.msgtype === 'ores_scores') {
       dataService.oresScoresHandler(data)
+    } else if (data.msgtype === 'flaggedrevs') {
+      dataService.flaggedrevsHandler(data)
     } else if (data.msgtype === 'canary') {
       connectionError = false;
       // disable loading spinner after 20 sec (no watchlist entries for the time period)

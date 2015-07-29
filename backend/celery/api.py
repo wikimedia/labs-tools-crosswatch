@@ -4,6 +4,7 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
+from collections import namedtuple
 import requests
 from requests_oauthlib import OAuth1
 from redis import StrictRedis
@@ -83,7 +84,9 @@ class MediaWiki(object):
     def query(self, params):
         params['format'] = "json"
         response = requests.get(self.api_url, params=params, auth=self.auth,
-                                headers=self.headers).json()
+                                headers=self.headers)
+        response.raise_for_status()
+        response = response.json()
 
         self._handle_response(response)
         return response
@@ -121,14 +124,32 @@ class MediaWiki(object):
         token = r['query']['tokens'][type + 'token']
         return token
 
-    def username(self):
+    def user_info(self):
         params = {
             'action': "query",
             'meta': "userinfo",
+            'uiprop': "rights"
         }
         response = self.query(params)
-        username = response['query']['userinfo']['name']
-        return username
+        response = response['query']['userinfo']
+        User = namedtuple('user', ['name', 'rights'])
+        user = User(response['name'], response['rights'])
+        return user
+
+    def user_rights(self, username):
+        """
+        User rights for a given username
+        :param username:
+        :return: list of rights
+        """
+        params = {
+            'action': "query",
+            'list': "users",
+            'usprop': "rights",
+            'ususers': username
+        }
+        response = self.query(params)
+        return response['query']['users'][0]['rights']
 
     def diff(self, pageid, old_revid, new_revid):
         params = {
@@ -161,6 +182,8 @@ class MediaWiki(object):
         params = {'action': "sitematrix"}
         data = self.query(params)
 
+        flaggedrevs_wikis = self._flaggedrevs_wikis()
+
         wikis = {}
         for key, val in data['sitematrix'].items():
             if key == 'count':
@@ -169,10 +192,14 @@ class MediaWiki(object):
             if 'code' in val:
                 for site in val['site']:
                     wiki = self._create_wiki(site, val['code'], val['name'])
+                    if site['dbname'] in flaggedrevs_wikis:
+                        wiki['flaggedrevs'] = True
                     wikis[site['dbname']] = wiki
             else:
                 for site in val:
                     wiki = self._create_wiki(site, '', '')
+                    if site['dbname'] in flaggedrevs_wikis:
+                        wiki['flaggedrevs'] = True
                     wikis[site['dbname']] = wiki
         return wikis
 
@@ -191,6 +218,13 @@ class MediaWiki(object):
         if any([key in site for key in inactive_wikis]):
             wiki['closed'] = True
         return wiki
+
+    def _flaggedrevs_wikis(self):
+        url = "https://noc.wikimedia.org/conf/flaggedrevs.dblist"
+        response = requests.get(url, headers=self.headers)
+        response.raise_for_status()
+
+        return response.text.splitlines()
 
     def ores_context_exists(self, dbname, model='reverted', cached=True):
         """Checks if ORES context for a wiki exists"""

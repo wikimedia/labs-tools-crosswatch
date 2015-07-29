@@ -56,6 +56,10 @@
                  ng-show="event.isUnwatched" ng-click="ctrl.watchPage(event, false)">
         <md-icon md-font-library="material-icons">star_border</md-icon>
       </md-button>
+      <md-button ng-if="event.stableRevid" class="md-raised md-accent"
+                 href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&oldid={{::event.stableRevid}}&diff=cur" target="_blank">
+        {{'PENDING_EDITS' | translate}}
+      </md-button>
     </div>
     <div>
       <small ng-if="event.oresProbability" class="ores text-muted"

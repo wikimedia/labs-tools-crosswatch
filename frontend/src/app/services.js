@@ -102,7 +102,11 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
     /**
      * Automatically show diff for ORES predicted reverts
      */
-    oresDiff: true
+    oresDiff: true,
+    /**
+     * Automatically show diff, if edit is unreviewed and user has review right
+     */
+    flaggedrevsDiff: true
   };
   // Get config from localstorage or create from defaultconfig
   if (localStorageService.get('config') !== null) {
@@ -315,6 +319,12 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
     vm.watchlist.dict[data.id].diff = data.diff;
     vm.watchlist.dict[data.id].showDiff = vm.config.oresDiff;
     vm.watchlist.dict[data.id].oresProbability = data.oresProbability;
+  };
+
+  vm.flaggedrevsHandler = function (data) {
+    vm.watchlist.dict[data.id].diff = data.diff;
+    vm.watchlist.dict[data.id].showDiff = vm.config.flaggedrevsDiff;
+    vm.watchlist.dict[data.id].stableRevid = data.stableRevid;
   };
 
   /**

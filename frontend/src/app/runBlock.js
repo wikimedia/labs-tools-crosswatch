@@ -32,20 +32,12 @@ function runBlock (socket, $rootScope, dataService, $log, $timeout, $translate, 
   amMoment.changeLocale(lang);
 
   /**
-   * Query watchlist on login.
-   * Not part of authService to prevent circular dependency.
-   */
-  $rootScope.$on('login', function () {
-    dataService.queryWatchlist();
-    $timeout(errorHandler, 10000); // show error if no response after 10 secs
-  });
-
-  /**
    * If logged in before sockjs connected, query watchlist again.
    */
   socket.setHandler('open', function () {
     $log.info('sockjs connected');
     dataService.queryWatchlist();
+    $timeout(errorHandler, 15000); // show error if no response after 15 secs
   });
 
   /**

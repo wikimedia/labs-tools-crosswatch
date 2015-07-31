@@ -119,6 +119,10 @@ a.md-button {
   color:#777
 }
 
+.nouppercase {
+  text-transform: none;
+}
+
 .whitebox {
   background-color: white;
   width: 100%;

@@ -4,19 +4,19 @@
              ng-change="ctrl.changeLanguage(ctrl.selectedLang)">
     <md-option ng-repeat="lang in ctrl.langs" value="{{lang.key}}">{{lang.language}}</md-option>
   </md-select>
-  <md-button href="https://meta.wikimedia.org/wiki/Crosswatch" target="_blank" class="md-flat">
-    {{'DOCUMENTATION' | translate}}
-  </md-button>
-  <md-button href="https://meta.wikimedia.org/wiki/Talk:Crosswatch" target="_blank" class="md-flat">
+  <md-button href="https://meta.wikimedia.org/wiki/Talk:Crosswatch" target="_blank" class="md-flat nouppercase">
     {{'TALK' | translate}}
   </md-button>
-  <md-button href="https://phabricator.wikimedia.org/project/view/1224/" target="_blank" class="md-flat">
+  <md-button href="https://meta.wikimedia.org/wiki/Crosswatch" target="_blank" class="md-flat nouppercase">
+    {{'DOCUMENTATION' | translate}}
+  </md-button>
+  <md-button href="https://phabricator.wikimedia.org/project/view/1224/" target="_blank" class="md-flat nouppercase">
     {{'REPORT_BUGS' | translate}}
   </md-button>
-  <md-button href="login" target="_self" class="md-flat" ng-hide="ctrl.loggedin">
+  <md-button href="login" target="_self" class="md-flat nouppercase" ng-hide="ctrl.loggedin">
     {{'SIGN_IN' | translate}}
   </md-button>
-  <md-button href="logout" target="_self" class="md-flat" ng-show="ctrl.loggedin">
+  <md-button href="logout" target="_self" class="md-flat nouppercase" ng-show="ctrl.loggedin">
     {{'SIGN_OUT' | translate}}
   </md-button>
 </md-toolbar>

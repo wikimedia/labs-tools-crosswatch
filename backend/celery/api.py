@@ -262,7 +262,10 @@ class MediaWiki(object):
         params = {'revids': revids}
 
         response = requests.get(url, params=params, headers=self.headers)
-        response.raise_for_status()
+
+        if response.status_code != requests.codes.ok:
+            Exception('ORES error code {} for {} with params {}'.format(
+                response.status_code, dbname, str(params)), response.text)
 
         return response.json()
 

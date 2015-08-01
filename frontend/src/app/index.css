@@ -145,14 +145,6 @@ md-list-item.watchlist {
   padding-left: 12px;
 }
 
-md-list-item.watchlist:first-child {
-  padding-top: 8px;
-}
-
-md-list-item.watchlist:last-child {
-  padding-bottom: 8px;
-}
-
 .watchlist:last-child md-divider,
 .notifications:last-child md-divider
 {
@@ -166,6 +158,12 @@ md-list-item.watchlist:last-child {
 watchlist-entry {
   overflow: hidden;
   width: 100%;
+  margin: 4px 0;
+}
+
+md-list-item.watchlist:first-child watchlist-entry {
+  margin-top: 6px;
+  margin-bottom: 4px;
 }
 
 watchlist-entry a,

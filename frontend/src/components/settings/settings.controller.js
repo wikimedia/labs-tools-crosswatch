@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('crosswatch')
-  .controller('SettingsCtrl', function ($translate, $log, dataService, $rootScope) {
+  .controller('SettingsCtrl', function ($translate, $log, dataService, $rootScope, debounce) {
     var vm = this;
     vm.config = dataService.config;
     vm.saveConfig = function () {
@@ -9,18 +9,20 @@ angular.module('crosswatch')
       dataService.filterWatchlist();
     };
 
-    updatePeriodList();
-    updateNamespaceList();
+    vm.namespacesList = [];
+    vm.periodList = [];
+    debounce(updatePeriodList, 50)();
+    debounce(updateNamespaceList, 50)();
     $rootScope.$on('$translateChangeSuccess', function () {
-      updatePeriodList();
-      updateNamespaceList();
+      debounce(updatePeriodList, 50)();
+      debounce(updateNamespaceList, 50)();
     });
 
     function updatePeriodList () {
       var hours = [0.5, 1, 1.5];
       var days = [2, 3, 7, 14, 21, 30];
 
-      vm.periodList = [];
+      vm.periodList.length = 0;
       var addItem = function (value) {
         return function (label) {
           vm.periodList.push({value: value, label: label})
@@ -41,11 +43,11 @@ angular.module('crosswatch')
         translateStrings.push("NS_" + list[i]);
       }
       $translate(translateStrings).then(function (translations) {
-        vm.namespacesList = [];
+        vm.namespacesList.length = 0;
         for (var i=0; i<list.length; i++) {
           vm.namespacesList.push({value: list[i], label: translations[translateStrings[i]]});
         }
-      })
+      });
     }
 
     vm.resetWatchlist = function () {

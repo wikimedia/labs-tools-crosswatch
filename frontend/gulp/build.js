@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var jsonAngularTranslate = require('./translate');
 
 var paths = gulp.paths;
+var i18nHash;
 
 var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
@@ -16,8 +17,23 @@ gulp.task('base', ['html'], function() {
     .pipe($.size());
 });
 
-gulp.task('i18n', function () {
+gulp.task('i18n-hash', function () {
   return gulp.src('src/i18n/*.json')
+    .pipe($.concat('i18n'))
+    .pipe($.rev())
+    .pipe($.util.buffer(function(err, files) {
+      i18nHash = '-' + files[0].revHash;
+    }));
+});
+
+gulp.task('i18n', ['i18n-hash'], function () {
+  if(typeof i18nHash === 'undefined') {
+    throw 'i18nHash is undefined';
+  }
+  return gulp.src('src/i18n/*.json')
+    .pipe($.rename(function (path) {
+      path.basename += i18nHash;
+    }))
     .pipe($.jsonlint())
     .pipe($.jsonlint.reporter())
     .pipe(gulp.dest(paths.dist + '/i18n'))
@@ -48,7 +64,11 @@ gulp.task('partials', function () {
     .pipe(gulp.dest(paths.tmp + '/partials/'));
 });
 
-gulp.task('html', ['inject', 'partials'], function () {
+gulp.task('html', ['inject', 'partials', 'i18n-hash'], function () {
+  if(typeof i18nHash === 'undefined') {
+    throw 'i18nHash is undefined';
+  }
+
   var partialsInjectFile = gulp.src(paths.tmp + '/partials/templateCacheHtml.js', { read: false });
   var partialsInjectOptions = {
     starttag: '<!-- inject:partials -->',
@@ -58,6 +78,7 @@ gulp.task('html', ['inject', 'partials'], function () {
 
   var htmlFilter = $.filter('*.html');
   var jsFilter = $.filter('**/*.js');
+  var appFilter = $.filter('**/app-*.js');
   var cssFilter = $.filter('**/*.css');
   var assets;
 
@@ -65,6 +86,9 @@ gulp.task('html', ['inject', 'partials'], function () {
     .pipe($.inject(partialsInjectFile, partialsInjectOptions))
     .pipe(assets = $.useref.assets())
     .pipe($.rev())
+    .pipe(appFilter)
+    .pipe($.replace('/* gulp:replace */ ""; /* gulp:replace */', '"' + i18nHash + '";'))
+    .pipe(appFilter.restore())
     .pipe(jsFilter)
     .pipe($.ngAnnotate())
     .pipe($.uglify({preserveComments: $.uglifySaveLicense}))

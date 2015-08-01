@@ -15,13 +15,14 @@ angular
       }
     }
 
+    var suffix = /* gulp:replace */ ""; /* gulp:replace */
     $translateProvider
       .useSanitizeValueStrategy('sanitizeParameters')
       .useStorage('translateStorage')
       .addInterpolation('customInterpolation')
       .useStaticFilesLoader({
         prefix: 'i18n/',
-        suffix: '.json'
+        suffix: suffix + '.json'
       })
       .registerAvailableLanguageKeys(availableLangs, mappings)
       .determinePreferredLanguage()

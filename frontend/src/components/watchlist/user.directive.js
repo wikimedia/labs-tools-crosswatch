@@ -20,5 +20,8 @@ function user() {
     } else {
       scope.user = scope.event.user;
     }
+
+    var split = scope.user.split(':');
+    scope.user = split[split.length - 1]
   }
 }

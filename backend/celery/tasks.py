@@ -131,7 +131,7 @@ def watchlistgetter(**kwargs):
         'wllimit': 500,
         'wlend': mw.timestamp(daysdelta=-days),
         'wlprop': "ids|flags|title|parsedcomment|userid|user|timestamp|" +
-        "sizes|notificationtimestamp|loginfo"
+                  "sizes|notificationtimestamp|loginfo"
     }
 
     if allrev:
@@ -193,7 +193,7 @@ def notificationgetter(**kwargs):
         'notalertunreadfirst': "",
         'notmessagecontinue': "",
         'notlimit': 15
-        }
+    }
     response = mw.query(params)
 
     result = response['query']['notifications']['list']
@@ -308,6 +308,10 @@ def ores(items, **kwargs):
 
     response = mw.ores_scores(wiki['dbname'], edits.keys())
     for revid, value in response.items():
+        if 'error' in value:
+            logger.warning('ORES error {} for revid {}, response: {}'.format(
+                value['error']['message'], revid, value))
+            continue
         if value['probability']['true'] >= 0.8:
             revid = int(revid)
             probablity = "{:.0%}".format(value['probability']['true'])

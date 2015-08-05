@@ -54,5 +54,7 @@
   "ORES_PROBABILITY": "Probability (e.g. 87%), that the edit will be reverted. See also [[:meta:ORES]].",
   "PENDING_EDITS": "Button to review pending changes (for [[:mw:Help:Extension:FlaggedRevs|Extension:FlaggedRevs]])",
   "FLAGGEDREVS_OPTION": "Checkbox to enable the option, pending changes are edits needing review (for [[:mw:Help:Extension:FlaggedRevs|Extension:FlaggedRevs]])",
-  "FLAGGEDREVS_TOOLTIP": "Tooltop for \"FLAGGEDREVS_OPTION\""
+  "FLAGGEDREVS_TOOLTIP": "Tooltip for \"FLAGGEDREVS_OPTION\"",
+  "SHOW_DIFF": "Tooltip for button to show diff preview",
+  "COLLAPSE": "Tooltip for button to collapse the expanded view"
 }

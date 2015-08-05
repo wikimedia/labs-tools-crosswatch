@@ -38,36 +38,46 @@
       <watchlist-logevent ng-if="::event.type === 'log'"></watchlist-logevent>
     </div>
   </div>
-  <div layout="column" layout-align="start end" ng-if="event.showDiff && event.type === 'edit'">
+  <div layout="column" layout-align="start end">
     <div stop-event layout="row" layout-align="end start">
-      <md-button class="md-icon-button" title="{{'EDIT' | translate}}"
-                 href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&action=edit" target="_blank">
-        <md-icon md-font-library="material-icons">edit</md-icon>
-      </md-button>
-      <md-button class="md-icon-button" title="{{'UNDO' | translate}}"
-                 href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&action=edit&undoafter={{::event.old_revid}}&undo={{::event.revid}}" target="_blank">
-        <md-icon md-font-library="material-icons">undo</md-icon>
-      </md-button>
-      <md-button class="md-icon-button" title="{{'WATCHLIST_REMOVE' | translate}}"
-                 ng-hide="event.isUnwatched" ng-click="ctrl.watchPage(event, true)">
-        <md-icon md-font-library="material-icons">star</md-icon>
-      </md-button>
-      <md-button class="md-icon-button"  title="{{'WATCHLIST_ADD' | translate}}"
-                 ng-show="event.isUnwatched" ng-click="ctrl.watchPage(event, false)">
-        <md-icon md-font-library="material-icons">star_border</md-icon>
-      </md-button>
-      <md-button ng-if="event.stableRevid" class="md-raised md-accent"
-                 href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&oldid={{::event.stableRevid}}&diff=cur" target="_blank">
-        {{'PENDING_EDITS' | translate}}
+      <div stop-event layout="row" layout-align="end start" ng-if="event.showDiff && event.type === 'edit'">
+        <md-button class="md-icon-button" title="{{'EDIT' | translate}}"
+                   href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&action=edit" target="_blank">
+          <md-icon md-font-library="material-icons">edit</md-icon>
+        </md-button>
+        <md-button class="md-icon-button" title="{{'UNDO' | translate}}"
+                   href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&action=edit&undoafter={{::event.old_revid}}&undo={{::event.revid}}" target="_blank">
+          <md-icon md-font-library="material-icons">undo</md-icon>
+        </md-button>
+        <md-button class="md-icon-button" title="{{'WATCHLIST_REMOVE' | translate}}"
+                   ng-hide="event.isUnwatched" ng-click="ctrl.watchPage(event, true)">
+          <md-icon md-font-library="material-icons">star</md-icon>
+        </md-button>
+        <md-button class="md-icon-button"  title="{{'WATCHLIST_ADD' | translate}}"
+                   ng-show="event.isUnwatched" ng-click="ctrl.watchPage(event, false)">
+          <md-icon md-font-library="material-icons">star_border</md-icon>
+        </md-button>
+        <md-button ng-if="event.stableRevid" class="md-raised md-accent" target="_blank"
+                   href="{{::event.projecturl}}/w/index.php?title={{::event.title | urlEncode}}&oldid={{::event.stableRevid}}&diff=cur"
+                   translate="PENDING_EDITS">
+        </md-button>
+        <md-button class="md-icon-button rightbutton"
+                   ng-click="ctrl.clicked(event)" title="{{'COLLAPSE' | translate}}">
+          <md-icon md-font-library="material-icons">expand_less</md-icon>
+        </md-button>
+      </div>
+      <md-button ng-show="!event.showDiff && event.type === 'edit'" class="md-icon-button rightbutton expandbutton"
+                 ng-click="ctrl.clicked(event)" title="{{'SHOW_DIFF' | translate}}">
+        <md-icon md-font-library="material-icons">expand_more</md-icon>
       </md-button>
     </div>
-    <div>
-      <small ng-if="event.oresProbability" class="ores text-muted"
-             translate="ORES_PROBABILITY" translate-values='{probability: event.oresProbability}'></small>
+    <div ng-if="event.showDiff && event.oresProbability">
+      <small class="ores text-muted" translate="ORES_PROBABILITY"
+             translate-values='{probability: event.oresProbability}'>
+      </small>
     </div>
   </div>
 </div>
-
 <table ng-if="event.showDiff && event.diff" class="diff diff-contentalign-left">
   <colgroup><col class="diff-marker">
     <col class="diff-content">

@@ -86,5 +86,7 @@
   "ORES_PROBABILITY": "<a href=\"https://meta.wikimedia.org/wiki/ORES\">ORES</a> revert score: {{probability}}",
   "PENDING_EDITS": "pending edits",
   "FLAGGEDREVS_OPTION": "Show diff for pending changes needing review",
-  "FLAGGEDREVS_TOOLTIP": "Show diff for unreviewed changes, if you have the review permission for a wiki which uses the FlaggedRevs extension."
+  "FLAGGEDREVS_TOOLTIP": "Show diff for unreviewed changes, if you have the review permission for a wiki which uses the FlaggedRevs extension.",
+  "SHOW_DIFF": "show diff",
+  "COLLAPSE": "collapse"
 }

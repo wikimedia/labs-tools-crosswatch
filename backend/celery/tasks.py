@@ -364,6 +364,8 @@ def flagged_revs(watchlist_params, items, **kwargs):
 
     unstable = {}
     for response in mw.query_gen(params):
+        if not isinstance(response['pages'], dict):
+            continue
         for pageid, item in response['pages'].items():
             flagged = item.get('flagged', {})
             if 'pending_since' in flagged:

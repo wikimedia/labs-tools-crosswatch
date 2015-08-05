@@ -36,8 +36,10 @@ function runBlock (socket, $rootScope, dataService, $log, $timeout, $translate, 
    */
   socket.setHandler('open', function () {
     $log.info('sockjs connected');
-    dataService.queryWatchlist();
-    $timeout(errorHandler, 15000); // show error if no response after 15 secs
+    if (authService.isLoggedIn()) {
+      dataService.queryWatchlist();
+      $timeout(errorHandler, 15000); // show error if no response after 15 secs
+    }
   });
 
   /**

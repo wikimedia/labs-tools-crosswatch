@@ -1,12 +1,10 @@
 html {
-  font-size: 62.5%;
-  line-height: 1.4;
+  font-size: 13px;
 }
 
 body {
   background-color: #edecec;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.4rem;
+  font-family: 'Lato', sans-serif;
 }
 
 div[role=main] {
@@ -94,7 +92,7 @@ md-select-menu[multiple] md-option[selected]:after {
 a {
   color: #0645ad;
   text-decoration: none;
-  font-weight: 400;
+  font-weight: normal;
   border-bottom: none;
   -webkit-transition: border-bottom 0.25s;
   -moz-transition: border-bottom 0.25s;
@@ -158,12 +156,12 @@ md-list-item.watchlist {
 watchlist-entry {
   overflow: hidden;
   width: 100%;
-  margin: 4px 0;
+  margin: 6px 0;
 }
 
 md-list-item.watchlist:first-child watchlist-entry {
-  margin-top: 6px;
-  margin-bottom: 4px;
+  margin-top: 8px;
+  margin-bottom: 6px;
 }
 
 watchlist-entry a,

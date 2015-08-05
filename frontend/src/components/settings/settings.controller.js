@@ -11,11 +11,11 @@ angular.module('crosswatch')
 
     vm.namespacesList = [];
     vm.periodList = [];
-    debounce(updatePeriodList, 50)();
-    debounce(updateNamespaceList, 50)();
+    debounce(updatePeriodList, 150)();
+    debounce(updateNamespaceList, 150)();
     $rootScope.$on('$translateChangeSuccess', function () {
-      debounce(updatePeriodList, 50)();
-      debounce(updateNamespaceList, 50)();
+      debounce(updatePeriodList, 20)();
+      debounce(updateNamespaceList, 20)();
     });
 
     function updatePeriodList () {

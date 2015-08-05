@@ -27,6 +27,11 @@ function browserSyncInit(baseDir, files, browser) {
       middleware: middleware,
       routes: routes
     },
+    ghostMode: {
+      clicks: false,
+      forms: false,
+      scroll: false
+    },
     browser: browser
   });
 }

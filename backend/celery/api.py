@@ -182,6 +182,7 @@ class MediaWiki(object):
         params = {'action': "sitematrix"}
         data = self.query(params)
 
+        blacklist_wikis = ['loginwiki']
         flaggedrevs_wikis = self._flaggedrevs_wikis()
 
         wikis = {}
@@ -191,19 +192,17 @@ class MediaWiki(object):
 
             if 'code' in val:
                 for site in val['site']:
-                    wiki = self._create_wiki(site, val['code'], val['name'])
-                    if site['dbname'] in flaggedrevs_wikis:
-                        wiki['flaggedrevs'] = True
-                    wikis[site['dbname']] = wiki
+                    wikis[site['dbname']] = self._create_wiki(
+                        site, val['code'], val['name'],
+                        flaggedrevs_wikis, blacklist_wikis)
             else:
                 for site in val:
-                    wiki = self._create_wiki(site, '', '')
-                    if site['dbname'] in flaggedrevs_wikis:
-                        wiki['flaggedrevs'] = True
-                    wikis[site['dbname']] = wiki
+                    wikis[site['dbname']] = self._create_wiki(
+                        site, '', '', flaggedrevs_wikis, blacklist_wikis)
         return wikis
 
-    def _create_wiki(self, site, langcode, langname):
+    def _create_wiki(self, site, langcode, langname, flaggedrevs_wikis,
+                     blacklist_wikis):
         wiki = {
             'lang': langcode,
             'langname': langname,
@@ -214,9 +213,13 @@ class MediaWiki(object):
         if wiki['group'] == 'wiki':
             wiki['group'] = 'wikipedia'
 
-        inactive_wikis = ['closed', 'private', 'fishbowl']
-        if any([key in site for key in inactive_wikis]):
+        inactive_codes = ['closed', 'private', 'fishbowl']
+        if any([key in site for key in inactive_codes]):
             wiki['closed'] = True
+        if site['dbname'] in blacklist_wikis:
+            wiki['closed'] = True
+        if site['dbname'] in flaggedrevs_wikis:
+            wiki['flaggedrevs'] = True
         return wiki
 
     def _flaggedrevs_wikis(self):

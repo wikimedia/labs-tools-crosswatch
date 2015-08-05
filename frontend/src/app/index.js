@@ -15,6 +15,7 @@ angular
   .config(routeConfig)
   .config(locationConfig)
   .config(storageConfig)
+  .config(themeConfig)
   .factory('socket', socketFactory)
   .directive('stopEvent', stopEventDirective)
 ;
@@ -46,6 +47,12 @@ function storageConfig (localStorageServiceProvider) {
   localStorageServiceProvider
     .setPrefix('crosswatch')
     .setStorageCookie(30, '/crosswatch/');
+}
+
+function themeConfig ($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+    .primaryPalette('indigo')
+    .accentPalette('red');
 }
 
 function socketFactory (socketFactory, $browser, $location) {

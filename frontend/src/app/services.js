@@ -27,7 +27,7 @@ function authService (localStorageService) {
   };
 }
 
-function dataService (socket, authService, localStorageService, $log, $filter, debounce, $q) {
+function dataService (socket, authService, localStorageService, $log, $filter, debounce, $q, $translate) {
   var vm = this;
 
   vm.watchlist = {};
@@ -262,7 +262,8 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
         access_token: authService.tokens(),
         watchlistperiod: vm.config.watchlistperiod,
         allrev: !vm.config.lastrevonly,
-        projects: vm.config.projectsList
+        projects: vm.config.projectsList,
+        uselang: $translate.use() || ""
       };
       try {
         socket.send(angular.toJson(watchlistQuery));
@@ -292,6 +293,7 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
   vm.query = function (params) {
     params.request_id = vm.getRequestId();
     params.access_token = authService.tokens();
+    params.uselang = $translate.use() || "";
 
     var deferred = $q.defer();
     callbacks[params.request_id] = deferred;

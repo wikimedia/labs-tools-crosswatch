@@ -151,7 +151,7 @@ class MediaWiki(object):
         response = self.query(params)
         return response['query']['users'][0]['rights']
 
-    def diff(self, pageid, old_revid, new_revid):
+    def diff(self, pageid, old_revid, new_revid, uselang=""):
         params = {
             'action': "query",
             'prop': "revisions",
@@ -159,6 +159,7 @@ class MediaWiki(object):
             'rvendid': old_revid,
             'rvdiffto': new_revid,
             'pageids': pageid,
+            'uselang': uselang,
             'formatversion': 2
         }
 

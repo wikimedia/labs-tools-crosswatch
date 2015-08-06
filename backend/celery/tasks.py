@@ -176,7 +176,7 @@ def watchlistgetter(**kwargs):
 
 
 @app.task
-def notificationgetter(**kwargs):
+def notificationgetter(uselang="", **kwargs):
     """Get the echo notifications for a wiki"""
     wiki = kwargs['wiki']
     access_token = kwargs['access_token']
@@ -192,7 +192,8 @@ def notificationgetter(**kwargs):
         'notformat': "html",
         'notalertunreadfirst': "",
         'notmessagecontinue': "",
-        'notlimit': 15
+        'notlimit': 15,
+        'uselang': uselang
     }
     response = mw.query(params)
 
@@ -243,7 +244,7 @@ def notifications_mark_read(**kwargs):
 
 
 @app.task
-def get_diff(access_token=None, redis_channel=None, **kwargs):
+def get_diff(access_token=None, redis_channel=None, uselang="", **kwargs):
     """Get a diff for a wiki page"""
     projecturl = kwargs['projecturl']
     pageid = kwargs['pageid']
@@ -255,7 +256,7 @@ def get_diff(access_token=None, redis_channel=None, **kwargs):
                    access_token=access_token,
                    redis_channel=redis_channel)
 
-    diff = mw.diff(pageid, old_revid, revid)
+    diff = mw.diff(pageid, old_revid, revid, uselang=uselang)
     mw.publish({
         'msgtype': 'response',
         'request_id': request_id,
@@ -319,7 +320,7 @@ def ores(items, **kwargs):
 
 
 @app.task
-def _ores_diff(edit, probablity, **kwargs):
+def _ores_diff(edit, probablity, uselang="", **kwargs):
     wiki = kwargs['wiki']
     access_token = kwargs['access_token']
     redis_channel = kwargs['redis_channel']
@@ -331,7 +332,7 @@ def _ores_diff(edit, probablity, **kwargs):
     if mw.was_reverted(edit):
         return
 
-    diff = mw.diff(edit['pageid'], edit['old_revid'], edit['revid'])
+    diff = mw.diff(edit['pageid'], edit['old_revid'], edit['revid'], uselang)
     mw.publish({
         'msgtype': "ores_scores",
         'id': edit['id'],
@@ -341,7 +342,7 @@ def _ores_diff(edit, probablity, **kwargs):
 
 
 @app.task
-def flagged_revs(watchlist_params, items, **kwargs):
+def flagged_revs(watchlist_params, items, uselang="", **kwargs):
     wiki = kwargs['wiki']
     access_token = kwargs['access_token']
     redis_channel = kwargs['redis_channel']
@@ -377,7 +378,8 @@ def flagged_revs(watchlist_params, items, **kwargs):
         for item in items:
             if item['type'] == 'edit' and pageid == item['pageid'] and \
                             stable_revid < item['revid']:
-                diff = mw.diff(pageid, item['old_revid'], item['revid'])
+                diff = mw.diff(pageid, item['old_revid'], item['revid'],
+                               uselang=uselang)
                 mw.publish({
                     'msgtype': "flaggedrevs",
                     'id': item['id'],

@@ -72,6 +72,18 @@
     <span ng-switch-default><code>{{event}}</code></span> <!-- debug fallback -->
   </span>
 </span>
+<span ng-switch-when="pagetriage-curation">
+  <span ng-switch="::event.logaction">
+    <span ng-switch-when="reviewed" translate="LOGEVENT_PAGETRIAGE_REVIEWED" translate-values="event" translate-interpolation="custom" translate-compile></span>
+    <span ng-switch-when="unreviewed" translate="LOGEVENT_PAGETRIAGE_UNREVIEWED" translate-values="event" translate-interpolation="custom" translate-compile></span>
+    <span ng-switch-when="tag" translate="LOGEVENT_PAGETRIAGE_UNREVIEWED" translate-values="event" translate-interpolation="custom" translate-compile></span>
+    <span ng-switch-when="delete" translate="LOGEVENT_PAGETRIAGE_DELETE" translate-values="event" translate-interpolation="custom" translate-compile></span>
+    <span ng-switch-default><code>{{event}}</code></span> <!-- debug fallback -->
+  </span>
+</span>
+<span ng-switch-when="pagetriage-deletion">
+    <span translate="LOGEVENT_PAGETRIAGE_DELETE" translate-values="event" translate-interpolation="custom" translate-compile></span>
+</span>
 <span ng-switch-default><code>{{event}}</code></span> <!-- debug fallback -->
 </span>
 <span ng-if="::event.parsedcomment" class="comment">(<comment></comment>)</span>

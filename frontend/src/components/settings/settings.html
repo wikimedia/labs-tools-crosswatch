@@ -54,6 +54,10 @@
                 <p translate="ONELINE"></p>
                 <md-checkbox ng-model="ctrl.config.oneline" ng-change="ctrl.saveConfig()"></md-checkbox>
               </md-list-item>
+              <md-list-item>
+                <p translate="SUBDIVIDED"></p>
+                <md-checkbox ng-model="ctrl.config.subdivided" ng-change="ctrl.saveConfig()"></md-checkbox>
+              </md-list-item>
             </div>
           </md-list>
         </div>
@@ -85,16 +89,20 @@
           <div flex="50">
             <md-list layout="column" class="md-padding">
               <md-list-item>
-                <p translate="FLAGS"></p>
-                <md-checkbox ng-model="ctrl.config.flagsenable" ng-change="ctrl.saveConfig()"></md-checkbox>
+                <p translate="SUBDIVIDED"></p>
+                <md-checkbox ng-model="ctrl.config.subdivided" ng-change="ctrl.saveConfig()"></md-checkbox>
+              </md-list-item>
+              <md-list-item title="{{'FLAGGEDREVS_TOOLTIP' | translate}}">
+                <p translate="FLAGGEDREVS_OPTION"></p>
+                <md-checkbox ng-model="ctrl.config.flaggedrevsDiff" ng-change="ctrl.resetWatchlist()"></md-checkbox>
               </md-list-item>
               <md-list-item title="{{'ORES_TOOLTIP' | translate}}">
                 <p translate="ORES_OPTION"></p>
                 <md-checkbox ng-model="ctrl.config.oresDiff" ng-change="ctrl.resetWatchlist()"></md-checkbox>
               </md-list-item>
-              <md-list-item title="{{'FLAGGEDREVS_TOOLTIP' | translate}}">
-                <p translate="FLAGGEDREVS_OPTION"></p>
-                <md-checkbox ng-model="ctrl.config.flaggedrevsDiff" ng-change="ctrl.resetWatchlist()"></md-checkbox>
+              <md-list-item>
+                <p translate="FLAGS"></p>
+                <md-checkbox ng-model="ctrl.config.flagsenable" ng-change="ctrl.saveConfig()"></md-checkbox>
               </md-list-item>
             </md-list>
           </div>

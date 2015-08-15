@@ -74,5 +74,6 @@
   "WATCHLIST_ADD": "Diese Seite zu meiner Beobachtungsliste hinzufügen",
   "ORES_OPTION": "Zeige Versionsänderungen für ORES vorhergesagten Reverts",
   "PENDING_EDITS": "sichten",
-  "FLAGGEDREVS_OPTION": "Zeige Versionsänderungen für ungesichtete Bearbeitungen"
+  "FLAGGEDREVS_OPTION": "Zeige Versionsänderungen für ungesichtete Bearbeitungen",
+  "SUBDIVIDED": "Zeige die Beobachtungsliste für jedes wiki seperat"
 }

@@ -60,5 +60,6 @@
   "FLAGGEDREVS_OPTION": "Checkbox to enable the option, pending changes are edits needing review (for [[:mw:Help:Extension:FlaggedRevs|Extension:FlaggedRevs]])",
   "FLAGGEDREVS_TOOLTIP": "Tooltip for \"FLAGGEDREVS_OPTION\"",
   "SHOW_DIFF": "Tooltip for button to show diff preview",
-  "COLLAPSE": "Tooltip for button to collapse the expanded view"
+  "COLLAPSE": "Tooltip for button to collapse the expanded view",
+  "SUBDIVIDED": "Checkbox to switch to a subdiveded watchlist (shows the watchlist for each wiki separately), instead of a combined watchlist"
 }

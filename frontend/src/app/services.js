@@ -44,6 +44,10 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
    */
   vm.watchlist.active = [];
   /**
+   * Watchlist sorted as array per project
+   */
+  vm.watchlist.perProject = {};
+  /**
    * loading spinner
    */
   vm.watchlist.loading = true;
@@ -106,7 +110,12 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
     /**
      * Automatically show diff, if edit is unreviewed and user has review right
      */
-    flaggedrevsDiff: true
+    flaggedrevsDiff: true,
+    /**
+     * true: show subdivided wikis watchlist
+     * false: show unified wikis watchlist
+     */
+    subdivided: false
   };
   // Get config from localstorage or create from defaultconfig
   if (localStorageService.get('config') !== null) {
@@ -176,6 +185,12 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
     for (var i=0; i < entries.length; i++) {
       vm.watchlist.dict[entries[i].id] = entries[i];
     }
+
+    if (!Array.isArray(vm.watchlist.perProject[project])) {
+      vm.watchlist.perProject[project] = entries;
+    } else {
+      Array.prototype.push.apply(vm.watchlist.perProject[project], entries);
+    }
   };
 
   /**
@@ -215,10 +230,11 @@ function dataService (socket, authService, localStorageService, $log, $filter, d
   vm.resetWatchlist = function () {
     vm.watchlist.original = [];
     vm.watchlist.filtered = [];
-    vm.watchlist.dict = [];
+    vm.watchlist.dict = {};
     vm.watchlist.active.length = 0; /* preserve pointer, slow due to GC */
     vm.notifications.length = 0;
     vm.watchlist.loading = true;
+    vm.watchlist.perProject = {};
     vm.queryWatchlist();
     vm.saveConfig();
   };

@@ -3,7 +3,8 @@
   <div layout="column" flex class="md-padding" role="main">
     <div ng-include="'components/settings/settings.html'"></div>
     <div ng-include="'components/notifications/notifications.html'"></div>
-    <div ng-include="'components/watchlist/watchlist.html'"></div>
+    <div ng-if="!ctrl.config.subdivided" ng-include="'components/watchlist/unified.html'"></div>
+    <div ng-if="ctrl.config.subdivided" ng-include="'components/watchlist/seperated.html'"></div>
   </div>
 
   <ng-include src="'components/footer/footer.html'"></ng-include>

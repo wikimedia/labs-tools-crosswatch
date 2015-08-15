@@ -4,7 +4,7 @@ angular
   .filter('urlEncode', urlEncodeFilter)
   .filter('list', listFilter)
   .filter('watchlist', watchlistFilter)
-  .filter('projects', projectsFilter)
+  .filter('projectList', projectsFilter)
 ;
 
 /**
@@ -99,7 +99,11 @@ function usernameFilterFunc (item, username) {
 }
 
 function projectsFilter () {
-  return function (items, projects) {
-    return items.filter(projectsFilterFunc, projects)
+  return function (items, config) {
+    return items.filter(projectListFilterFunc, config)
   };
+}
+
+function projectListFilterFunc (items) {
+  return (this.projectsSelected.indexOf(items) > -1);
 }

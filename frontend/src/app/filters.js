@@ -37,6 +37,9 @@ function listFilter () {
  */
 function watchlistFilter () {
   return function (items, config) {
+    if (typeof items === 'undefined') {
+      return false;
+    }
     return items.filter(filter, config);
   };
 

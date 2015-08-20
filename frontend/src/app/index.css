@@ -149,14 +149,14 @@ md-list-item.watchlist {
   border-top: 0;
 }
 
-.watchlist-list-item-oneline {
-  min-height: 32px;
-}
-
 watchlist-entry {
   overflow: hidden;
   width: 100%;
   margin: 6px 0;
+}
+
+.whitebox-oneline md-list-item {
+  min-height: 32px;
 }
 
 md-list-item.watchlist:first-child watchlist-entry {
@@ -194,9 +194,16 @@ watchlist-entry .md-button.md-icon-button.rightbutton {
   width: 25px;
   margin-right: 0;
 }
+
 watchlist-entry .md-button.md-icon-button.expandbutton {
   height: unset;
   line-height: normal;
+}
+
+.whitebox-oneline watchlist-entry .md-button.md-icon-button.expandbutton {
+  height: 19px;
+  min-height: unset;
+  margin-top: -3px;
 }
 
 watchlist-entry .ores {

@@ -25,7 +25,7 @@
     <md-list class="watchlist-container" infinite-scroll="ctrl.moreWatchlistEntries()" infinite-scroll-immediate-check="false"
              infinite-scroll-distance="1">
       <md-list-item layout="row" class="watchlist"
-                    ng-class="[{'watchlist-list-item-oneline': ctrl.config.oneline}, ctrl.config.projectColors[event.project]]"
+                    ng-class="ctrl.config.projectColors[event.project]"
                     ng-repeat="event in ctrl.watchlist.active track by event.id">
         <watchlist-entry ng-click="ctrl.clicked(event)" md-ink-ripple></watchlist-entry>
         <md-divider></md-divider>

@@ -1,6 +1,6 @@
 <div ng-controller="WatchlistCtrl as ctrl" class="md-padding">
   <div layout="row" layout-align="center center" class="md-padding" ng-if="ctrl.watchlist.loading">
-    <md-whiteframe class="md-whiteframe-z5 whitebox">
+    <md-whiteframe class="md-whiteframe-z5" ng-class="(ctrl.config.oneline) ? 'whitebox-oneline' : 'whitebox'">
       <md-toolbar class='md-small-tall'>
         <div class="md-toolbar-tools">
           <h1>

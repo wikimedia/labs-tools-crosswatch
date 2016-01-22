@@ -47,5 +47,9 @@ There are some helpful scripts if the tool runs on [Tool Labs](https://wikitech.
 directory. Change the name of the tool in `frontend/gulpfile.js` and
 `backend/config.py` and the `scripts` files.
 
+# Testing
+
+Invoke `tox`. We rely on flake8 to enforce python style.
+
 #License
 Licensed under [ISC](https://en.wikipedia.org/w/index.php?title=ISC_license&oldid=653545972)

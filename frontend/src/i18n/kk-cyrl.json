@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Arystanbek"
+		]
+	},
+	"META_LANGUAGE": "Ағышын",
+	"META_DIRECTION": "солдан оңға",
+	"DOCUMENTATION": "Құжаттамасы",
+	"TALK": "Талқылауы",
+	"REPORT_BUGS": "Қателерді хабарлау",
+	"SIGN_IN": "Кіру",
+	"SIGN_OUT": "Шығу",
+	"DESCRIPTION": "Уикимедия жобалары үшін кросс-уики бақылау тізімі.",
+	"SIGN_IN_BUTTON": "OAuth арқылы кіру",
+	"MINOREDIT_FLAG": "ш",
+	"BOTEDIT_FLAG": "б",
+	"NEWPAGE_FLAG": "Ж",
+	"PREFERENCES": "Баптаулар",
+	"FILTER": "Сүзгіш",
+	"WIKIS": "Уикилер",
+	"LASTREVONLY": "Тек бет сайын ең соңғы өзгерісті көрсету",
+	"SHOW_LAST_HOURS": "Соңғы {{number}} сағаттағы өзгерістерді көрсет",
+	"SHOW_LAST_DAYS": "Соңғы {{number}} күндегі өзгерістерді көрсет",
+	"MINOR_EDITS": "шағын өңдемелер",
+	"BOT_EDITS": "бот өңдемелері",
+	"ANON_EDITS": "анонимді қатысушы өңдемелері",
+	"USER_EDITS": "тіркелген қатысушы өңдемелері",
+	"FLAGS": "Тіл атаулары орынына туларды көрсету",
+	"WATCHLIST": "Бақылау тізімі",
+	"SEARCH_WATCHLIST": "Бақылау тізімінен іздеу",
+	"LOGEVENT_DELETE_DELETE": "<user> жойылған бет <page>",
+	"LOGEVENT_DELETE_REVISION": "<user> беттегі нұсқаның көрінуін өзгертті <page>",
+	"LOGEVENT_DELETE_RESTORE": "<user> қалпына келтірілді <page>",
+	"LOGEVENT_PROTECT_PROTECT": "<user> қорғалған бет <page> {{protection_level}}",
+	"LOGEVENT_PROTECT_MODIFY": "<user> бетте қорғанысын өзгерту <page> {{protection_level}}",
+	"LOGEVENT_PROTECT_UNPROTECT": "<user> қорғалмаған бет <page>",
+	"LOGEVENT_PROTECT_MOVE": "<user>  <page> дегеннен <page title={{target_title}}> дегенге қорғаныс баптауларын жылжытты",
+	"LOGEVENT_MOVE": "<user> <page> дегеннен <page title={{target_title}}> дегенге бет жылжытылды"
+}

@@ -54,6 +54,8 @@
 	"NOTIFICATIONS": "يادگيرنې",
 	"MARKALLREAD": "ټول لوستی په نخښه کول",
 	"STYLE": "توگه",
+	"WATCHLIST_REMOVE": "دا مخ له کتنلړ څخه غورځول",
+	"WATCHLIST_ADD": "دا مخ په کتنلړکې گډول",
 	"SHOW_DIFF": "توپير ښکاره کول",
 	"COLLAPSE": "پرځول"
 }

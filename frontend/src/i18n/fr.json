@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Titip1995"
+			"Titip1995",
+			"Wladek92"
 		]
 	},
 	"META_LANGUAGE": "Anglais",
@@ -38,16 +39,16 @@
 	"LOGEVENT_PROTECT_UNPROTECT": "<user> a enlevé la protection de la page <page>",
 	"LOGEVENT_PROTECT_MOVE": "<user> a déplacé les paramètres de protection de <page> vers <page title={{target_title}}>",
 	"LOGEVENT_MOVE": "<user> a renommé la page <page> en <page title={{target_title}}>",
-	"LOGEVENT_BLOCK_BLOCK": "<user> a bloqué <user name={{title}}> avec uen durée d’expiration de {{duration}} et avec les paramètres {{flags|list}}",
+	"LOGEVENT_BLOCK_BLOCK": "<user> a bloqué <user name={{title}}> avec une durée d’expiration de {{duration}} et avec les paramètres {{flags|list}}",
 	"LOGEVENT_BLOCK_REBLOCK": "<user> a modifié les paramètres de blocage de <user name={{title}}> avec une durée d’expiration de {{duration}} et les paramètres {{flags|list}}",
 	"LOGEVENT_BLOCK_UNBLOCK": "<user> a enlevé le blocage de <user name={{title}}>",
 	"LOGEVENT_RIGHTS_AUTOPROMOTE": "<user> a été promu automatiquement de {{oldgroups|list}} en {{newgroups|list}}",
 	"LOGEVENT_RIGHTS_RIGHTS": "<user> a modifié l’appartenance de groupe pour <user name={{title}}>, de {{oldgroups|list}} vers {{newgroups|list}}",
 	"LOGEVENT_UPLOAD_OVERWRITE": "<user> a téléchargé une nouvelle version de <page>",
-	"LOGEVENT_UPLOAD_REVERT": "<user> a téléchargé <page>",
-	"LOGEVENT_UPLOAD_UPLOAD": "<user> a téléchargé <page>",
+	"LOGEVENT_UPLOAD_REVERT": "<user> a téléversé <page>",
+	"LOGEVENT_UPLOAD_UPLOAD": "<user> a téléversé <page>",
 	"LOGEVENT_IMPORT_INTERWIKI": "<user> a importé <page> depuis un autre wiki",
-	"LOGEVENT_IMPORT_UPLOAD": "<user> a importé <page> par téléchargement de fichier",
+	"LOGEVENT_IMPORT_UPLOAD": "<user> a importé <page> par téléversement de fichier",
 	"LOGEVENT_MERGE": "<user> a fusionné <page> avec <page title={{dest_title}}> (révisions jusqu’au {{mergepoint|amCalendar}})",
 	"LOGEVENT_NEWUSERS_CREATE": "Le compte utilisateur <user name={{title}}> a été créé",
 	"LOGEVENT_NEWUSERS_CREATE2": "Le compte utilisateur <user name={{title}}> a été créé par <user>",
@@ -65,8 +66,8 @@
 	"CLOSE": "Fermer",
 	"SERVER_ERROR_TITLE": "Échec du serveur",
 	"SERVER_ERROR_CONTENT": "Aucune liste de suivi n’a pu être récupérée. C’est une erreur interne du serveur, veuillez ouvrir un rapport d’incident si le problème persiste.",
-	"API_ERROR_CONTENT": "Une requête à l’API a échoué avec le code d’erreur {{errorcode}} et l’information : {{errorinfo}}",
-	"NAMESPACES": "Espaces de nom",
+	"API_ERROR_CONTENT": "La requête à une API a échoué avec le code d’erreur {{errorcode}} et l’information : {{errorinfo}}",
+	"NAMESPACES": "Espaces de noms",
 	"NS_0": "Article",
 	"NS_1": "Discussion",
 	"NS_2": "Utilisateur",

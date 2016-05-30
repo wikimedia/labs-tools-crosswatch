@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mirzali"
+			"Mirzali",
+			"Kumkumuk"
 		]
 	},
 	"META_LANGUAGE": "İngılızki",
@@ -41,7 +42,10 @@
 	"HISTORY": "tarix",
 	"CONTRIBS": "iştıraqi",
 	"NOTIFICATIONS": "Mengeneyi",
+	"STYLE": "Stil",
+	"HIDEOWNEDITS": "Vurnayışanê mı lista mına seyrkerdışi de bınımne",
 	"WATCHLIST_REMOVE": "Ena pele lista seyrkerdışi ra vece",
 	"WATCHLIST_ADD": "Ena pele lista seyrkerdışi ke",
+	"SHOW_DIFF": "ferqi bıasene",
 	"COLLAPSE": "kılm ke"
 }

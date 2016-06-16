@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Nzeemin"
+			"Nzeemin",
+			"Kaganer"
 		]
 	},
 	"META_LANGUAGE": "Русский",
@@ -11,7 +12,7 @@
 	"REPORT_BUGS": "Баг-репорты",
 	"SIGN_IN": "Войти",
 	"SIGN_OUT": "Выйти",
-	"DESCRIPTION": "Кросс-вики список наблюдения для проектов Викимедиа.",
+	"DESCRIPTION": "Общий список наблюдения для всех вики-проектов Викимедиа.",
 	"SIGN_IN_BUTTON": "Войти через OAuth",
 	"MINOREDIT_FLAG": "м",
 	"BOTEDIT_FLAG": "б",

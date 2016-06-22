@@ -31,6 +31,7 @@
 	"WATCHLIST": "Páginas vigiadas",
 	"SEARCH_WATCHLIST": "Pesquisar nas páginas vigiadas",
 	"LOGEVENT_DELETE_DELETE": "<user> eliminou a página <page>",
+	"LOGEVENT_DELETE_REVISION": "<user> alterou a visibilidade de uma revisão na página <page>",
 	"LOGEVENT_DELETE_RESTORE": "<user> restaurou <page>",
 	"CLOSE": "Fechar",
 	"SERVER_ERROR_TITLE": "Falha do servidor",

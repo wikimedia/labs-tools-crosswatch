@@ -6,7 +6,7 @@ Crosswatch is an enhanced cross-wiki watchlist for Wikimedia projects running at
 It uses a Python based backend and a AngularJS based frontend.
 
 ```
-git clone https://git.wikimedia.org/git/labs/tools/crosswatch.git
+git clone https://phabricator.wikimedia.org/diffusion/TCRW/labs-tools-crosswatch.git
 cd crosswatch
 ```
 

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Hwangjy9",
-			"Revi"
+			"Revi",
+			"아라"
 		]
 	},
 	"META_LANGUAGE": "한국어",
@@ -31,10 +32,10 @@
 	"WATCHLIST": "주시문서 목록",
 	"SEARCH_WATCHLIST": "주시문서 목록 검색",
 	"LOGEVENT_DELETE_DELETE": "<user> 사용자가 <page> 문서를 삭제했습니다",
-	"LOGEVENT_DELETE_REVISION": "<user> 사용자가 <page> 문서의 판의 보이기 설정을 바꾸었습니다",
+	"LOGEVENT_DELETE_REVISION": "<user>님이 <page> 문서의 판의 보이기 설정을 바꾸었습니다",
 	"LOGEVENT_DELETE_RESTORE": "<user> 사용자가 <page> 문서를 되살렸습니다",
 	"LOGEVENT_PROTECT_PROTECT": "<user> 사용자가 <page> 문서를 {{protection_level}} 설정으로 보호했습니다",
-	"LOGEVENT_PROTECT_MODIFY": "<user> 사용자가 <page> 문서의 보호를 {{protection_level}} 설정으로 바꾸었습니다",
+	"LOGEVENT_PROTECT_MODIFY": "<user>님이 <page> 문서의 보호를 {{protection_level}} 설정으로 수정했습니다",
 	"LOGEVENT_PROTECT_UNPROTECT": "<user> 사용자가 <page> 문서를 보호 해제했습니다",
 	"LOGEVENT_PROTECT_MOVE": "<user> 사용자가 문서의 보호 설정을 <page> 문서에서 <page title={{target_title}}> 문서로 옮겼습니다",
 	"LOGEVENT_MOVE": "<user> 사용자가 <page> 문서를 <page title={{target_title}}> 문서로 옮겼습니다",
@@ -42,7 +43,7 @@
 	"LOGEVENT_BLOCK_REBLOCK": "<user> 사용자가 <user name={{title}}> 사용자의 차단을 {{duration}} ({{flags|list}}) 설정으로 변경했습니다",
 	"LOGEVENT_BLOCK_UNBLOCK": "<user> 사용자가 <user name={{title}}> 사용자의 차단을 해제했습니다",
 	"LOGEVENT_RIGHTS_AUTOPROMOTE": "<user> 사용자가 {{oldgroups|list}} 에서 {{newgroups|list}}으로 자동적으로 승격되었습니다",
-	"LOGEVENT_RIGHTS_RIGHTS": "<user> 사용자가 <user name={{title}}> 사용자의 권한을 {{oldgroups|list}} 에서 {{newgroups|list}} (으)로 바꾸었습니다",
+	"LOGEVENT_RIGHTS_RIGHTS": "<user>님이 <user name={{title}}>님의 권한을 {{oldgroups|list}}에서 {{newgroups|list}}(으)로 바꾸었습니다",
 	"LOGEVENT_UPLOAD_OVERWRITE": "<user> 사용자가 <page> 파일의 새 판을 올렸습니다",
 	"LOGEVENT_UPLOAD_REVERT": "<user> 사용자가 <page> 파일을 올렸습니다",
 	"LOGEVENT_UPLOAD_UPLOAD": "<user> 사용자가 <page> 파일을 올렸습니다",
@@ -52,7 +53,7 @@
 	"LOGEVENT_NEWUSERS_CREATE": "<user name={{title}}> 사용자 계정을 만들었습니다",
 	"LOGEVENT_NEWUSERS_CREATE2": "<user name={{title}}> 사용자가 <user> 사용자 계정을 만들었습니다",
 	"LOGEVENT_NEWUSERS_BYEMAIL": "<user> 사용자가 <user name={{title}}> 사용자 계정을 만들었으며 비밀번호는 이메일로 보냈습니다",
-	"LOGEVENT_RENAMEUSER": "<user> 사용자가 <user name={{olduser}}> (편집 {{edits}}회) 사용자의 이름을 <user name={{newuser}}>으로 바꾸었습니다",
+	"LOGEVENT_RENAMEUSER": "<user>님이 <user name={{olduser}}> (편집 {{edits}}번)님의 이름을 <user name={{newuser}}>(으)로 바꾸었습니다",
 	"LOGEVENT_TRANSLATION_MARK": "<user> 사용자가 번역으로 <page>을(를) 표시했습니다",
 	"LOGEVENT_TRANSLATION_ASSOCIATE": "<user> 사용자가 번역 가능한 문서 <page>을(를) 집계 그룹 {{aggregategroup}}에 추가했습니다",
 	"LOGEVENT_TRANSLATION_DISSOCIATE": "<user> 사용자가 번역 가능한 문서 <page>을(를) 집계 그룹 {{aggregategroup}}에서 제거했습니다",

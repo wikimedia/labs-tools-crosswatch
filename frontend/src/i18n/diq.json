@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Mirzali",
-			"Kumkumuk"
+			"Kumkumuk",
+			"Gırd"
 		]
 	},
 	"META_LANGUAGE": "İngılızki",
@@ -65,13 +66,13 @@
 	"NS_13": "Werênayışê peşti",
 	"NS_OTHER": "Canamey bini",
 	"HISTORY": "tarix",
-	"CONTRIBS": "iştıraqi",
+	"CONTRIBS": "iştıraki",
 	"ONELINE": "Nizama seyrlisteya edeti",
 	"NOTIFICATIONS": "Mengeneyi",
 	"MARKALLREAD": "Pêro waneyayê nışan bi",
 	"STYLE": "Stil",
 	"HIDEOWNEDITS": "Vurnayışanê mı lista mına seyrkerdışi de bınımne",
-	"EDIT": "Tabnewi de perer bıvurnê",
+	"EDIT": "Etiketê newey de na pele bıvurne.",
 	"WATCHLIST_REMOVE": "Ena pele lista seyrkerdışi ra vece",
 	"WATCHLIST_ADD": "Ena pele lista seyrkerdışi ke",
 	"PENDING_EDITS": "vırnayışèk vırderdeyè",

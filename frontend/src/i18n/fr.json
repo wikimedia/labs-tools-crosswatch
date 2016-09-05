@@ -3,7 +3,8 @@
 		"authors": [
 			"Gomoko",
 			"Titip1995",
-			"Wladek92"
+			"Wladek92",
+			"Urhixidur"
 		]
 	},
 	"META_LANGUAGE": "Anglais",
@@ -94,7 +95,7 @@
 	"WATCHLIST_ADD": "Ajouter cette page à la liste de suivi",
 	"ORES_OPTION": "Afficher les différences des annulations prédites par ORES",
 	"ORES_TOOLTIP": "Afficher automatiquement les différences des annulations prédites, voir [[:meta:ORES]] pour plus de détails.",
-	"ORES_PROBABILITY": "Score d’annulation de <a href=\"https://meta.wikimedia.org/wiki/ORES\">ORES</a> : {{probability}}",
+	"ORES_PROBABILITY": "Pointage d’annulation de <a href=\"https://meta.wikimedia.org/wiki/ORES\">ORES</a> : {{probability}}",
 	"PENDING_EDITS": "modifications en attente",
 	"FLAGGEDREVS_OPTION": "Afficher les différences des modifications en attente de relecture",
 	"FLAGGEDREVS_TOOLTIP": "Afficher les différences des modifications non relues, si vous avez le droit de relecture pour un wiki qui utilise l’extension FlaggedRevs.",

@@ -89,7 +89,7 @@
 	"HIDEOWNEDITS": "Nascondi le mie modifiche negli osservati speciali",
 	"EDIT": "Modifica questa pagina in una nuova scheda",
 	"UNDO": "Annulla questa modifica, si apre una nuova scheda con anteprima",
-	"WATCHLIST_REMOVE": "Elimina questa pagina dalla tua lista degli osservati speciali",
+	"WATCHLIST_REMOVE": "Rimuovi questa pagina dalla tua lista degli osservati speciali",
 	"WATCHLIST_ADD": "Aggiungi questa pagina alla tua lista degli osservati speciali",
 	"ORES_OPTION": "Mostra differenze per le versioni ORES annullate",
 	"ORES_TOOLTIP": "Mostra automaticamente diff degli annullamenti, vedi [[:meta:MINERALI]] per i dettagli.",

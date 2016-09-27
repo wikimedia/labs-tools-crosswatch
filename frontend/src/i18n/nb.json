@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"SuperPotato"
+			"SuperPotato",
+			"Jon Harald Søby"
 		]
 	},
 	"META_LANGUAGE": "Norsk",
@@ -47,8 +48,24 @@
 	"LOGEVENT_UPLOAD_UPLOAD": "<user> lastet opp <page>",
 	"LOGEVENT_IMPORT_INTERWIKI": "<user> importerte <page> fra en annen wiki",
 	"LOGEVENT_IMPORT_UPLOAD": "<user> importerte <page> med fil opplasting",
+	"LOGEVENT_MERGE": "<user> slo <page> sammen med <page title={{dest_title}}> (revisjoner opp til {{mergepoint|amCalendar}})",
+	"LOGEVENT_NEWUSERS_CREATE": "Brukerkontoen <user name={{title}}> ble opprettet",
+	"LOGEVENT_NEWUSERS_CREATE2": "Brukerkontoen <user name={{title}}> ble opprettet av <user>",
+	"LOGEVENT_NEWUSERS_BYEMAIL": "Brukerkontoen <user name={{title}}> ble opprettet av <user> og passord sendt via e-post",
+	"LOGEVENT_RENAMEUSER": "<user> endret brukernavnet på <user name={{olduser}}> ({{edits}} redigeringer) til <user name={{newuser}}>",
+	"LOGEVENT_TRANSLATION_MARK": "<user> merket <page> for oversettelse",
+	"LOGEVENT_TRANSLATION_ASSOCIATE": "<user> la til den oversettbare siden <page> til aggregatgruppa {{aggregategroup}}",
+	"LOGEVENT_TRANSLATION_DISSOCIATE": "<user> fjernet den oversettbare siden <page> fra aggregatgruppa {{aggregategroup}}",
+	"LOGEVENT_PAGETRIAGE_REVIEWED": "<user> merket <page> som godkjent",
+	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> merket <page> som ikke godkjent",
+	"LOGEVENT_PAGETRIAGE_TAG": "<user> tagget <page> med taggene {{tags|list}}",
+	"LOGEVENT_PAGETRIAGE_DELETE": "<user> merket <page> for sletting med taggene {{tags|list}}",
+	"OAUTH_FAILURE_TITLE": "OAuth-autentisering mislyktes",
+	"OAUTH_FAILURE_CONTENT": "Autentisering mislyktes, du kan ha mistet autoriseringen for denne applikasjonen. Logg ut og inn igjen. Feilinformasjon: {{error}}",
 	"CLOSE": "Lukk",
 	"SERVER_ERROR_TITLE": "Serverfeil",
+	"SERVER_ERROR_CONTENT": "Ingen overvåkningsliste kan hentes. Dette er en intern tjenerfeil, start en feilrapport om problemet fortsetter.",
+	"API_ERROR_CONTENT": "En API-forespørsel mislyktes med feilkoden {{errorcode}} og feilinformasjon: {{errorinfo}}",
 	"NAMESPACES": "Navnerom",
 	"NS_0": "Artikkel",
 	"NS_1": "Diskusjon",
@@ -65,6 +82,21 @@
 	"NS_OTHER": "Andre navnrom",
 	"HISTORY": "historikk",
 	"CONTRIBS": "bidrag",
+	"ONELINE": "Tradisjonelt utseende på overvåkningsliste",
+	"NOTIFICATIONS": "Varsler",
+	"MARKALLREAD": "marker alle som lest",
 	"STYLE": "Stil",
-	"HIDEOWNEDITS": "Skjul mine endringer fra overvåkningslisten"
+	"HIDEOWNEDITS": "Skjul mine endringer fra overvåkningslisten",
+	"EDIT": "Rediger denne siden i en ny fane",
+	"UNDO": "Tilbakestill denne redigeringen, åpner en ny fane med forhåndsvisning",
+	"WATCHLIST_REMOVE": "Fjern denne siden fra overvåkningslisten",
+	"WATCHLIST_ADD": "Legg til denne siden i overvåkningslisten",
+	"ORES_OPTION": "Viser differ for ORES-forutsette tilbakestillinger",
+	"ORES_TOOLTIP": "Viser automatisk diff for forutsette tilbakestillinger, se [[:meta:ORES]] for detaljer.",
+	"ORES_PROBABILITY": "<a href=\"https://meta.wikimedia.org/wiki/ORES\">ORES</a>-tilbakestillingsskår: {{probability}}",
+	"PENDING_EDITS": "ventende redigeringer",
+	"FLAGGEDREVS_OPTION": "Vis diff for ventende redigeringer som trenger godkjenning",
+	"FLAGGEDREVS_TOOLTIP": "Vis diff for ikke-godkjente endringer, om du har godkjenningstillatelse for en wiki som bruker utvidelsen FlaggedRevs.",
+	"SHOW_DIFF": "vis diff",
+	"COLLAPSE": "slå sammen"
 }

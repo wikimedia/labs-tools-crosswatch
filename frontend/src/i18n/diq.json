@@ -3,7 +3,8 @@
 		"authors": [
 			"Mirzali",
 			"Kumkumuk",
-			"Gırd"
+			"Gırd",
+			"Asmen"
 		]
 	},
 	"META_LANGUAGE": "Zazaki",
@@ -24,7 +25,7 @@
 	"LASTREVONLY": "Qandé herg perer teyna vurriyayışanê peyênan bıasne",
 	"SHOW_LAST_HOURS": "Peyên {{number}} seata bıasne",
 	"SHOW_LAST_DAYS": "Peyên {{number}} rocan bıasne",
-	"MINOR_EDITS": "Vuriyayışa werdiy",
+	"MINOR_EDITS": "vurriyayışê werdiy",
 	"BOT_EDITS": "vurnayışê botan",
 	"ANON_EDITS": "vurnayışê karberanê anoniman",
 	"USER_EDITS": "vurnayışê karberanê qeydınan",

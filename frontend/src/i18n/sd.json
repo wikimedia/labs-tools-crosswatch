@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Aursani"
+			"Aursani",
+			"Mehtab ahmed"
 		]
 	},
 	"META_LANGUAGE": "انگريزي",
@@ -27,7 +28,7 @@
 	"ANON_EDITS": "گمنام يُوزرس جون ترميمون",
 	"USER_EDITS": "کاتيدارن جو ترميمون",
 	"FLAGS": "ٻوليءَ جي نالن بدران جھنڊا ڏيکاريو",
-	"WATCHLIST": "ٽيٽ فهرست",
+	"WATCHLIST": "نظرھيٺ فھرست",
 	"SEARCH_WATCHLIST": "ٽيٽ فهرست ۾ ڳوليو",
 	"LOGEVENT_DELETE_DELETE": "<user> جا ڊاٺل <page>",
 	"LOGEVENT_DELETE_REVISION": "<user> نالي يُوزر صفحي بعنوان <page> جي هڪ ڀيري جي ڏيکائيت تبديل ڪئي.",

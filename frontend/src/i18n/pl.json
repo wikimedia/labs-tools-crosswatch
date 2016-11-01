@@ -1,19 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chrumps"
+			"Chrumps",
+			"Woytecr"
 		]
 	},
 	"META_LANGUAGE": "polski",
+	"META_DIRECTION": "ltr",
 	"DOCUMENTATION": "Dokumentacja",
 	"TALK": "Dyskusja",
+	"REPORT_BUGS": "Zgłoś błędy",
+	"SIGN_IN": "Zaloguj się",
 	"SIGN_OUT": "Wyloguj",
+	"DESCRIPTION": "Wspólna lista obserwowanych dla wszystkich wiki Wikimedia.",
+	"SIGN_IN_BUTTON": "Zaloguj się przez OAuth",
 	"MINOREDIT_FLAG": "m",
 	"BOTEDIT_FLAG": "b",
 	"NEWPAGE_FLAG": "N",
 	"PREFERENCES": "Preferencje",
 	"FILTER": "Filtr",
 	"WIKIS": "Wiki",
+	"LASTREVONLY": "Pokaż tylko ostatnią zmianę dla każdej strony",
 	"SHOW_LAST_HOURS": "Pokazuj ostatnie {{number}} godzin",
 	"SHOW_LAST_DAYS": "Pokazuj ostatnie {{number}} dni",
 	"MINOR_EDITS": "drobne edycje",
@@ -22,7 +29,9 @@
 	"USER_EDITS": "edycje użytkowników zarejestrowanych",
 	"FLAGS": "Pokaż flagi zamiast nazwy języków",
 	"WATCHLIST": "Obserwowane",
+	"SEARCH_WATCHLIST": "Przeszukaj listę obserwowanych",
 	"LOGEVENT_DELETE_DELETE": "<user> usunął stronę <page>",
+	"LOGEVENT_DELETE_REVISION": "<user> zmienił widoczność wersji strony <page>",
 	"LOGEVENT_DELETE_RESTORE": "<user> przywrócił <page>",
 	"LOGEVENT_PROTECT_PROTECT": "<user> zabezpieczył stronę <page> z parametrami {{protection_level}}",
 	"LOGEVENT_PROTECT_UNPROTECT": "<user> odbezpieczył strony <page>",

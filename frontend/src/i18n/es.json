@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Macofe"
+			"Macofe",
+			"Fitoschido"
 		]
 	},
 	"META_LANGUAGE": "Español",
@@ -10,7 +11,7 @@
 	"TALK": "Discusión",
 	"REPORT_BUGS": "Informar errores",
 	"SIGN_IN": "Iniciar sesión",
-	"SIGN_OUT": "Cerrar sesión",
+	"SIGN_OUT": "Salir",
 	"DESCRIPTION": "Una lista de seguimiento de todos los wikis de los proyectos de Wikimedia.",
 	"SIGN_IN_BUTTON": "Iniciar sesión con OAuth",
 	"MINOREDIT_FLAG": "m",

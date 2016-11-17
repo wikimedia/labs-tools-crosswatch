@@ -4,7 +4,8 @@
 			"Mirzali",
 			"Kumkumuk",
 			"Gırd",
-			"Asmen"
+			"Asmen",
+			"1917 Ekim Devrimi"
 		]
 	},
 	"META_LANGUAGE": "Zazaki",
@@ -30,7 +31,7 @@
 	"ANON_EDITS": "vurnayışê karberanê anoniman",
 	"USER_EDITS": "vurnayışê karberanê qeydınan",
 	"FLAGS": "Herun da namandê zıwana desmalan bıasne",
-	"WATCHLIST": "Lista seyrkerdışi",
+	"WATCHLIST": "Listay ewniyayışi",
 	"SEARCH_WATCHLIST": "Lista seyrkerdışi de cı geyre",
 	"LOGEVENT_DELETE_DELETE": "<user> pela esterıtiye <page>",
 	"LOGEVENT_DELETE_REVISION": "<user> asayena revizyona perer da <page> vurnë",

@@ -36,6 +36,7 @@
 	"LOGEVENT_PROTECT_MODIFY": "<user> huet d'Spär vun der Säit <page> mat de Parametere {{protection_level}} geännert",
 	"LOGEVENT_PROTECT_UNPROTECT": "<user> huet d'Spär vun der Säit <page> opgehuewen",
 	"LOGEVENT_MOVE": "<user> Huet d'Säit <page> op <page title={{target_title}}> geréckelt",
+	"LOGEVENT_BLOCK_BLOCK": "<user> huet <user name={{title}}> fir eng Dauer vu(n) {{duration}} mat de Parameteren {{flags|list}}",
 	"LOGEVENT_BLOCK_UNBLOCK": "<user> huet d'Spär vum <user name={{title}}> opgehuewen",
 	"LOGEVENT_RIGHTS_AUTOPROMOTE": "<user> gouf automatesch vu(n) {{oldgroups|list}} op {{newgroups|list}} promovéiert",
 	"LOGEVENT_UPLOAD_OVERWRITE": "<user> huet eng nei Versioun vu(n) <page> eropgelueden",

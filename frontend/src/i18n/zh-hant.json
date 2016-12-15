@@ -4,7 +4,8 @@
 			"Black9869184",
 			"Cwlin0416",
 			"Liuxinyu970226",
-			"Kly"
+			"Kly",
+			"LNDDYL"
 		]
 	},
 	"META_LANGUAGE": "繁體中文",
@@ -48,7 +49,7 @@
 	"LOGEVENT_UPLOAD_OVERWRITE": "<user>上傳了<page>的新版本",
 	"LOGEVENT_UPLOAD_REVERT": "<user>上傳了<page>",
 	"LOGEVENT_UPLOAD_UPLOAD": "<user>上傳了<page>",
-	"LOGEVENT_IMPORT_INTERWIKI": "<user>從其它維基導入<page>",
+	"LOGEVENT_IMPORT_INTERWIKI": "<user>從其他維基匯入<page>",
 	"LOGEVENT_IMPORT_UPLOAD": "<user>以檔案上傳方式匯入到<page>",
 	"LOGEVENT_MERGE": "<user>將<page>合併至<page title={{dest_title}}>（修訂版本截止至{{mergepoint|amCalendar}}）",
 	"LOGEVENT_NEWUSERS_CREATE": "用戶帳號<user name={{title}}>被創建",

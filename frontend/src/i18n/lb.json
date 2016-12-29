@@ -85,6 +85,7 @@
 	"ORES_OPTION": "Ënnerscheeder weise fir vun ORES virausgesoten Zrécksetzungen",
 	"PENDING_EDITS": "Ännerungen am Suspens",
 	"FLAGGEDREVS_OPTION": "Ënnerscheed weise fir Ännerungen am Suspens déi mussen nogekuckt ginn",
+	"FLAGGEDREVS_TOOLTIP": "Ënnerscheed fir net nogekuckt Versioune weisen, wann Dir op enger Wiki, déi d'Erweiderung FlaggedRevs benotzt, d'Recht hutt fir Versiounen nozekucken.",
 	"SHOW_DIFF": "Ënnerscheed weisen",
 	"COLLAPSE": "zesummeklappen"
 }

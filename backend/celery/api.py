@@ -23,7 +23,8 @@ class MediaWiki(object):
                  access_token=None, redis_channel=None):
         self.api_url = host + path
 
-        self.user_agent = "crosswatch (https://tools.wmflabs.org/crosswatch;" +\
+        self.user_agent = \
+            "crosswatch (https://tools.wmflabs.org/crosswatch;" +\
             "crosswatch@tools.wmflabs.org) python-requests/" +\
             requests.__version__
         self.headers = {'User-Agent': self.user_agent}
@@ -68,7 +69,8 @@ class MediaWiki(object):
             logger.error(response['error'])
 
             if self.redis_channel:
-                if response['error']['code'] == 'mwoauth-invalid-authorization':
+                if response['error']['code'] == \
+                        'mwoauth-invalid-authorization':
                     self.publish({'msgtype': 'loginerror',
                                   'errorinfo': response['error']['info']})
                 else:

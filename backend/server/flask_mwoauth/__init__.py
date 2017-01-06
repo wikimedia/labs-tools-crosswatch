@@ -9,7 +9,7 @@
 #
 
 from future.moves.urllib.parse import urlencode
-from flask import request, session, Blueprint, make_response, redirect, render_template
+from flask import request, session, Blueprint, make_response, redirect, render_template  # noqa
 from flask_oauthlib.client import OAuth, OAuthException
 import json
 
@@ -36,11 +36,15 @@ class MWOAuth(object):
         self.mwoauth = self.oauth.remote_app(
             'mw.org',
             base_url=base_url + "/index.php",
-            request_token_url=base_url + "/index.php?" +
-                              urlencode(request_url_params),
+            request_token_url=(
+                base_url + "/index.php?" +
+                urlencode(request_url_params)
+            ),
             request_token_params=None,
-            access_token_url=base_url + "/index.php?" +
-                             urlencode(access_token_params),
+            access_token_url=(
+                base_url + "/index.php?" +
+                urlencode(access_token_params)
+            ),
             authorize_url=clean_url + '/Special:OAuth/authorize',
             consumer_key=consumer_key,
             consumer_secret=consumer_secret,
@@ -95,7 +99,8 @@ class MWOAuth(object):
 
         @self.bp.route('/logout')
         def logout():
-            resp = make_response(render_template('logout.html', toolname=self.toolname))
+            resp = make_response(
+                render_template('logout.html', toolname=self.toolname))
             session['mwo_token'] = None
             resp.set_cookie(self.toolname + '.auth', '',
                             path='/' + self.toolname + '/', expires=0)

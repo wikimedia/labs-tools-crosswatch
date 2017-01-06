@@ -25,8 +25,8 @@ from tornadoredis.pubsub import SockJSSubscriber
 
 from .. import config
 toolname = config.toolname
-from .oauth_handler import app as oauth_wsgi
-from ..celery import app as celery_app
+from .oauth_handler import app as oauth_wsgi  # noqa
+from ..celery import app as celery_app  # noqa
 
 # Create the tornadoredis.Client instance
 # and use it for redis channel subscriptions
@@ -52,8 +52,9 @@ class SockConnection(SockJSConnection):
             celery_app.send_task('backend.celery.tasks.initial_task',
                                  kwargs=data, expires=60)
         elif data['action'] == 'notifications_mark_read':
-            celery_app.send_task('backend.celery.tasks.notifications_mark_read',
-                                 kwargs=data, expires=60)
+            celery_app.send_task(
+                'backend.celery.tasks.notifications_mark_read',
+                kwargs=data, expires=60)
         elif data['action'] == 'diff':
             celery_app.send_task('backend.celery.tasks.get_diff', kwargs=data)
         elif data['action'] == 'watch':
@@ -77,7 +78,9 @@ def run(port):
 
     # Config sockjs
     sockjs_settings = {
-        "sockjs_url": "https://tools-static.wmflabs.org/cdnjs/ajax/libs/sockjs-client/1.0.0/sockjs.min.js"
+        "sockjs_url":
+            "https://tools-static.wmflabs.org/cdnjs" +
+            "/ajax/libs/sockjs-client/1.0.0/sockjs.min.js"
     }
     sockjsrouter = SockJSRouter(SockConnection, '/' + toolname + '/sockjs',
                                 user_settings=sockjs_settings)

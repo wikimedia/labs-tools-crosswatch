@@ -5,5 +5,5 @@
     "url" : "https://tools.wmflabs.org/crosswatch/",
     "keywords" : "watchlist, cross-wiki, echo, notification, multilingual, python, celery, angularjs",
     "author" : "sitic",
-    "repository" : "https://git.wikimedia.org/summary/labs%2Ftools%2Fcrosswatch"
+    "repository" : "https://phabricator.wikimedia.org/diffusion/TCRW/"
 }

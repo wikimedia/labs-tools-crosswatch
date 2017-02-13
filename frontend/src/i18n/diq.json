@@ -60,7 +60,7 @@
 	"LOGEVENT_TRANSLATION_ASSOCIATE": "<user> pera açarneyayi debyë <page> grub da {{aggregategroup}} dı qebul bi ya",
 	"LOGEVENT_TRANSLATION_DISSOCIATE": "<user> pera açarniyayi dı <page> ra qebuleya gruber {{aggregategroup}} wedariya ya",
 	"LOGEVENT_PAGETRIAGE_REVIEWED": "Weynayê <user> nışan bı <page>",
-	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> <page> çımra nêravêrde nışan kerd",
+	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user>i <page> nışan kerdo ke çım ra nêviyarniyao",
 	"LOGEVENT_PAGETRIAGE_TAG": "Etiketi <user> etiketyayê <page> {{tags|list}}",
 	"LOGEVENT_PAGETRIAGE_DELETE": "Etiketê besternayışi <user>nışab bi <page>{{tags|list}}",
 	"OAUTH_FAILURE_TITLE": "OAuth xetay araşt kerdışi",

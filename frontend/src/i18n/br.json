@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gwenn-Ael"
+			"Gwenn-Ael",
+			"Fulup"
 		]
 	},
 	"META_LANGUAGE": "Saozneg",
@@ -57,8 +58,8 @@
 	"LOGEVENT_TRANSLATION_DISSOCIATE": "<user> en deus tennet ar bajenn droadus <page> eus ar strollad kevelstrollet {{aggregategroup}}",
 	"LOGEVENT_PAGETRIAGE_REVIEWED": "<user> en deus merket <page> evel adlennet",
 	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> en deus merket <page> evel nann adlennet",
-	"LOGEVENT_PAGETRIAGE_TAG": "<user> en deus meket <page> gant ar balizennoù {{tags|list}}",
-	"LOGEVENT_PAGETRIAGE_DELETE": "<user> en deus merket <page> evit dilemel gant ar balizennoù {{tags|list}}",
+	"LOGEVENT_PAGETRIAGE_TAG": "<user> en deus merket <page> gant an tikedennoù {{tags|list}}",
+	"LOGEVENT_PAGETRIAGE_DELETE": "<user> en deus merket <page> da vezañ dilamet gant an tikedennoù {{tags|list}}",
 	"OAUTH_FAILURE_TITLE": "Dilesadur OAuth c'hwitet",
 	"OAUTH_FAILURE_CONTENT": "Dilesadur c'hwitet, Disc'hraet ho peus an aotre evit an arload-mañ marteze. Digevreit, mar plij, hag adkevreit. Titouroù war ar c'hwitadur :{{error}}",
 	"CLOSE": "Serriñ",

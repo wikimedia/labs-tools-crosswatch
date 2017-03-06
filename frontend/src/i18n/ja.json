@@ -6,6 +6,7 @@
 		]
 	},
 	"META_LANGUAGE": "英語",
+	"META_DIRECTION": "ltr",
 	"DOCUMENTATION": "説明書",
 	"TALK": "トーク",
 	"REPORT_BUGS": "バグの報告",
@@ -13,6 +14,8 @@
 	"SIGN_OUT": "ログアウト",
 	"SIGN_IN_BUTTON": "OAuthでサインする",
 	"MINOREDIT_FLAG": "m",
+	"BOTEDIT_FLAG": "ボ",
+	"NEWPAGE_FLAG": "新",
 	"PREFERENCES": "設定",
 	"FILTER": "フィルター",
 	"WIKIS": "ウィキ",

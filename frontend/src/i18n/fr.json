@@ -45,7 +45,7 @@
 	"LOGEVENT_BLOCK_UNBLOCK": "<user> a enlevé le blocage de <user name={{title}}>",
 	"LOGEVENT_RIGHTS_AUTOPROMOTE": "<user> a été promu automatiquement de {{oldgroups|list}} en {{newgroups|list}}",
 	"LOGEVENT_RIGHTS_RIGHTS": "<user> a modifié l’appartenance de groupe pour <user name={{title}}>, de {{oldgroups|list}} vers {{newgroups|list}}",
-	"LOGEVENT_UPLOAD_OVERWRITE": "<user> a téléchargé une nouvelle version de <page>",
+	"LOGEVENT_UPLOAD_OVERWRITE": "<user> a téléversé une nouvelle version de <page>",
 	"LOGEVENT_UPLOAD_REVERT": "<user> a téléversé <page>",
 	"LOGEVENT_UPLOAD_UPLOAD": "<user> a téléversé <page>",
 	"LOGEVENT_IMPORT_INTERWIKI": "<user> a importé <page> depuis un autre wiki",

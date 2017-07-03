@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"META_LANGUAGE": "Inglese",
+	"META_DIRECTION": "ltr",
+	"DOCUMENTATION": "Documendazione",
+	"TALK": "'Ngazzamende",
+	"REPORT_BUGS": "Segnale le errore",
+	"SIGN_IN": "Tràse",
+	"SIGN_OUT": "Isse",
+	"MINOREDIT_FLAG": "m",
+	"BOTEDIT_FLAG": "b",
+	"NEWPAGE_FLAG": "N",
+	"PREFERENCES": "Me piace accussì",
+	"FILTER": "Filtre",
+	"WIKIS": "Uicchi",
+	"MINOR_EDITS": "cangiaminde stuèdeche",
+	"BOT_EDITS": "cangiaminde de le bot",
+	"ANON_EDITS": "cangiaminde de le utinde anonime",
+	"USER_EDITS": "cangiaminde de le utinde reggistrate",
+	"CLOSE": "Achiude",
+	"SERVER_ERROR_TITLE": "Server a 'u jucche",
+	"NS_0": "Vôsce",
+	"NS_1": "'Ngazzamende",
+	"NS_2": "Utende",
+	"NS_3": "'Ngazzaminde de l'utende",
+	"NS_4": "Proggette",
+	"NS_5": "'Ngazzaminde d'u proggette",
+	"NS_6": "File",
+	"NS_7": "'Ngazzaminde d'u file",
+	"NS_10": "Template",
+	"NS_11": "'Ngazzaminde d'u template",
+	"NS_12": "Aijute",
+	"NS_13": "'Ngazzaminde de l'aijute",
+	"NS_OTHER": "Otre namespace",
+	"HISTORY": "cunde",
+	"CONTRIBS": "condrebbute"
+}

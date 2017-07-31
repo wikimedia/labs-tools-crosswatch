@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"ANDROBETA"
+			"ANDROBETA",
+			"XXN"
 		]
 	},
 	"META_LANGUAGE": "engleză",
@@ -42,7 +43,7 @@
 	"LOGEVENT_BLOCK_UNBLOCK": "<user> l-a deblocat pe <user name={{title}}>",
 	"LOGEVENT_RIGHTS_AUTOPROMOTE": "<user> a fost promovat automat de la {{oldgroups|list}} la {{newgroups|list}}",
 	"LOGEVENT_RIGHTS_RIGHTS": "<user> a schimbat apartenența la grup pentru <user name={{title}}> de la {{oldgroups|list}} la {{newgroups|list}}",
-	"LOGEVENT_UPLOAD_OVERWRITE": "<user> a încărcat o nouă versiune a <page>",
+	"LOGEVENT_UPLOAD_OVERWRITE": "<user> a încărcat o versiune nouă pentru <page>",
 	"LOGEVENT_UPLOAD_REVERT": "<user> a încărcat <page>",
 	"LOGEVENT_UPLOAD_UPLOAD": "<user> a încărcat <page>",
 	"LOGEVENT_IMPORT_INTERWIKI": "<user> a importat <page> din alt wiki",

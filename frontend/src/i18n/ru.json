@@ -2,14 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Nzeemin",
-			"Kaganer"
+			"Kaganer",
+			"Helpau"
 		]
 	},
 	"META_LANGUAGE": "Русский",
 	"META_DIRECTION": "ltr",
 	"DOCUMENTATION": "Документация",
 	"TALK": "Обсуждение",
-	"REPORT_BUGS": "Баг-репорты",
+	"REPORT_BUGS": "Сообщить об ошибке",
 	"SIGN_IN": "Войти",
 	"SIGN_OUT": "Выйти",
 	"DESCRIPTION": "Общий список наблюдения для всех вики-проектов Викимедиа.",

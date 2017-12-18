@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Macofe",
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"MokaAkashiyaPT"
 		]
 	},
 	"META_LANGUAGE": "português",
@@ -82,5 +83,6 @@
 	"WATCHLIST_REMOVE": "Remover esta página da lista de páginas vigiadas",
 	"WATCHLIST_ADD": "Adicionar esta página à lista de páginas vigiadas",
 	"PENDING_EDITS": "edições pendentes",
+	"SHOW_DIFF": "mostrar diff",
 	"COLLAPSE": "ocultar"
 }

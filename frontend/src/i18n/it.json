@@ -34,7 +34,7 @@
 	"LOGEVENT_DELETE_REVISION": "<user> ha modificato la visibilità di una revisione della pagina <page>",
 	"LOGEVENT_DELETE_RESTORE": "<user> ha ripristinato <page>",
 	"LOGEVENT_PROTECT_PROTECT": "<user> ha protetto la pagina <page> con i parametri {{protection_level}}",
-	"LOGEVENT_PROTECT_MODIFY": "<user> ha modificato la protezione sulla pagina <page>, {{protection_level}}",
+	"LOGEVENT_PROTECT_MODIFY": "<user> ha modificato la protezione sulla pagina <page> con i parametri {{protection_level}}",
 	"LOGEVENT_PROTECT_UNPROTECT": "<user> ha tolto la protezione dalla pagina <page>",
 	"LOGEVENT_PROTECT_MOVE": "<user> ha spostato la protezione dalla <page> a <page title={{target_title}}>",
 	"LOGEVENT_MOVE": "<user> ha spostato la pagina da <page> a <page title={{target_title}}>",

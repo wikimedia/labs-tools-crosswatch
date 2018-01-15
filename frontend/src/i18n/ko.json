@@ -3,7 +3,8 @@
 		"authors": [
 			"Hwangjy9",
 			"Revi",
-			"아라"
+			"아라",
+			"Bluemersen"
 		]
 	},
 	"META_LANGUAGE": "한국어",
@@ -42,7 +43,7 @@
 	"LOGEVENT_BLOCK_BLOCK": "<user>님이 <user name={{title}}>을(를) {{duration}} ({{flags|list}}) 설정으로 차단했습니다",
 	"LOGEVENT_BLOCK_REBLOCK": "<user>님이 <user name={{title}}>님의 차단을 {{duration}} ({{flags|list}}) 설정으로 바꿨습니다",
 	"LOGEVENT_BLOCK_UNBLOCK": "<user>님이 <user name={{title}}>님의 차단을 해제했습니다",
-	"LOGEVENT_RIGHTS_AUTOPROMOTE": "<user>님이 {{oldgroups|list}}에서 {{newgroups|list}}으로 자동적으로 승격되었습니다",
+	"LOGEVENT_RIGHTS_AUTOPROMOTE": "<user>님이 {{oldgroups|list}}에서 {{newgroups|list}}으로 자동으로 승격되었습니다",
 	"LOGEVENT_RIGHTS_RIGHTS": "<user>님이 <user name={{title}}>님의 권한을 {{oldgroups|list}}에서 {{newgroups|list}}(으)로 바꾸었습니다",
 	"LOGEVENT_UPLOAD_OVERWRITE": "<user>님이 <page> 파일의 새 판을 올렸습니다",
 	"LOGEVENT_UPLOAD_REVERT": "<user>님이 <page> 파일을 올렸습니다",

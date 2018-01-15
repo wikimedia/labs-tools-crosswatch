@@ -10,7 +10,7 @@
 	"DOCUMENTATION": "Documentació",
 	"TALK": "Discussió",
 	"SIGN_IN": "Inicia una sessió",
-	"SIGN_OUT": "Tanca la sessió",
+	"SIGN_OUT": "Finalitza la sessió",
 	"MINOREDIT_FLAG": "m",
 	"BOTEDIT_FLAG": "b",
 	"NEWPAGE_FLAG": "N",
@@ -42,6 +42,7 @@
 	"CONTRIBS": "contribucions",
 	"NOTIFICATIONS": "Notificacions",
 	"STYLE": "Estil",
+	"EDIT": "Modifica aquesta pàgina en una pestanya nova",
 	"PENDING_EDITS": "edicions pendents",
 	"SHOW_DIFF": "mostra les diferències"
 }

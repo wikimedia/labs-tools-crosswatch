@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"ShockD",
+			"StanProg",
+			"Vodnokon4e"
+		]
+	},
+	"META_LANGUAGE": "Английски",
+	"META_DIRECTION": "ltr",
+	"DOCUMENTATION": "Документация",
+	"TALK": "Беседа",
+	"SIGN_IN": "Влизане",
+	"SIGN_OUT": "Излизане",
+	"MINOREDIT_FLAG": "м",
+	"BOTEDIT_FLAG": "б",
+	"NEWPAGE_FLAG": "Н",
+	"PREFERENCES": "Настройки",
+	"FILTER": "Филтър",
+	"WIKIS": "Уикита",
+	"MINOR_EDITS": "малки промени",
+	"BOT_EDITS": "редакции на ботове",
+	"ANON_EDITS": "редакции на анонимни потребители",
+	"WATCHLIST": "Списък за наблюдение",
+	"SEARCH_WATCHLIST": "Търсене в списъка за наблюдение",
+	"LOGEVENT_PROTECT_MOVE": "<user> премести настройките на защита от <page> на <page title={{target_title}}>",
+	"NAMESPACES": "Именни пространства",
+	"NS_2": "Потребител",
+	"NS_3": "Потребител беседа",
+	"NS_4": "Проект",
+	"NS_5": "Проект беседа",
+	"NS_6": "Файл",
+	"NS_7": "Файл беседа",
+	"NS_10": "Шаблон",
+	"NS_11": "Шаблон беседа",
+	"NS_12": "Помощ",
+	"NS_13": "Помощ беседа",
+	"NS_OTHER": "Други именни пространства",
+	"HISTORY": "история",
+	"CONTRIBS": "приноси"
+}

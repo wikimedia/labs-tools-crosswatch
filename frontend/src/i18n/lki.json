@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lakzon"
+		]
+	},
+	"META_LANGUAGE": "انگلیسی",
+	"META_DIRECTION": "rtl",
+	"DOCUMENTATION": "مستندات",
+	"TALK": "گەپ(قسە)",
+	"SIGN_IN": "نۆم نۆیسی",
+	"SIGN_OUT": "دةر چئن سیستم",
+	"MINOREDIT_FLAG": "جز",
+	"BOTEDIT_FLAG": "ر",
+	"NEWPAGE_FLAG": "نو",
+	"PREFERENCES": "بن چۀکۀل",
+	"FILTER": "پالانۀل/فیلترۀل",
+	"WIKIS": "ویکیةل",
+	"WATCHLIST": "لیست پی‌گیریۀل",
+	"CLOSE": "ئآنیائن-بستِن",
+	"NAMESPACES": "فضای نامۀل",
+	"NS_0": "مقاله",
+	"NS_1": "گەپ(قسە)",
+	"NS_2": "کاربۀر",
+	"NS_3": "گةپ کاربةر",
+	"NS_4": "پروژۀ",
+	"NS_5": "گةپ پروژة",
+	"NS_6": "فایل",
+	"NS_10": "الگو",
+	"NS_12": "کؤمةک",
+	"HISTORY": "تاریخچه",
+	"CONTRIBS": "هؤمکاریۀل",
+	"NOTIFICATIONS": "اطلاعیةل",
+	"HIDEOWNEDITS": "دسکاریۀل ووژم ئژ فئرست سئرکردن بشارآ",
+	"WATCHLIST_ADD": "اضافۀ کردن ئئ وۀلگۀ وۀ لیست پیگیریۀل تان",
+	"PENDING_EDITS": "ویرایش‌های در حال انتظار",
+	"COLLAPSE": "آشاردِن"
+}

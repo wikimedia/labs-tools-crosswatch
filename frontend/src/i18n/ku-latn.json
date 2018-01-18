@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bikarhêner",
+			"George Animal"
+		]
+	},
+	"META_LANGUAGE": "Îngilîzî",
+	"DOCUMENTATION": "Belgekirin",
+	"TALK": "Gotûbêj",
+	"REPORT_BUGS": "Çewtiyên Raporan",
+	"SIGN_IN": "Têkeve",
+	"SIGN_OUT": "Derkeve",
+	"SIGN_IN_BUTTON": "Bi OAuth'ê Têkeve",
+	"PREFERENCES": "Hevyazên min",
+	"FILTER": "Parzûn",
+	"WIKIS": "Wîkî",
+	"BOT_EDITS": "guherandinên bot",
+	"WATCHLIST": "Lîsteya şopandinê",
+	"LOGEVENT_PROTECT_UNPROTECT": "<user> parastina <page> rakir",
+	"LOGEVENT_UPLOAD_UPLOAD": "<user> <page> bar kir",
+	"CLOSE": "Bigre",
+	"NS_0": "Gotar",
+	"NS_1": "Gotûbêj",
+	"NS_2": "Bikarhêner",
+	"NS_4": "Proje",
+	"NS_5": "Gotûbêja projeyê",
+	"NS_10": "Şablon",
+	"NS_12": "Alîkarî",
+	"HISTORY": "dîrok",
+	"CONTRIBS": "beşdarî",
+	"WATCHLIST_ADD": "Vê rûpelê têxe nav lîsteya xwe ya şopandinê"
+}

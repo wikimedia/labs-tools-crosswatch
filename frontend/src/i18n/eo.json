@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robin van der Vliet",
+			"Zciric"
+		]
+	},
+	"META_LANGUAGE": "Esperanto",
+	"META_DIRECTION": "ltr",
+	"DOCUMENTATION": "Dokumentado",
+	"TALK": "Diskuto",
+	"SIGN_IN": "Ensaluti",
+	"SIGN_OUT": "Elsaluti",
+	"MINOREDIT_FLAG": "e",
+	"BOTEDIT_FLAG": "r",
+	"NEWPAGE_FLAG": "N",
+	"FILTER": "Filtriloj",
+	"WIKIS": "Vikioj",
+	"MINOR_EDITS": "redaktetoj",
+	"BOT_EDITS": "robotaj redaktoj",
+	"CLOSE": "Fermi",
+	"NAMESPACES": "Nomspacoj",
+	"NS_0": "Artikolo",
+	"NS_1": "Diskuto",
+	"NS_2": "Uzanto",
+	"NS_4": "Projekto",
+	"NS_6": "Dosiero",
+	"NS_10": "Ŝablono",
+	"HISTORY": "historio",
+	"CONTRIBS": "kontribuoj",
+	"NOTIFICATIONS": "Sciigoj",
+	"STYLE": "Stilo",
+	"COLLAPSE": "kolapsi"
+}

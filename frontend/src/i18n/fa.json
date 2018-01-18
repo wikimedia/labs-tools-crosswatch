@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Reza1615"
+		]
+	},
+	"META_LANGUAGE": "انگلیسی",
+	"META_DIRECTION": "rtl",
+	"DOCUMENTATION": "مستندات",
+	"TALK": "بحث",
+	"SIGN_IN": "ثبت نام",
+	"SIGN_OUT": "خروج",
+	"MINOREDIT_FLAG": "جز",
+	"BOTEDIT_FLAG": "ر",
+	"NEWPAGE_FLAG": "نو",
+	"PREFERENCES": "ترجیحات",
+	"FILTER": "پالایه",
+	"WATCHLIST": "فهرست پی‌گیری‌ها",
+	"CLOSE": "بستن",
+	"NAMESPACES": "فضاهای نام",
+	"NS_0": "مقاله",
+	"NS_1": "بحث",
+	"NS_2": "کاربر",
+	"NS_4": "پروژه",
+	"NS_6": "پرونده",
+	"NS_10": "الگو",
+	"NS_12": "کمک",
+	"HISTORY": "تاریخچه",
+	"CONTRIBS": "مشارکت‌ها",
+	"NOTIFICATIONS": "اطلاعیه‌ها",
+	"HIDEOWNEDITS": "ویرایش‌های خودم در فهرست پی‌گیری‌ها پنهان شود",
+	"ORES_OPTION": "نمایش تفاوت‌ها برای واگردانی‌های پیش‌بینی شده توسط ساعن",
+	"ORES_PROBABILITY": "امتیاز واگردانی <a href=\"https://meta.wikimedia.org/wiki/ORES\">ساعن</a>: {{probability}}",
+	"PENDING_EDITS": "ویرایش‌های در حال انتظار",
+	"COLLAPSE": "نهفتن"
+}

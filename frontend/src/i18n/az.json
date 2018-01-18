@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cekli829",
+			"Şeyx Şamil"
+		]
+	},
+	"META_LANGUAGE": "İngiliscə",
+	"TALK": "Müzakirə",
+	"SIGN_IN": "Daxil ol",
+	"SIGN_OUT": "Sistemdən çıx",
+	"PREFERENCES": "Nizamlamalar",
+	"FILTER": "Süzgəc",
+	"WIKIS": "Vikilər",
+	"WATCHLIST": "İzləmə siyahısı",
+	"CLOSE": "Bağlı",
+	"NS_0": "Məqalə",
+	"NS_1": "Müzakirə",
+	"NS_2": "İstifadəçi",
+	"NS_3": "İstifadəçi müzakirəsi",
+	"NS_4": "Layihə",
+	"NS_5": "Layihə müzakirəsi",
+	"NS_6": "Fayl",
+	"NS_7": "Fayl müzakirəsi",
+	"NS_10": "Şablon",
+	"NS_11": "Şablon müzakirəsi",
+	"NS_12": "Kömək",
+	"NS_13": "Kömək müzakirəsi",
+	"NS_OTHER": "Digər adlar fəzası",
+	"HISTORY": "tarixçə",
+	"CONTRIBS": "töhfələr",
+	"STYLE": "Stil"
+}

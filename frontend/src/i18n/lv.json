@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Papuass",
+			"Silraks"
+		]
+	},
+	"DOCUMENTATION": "Dokumentācija",
+	"TALK": "Diskusija",
+	"SIGN_IN": "Pieslēgties",
+	"SIGN_OUT": "Iziet",
+	"PREFERENCES": "Izvēles",
+	"FILTER": "Filtrs",
+	"MINOR_EDITS": "Maznozīmīgi labojumi",
+	"WATCHLIST": "Uzraugāmie raksti",
+	"CLOSE": "Aizvērt",
+	"NAMESPACES": "Vārdtelpas",
+	"NS_0": "Raksti",
+	"NS_1": "Diskusija",
+	"NS_2": "Dalībnieks",
+	"NS_3": "Dalībnieka diskusija",
+	"NS_4": "Projekts",
+	"NS_5": "Projekta diskusija",
+	"NS_6": "Attēls",
+	"NS_7": "Attēla diskusija",
+	"NS_10": "Veidne",
+	"NS_11": "Veidne diskusija",
+	"NS_12": "Palīdzība",
+	"NS_13": "Palīdzības diskusija",
+	"NS_OTHER": "Citas vārdtelpas",
+	"HISTORY": "vēsture",
+	"CONTRIBS": "devums",
+	"STYLE": "Stils",
+	"WATCHLIST_ADD": "Pievienot šo lapu uzraugāmo lapu sarakstam",
+	"COLLAPSE": "paslēpt"
+}

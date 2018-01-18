@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sachinkatiyar",
+			"Sfic"
+		]
+	},
+	"META_LANGUAGE": "अंग्रेज़ी",
+	"META_DIRECTION": "बायें से दायें",
+	"DOCUMENTATION": "प्रलेखन",
+	"TALK": "वार्ता",
+	"REPORT_BUGS": "त्रुटि बतायें",
+	"SIGN_IN": "प्रवेश",
+	"SIGN_OUT": "प्रस्थान",
+	"SIGN_IN_BUTTON": "ओ-अथ से प्रवेश",
+	"MINOREDIT_FLAG": "म",
+	"BOTEDIT_FLAG": "बॉ",
+	"NEWPAGE_FLAG": "न",
+	"PREFERENCES": "पसंद",
+	"FILTER": "छननी",
+	"WIKIS": "विकियाँ",
+	"SHOW_LAST_HOURS": "अंतिम {{number}} घण्टे दिखाएँ",
+	"SHOW_LAST_DAYS": "अंतिम {{number}} दिन दिखाएँ",
+	"MINOR_EDITS": "छोटा संपादन",
+	"BOT_EDITS": "बॉट संपादन",
+	"ANON_EDITS": "अनाम प्रयोक्ता सम्पादन",
+	"USER_EDITS": "पंजीकृत प्रयोक्ता सम्पादन",
+	"WATCHLIST": "ध्यानसूची",
+	"SEARCH_WATCHLIST": "ध्यानसूची खोजें",
+	"LOGEVENT_DELETE_DELETE": "<user> हटा हुआ पृष्ठ <page>",
+	"LOGEVENT_DELETE_REVISION": "<user> पृष्ठ के अवतरण की दृश्यता बदलें <page>"
+}

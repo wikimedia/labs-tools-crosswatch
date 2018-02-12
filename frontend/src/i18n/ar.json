@@ -61,6 +61,8 @@
 	"LOGEVENT_TRANSLATION_DISSOCIATE": "<user> أزال الصفحة القابلة للترجمة <page> من المجموعة المجمعة {{aggregategroup}}",
 	"LOGEVENT_PAGETRIAGE_REVIEWED": "<user> علَّم <page> كمراجعة",
 	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> علَّم <page> كغير مراجعة",
+	"LOGEVENT_PAGETRIAGE_TAG": "<user> وسم <page> بالوسوم {{tags|list}}",
+	"LOGEVENT_PAGETRIAGE_DELETE": "<user> علم على <page> للحذف بالوسوم {{tags|list}}",
 	"OAUTH_FAILURE_TITLE": "فشلت مصادقة أوث",
 	"OAUTH_FAILURE_CONTENT": "فشلت المصادقة; كنت قد ألغيت ترخيص لهذا التطبيق. من فضلك خروج والدخول مرة أخرى. معلومات الخطأ: {{error}}",
 	"CLOSE": "أغلق",

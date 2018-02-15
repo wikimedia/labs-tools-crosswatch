@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"ArslanX"
+		]
+	},
+	"META_LANGUAGE": "Къумукъча",
+	"META_DIRECTION": "ltr",
+	"TALK": "Сёйлешив",
+	"SIGN_IN": "Гирмек",
+	"SIGN_OUT": "Чыкъмакъ",
+	"PREFERENCES": "Кюйлевлер",
+	"FILTER": "Сюзгюч",
+	"WIKIS": "Вики",
+	"MINOR_EDITS": "увакъ тюзлевлер",
+	"FLAGS": "Тилни атын орнуна байракъны гёрсетмек",
+	"WATCHLIST": "Гьызарлав тизмеси",
+	"SEARCH_WATCHLIST": "Гьызарлав тизмеде излев",
+	"LOGEVENT_DELETE_DELETE": "<user> сагьифаны тайдыргъан <page>",
+	"LOGEVENT_DELETE_RESTORE": "<user> сагьифаны ярашдыргъан <page>",
+	"CLOSE": "Япмакъ",
+	"NS_0": "Макъала",
+	"NS_1": "Сёйлешив",
+	"NS_2": "Къоллавчу",
+	"NS_4": "Проект",
+	"NS_5": "Проект пикирлешивю",
+	"NS_6": "Саплам",
+	"NS_7": "Саплам пикирлешивю",
+	"NS_10": "Уьлгю",
+	"NS_12": "Кёмек",
+	"HISTORY": "тарих",
+	"CONTRIBS": "къошум",
+	"NOTIFICATIONS": "Билдиривлер",
+	"MARKALLREAD": "охулгъанлардай белгилемек",
+	"STYLE": "Стил"
+}

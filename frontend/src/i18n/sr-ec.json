@@ -3,7 +3,8 @@
 		"authors": [
 			"Milicevic01",
 			"Rancher",
-			"Nikola Smolenski"
+			"Nikola Smolenski",
+			"Acamicamacaraca"
 		]
 	},
 	"META_LANGUAGE": "српски",
@@ -62,11 +63,11 @@
 	"LOGEVENT_PAGETRIAGE_TAG": "<user> је страници <page> додао ознаке {{tags|list}}",
 	"LOGEVENT_PAGETRIAGE_DELETE": "<user> је означио страницу <page> за брисање са ознакама {{tags|list}}",
 	"OAUTH_FAILURE_TITLE": "Грешка при OAuth потврди идентитета",
-	"OAUTH_FAILURE_CONTENT": "Дошло је до грешке при потврди идентитета. Можда сте опозвали ауторизацију за ову апликацију. Одјавите се па се поново пријавите. Информације о грешки: {{error}}",
+	"OAUTH_FAILURE_CONTENT": "Дошло је до грешке при потврди идентитета. Можда сте опозвали ауторизацију за ову апликацију. Одјавите се па се поново пријавите. Информације о грешци: {{error}}",
 	"CLOSE": "Затвори",
 	"SERVER_ERROR_TITLE": "Грешка сервера",
 	"SERVER_ERROR_CONTENT": "Не могу да преузмем списак надгледања. Ово је унутрашња грешка у серверу. Отворите извештај о њој ако се проблем не реши.",
-	"API_ERROR_CONTENT": "API захтев није извршен због грешке бр. {{errorcode}}. Информације о грешки: {{errorinfo}}",
+	"API_ERROR_CONTENT": "API захтев није извршен због грешке бр. {{errorcode}}. Информације о грешци: {{errorinfo}}",
 	"NAMESPACES": "Именски простори",
 	"NS_0": "Чланак",
 	"NS_1": "Разговор",

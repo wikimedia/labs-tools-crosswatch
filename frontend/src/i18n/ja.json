@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Otokoume",
-			"Sujiniku"
+			"Sujiniku",
+			"Aefgh39622"
 		]
 	},
 	"META_LANGUAGE": "英語",
@@ -19,7 +20,9 @@
 	"PREFERENCES": "設定",
 	"FILTER": "フィルター",
 	"WIKIS": "ウィキ",
+	"LASTREVONLY": "ページあたりの最新の変更のみを表示",
 	"SHOW_LAST_HOURS": "現在までの{{number}}時間を表示",
+	"SHOW_LAST_DAYS": "現在までの{{number}}日を表示",
 	"MINOR_EDITS": "細部の編集",
 	"BOT_EDITS": "ボット編集",
 	"ANON_EDITS": "IP利用者による編集",

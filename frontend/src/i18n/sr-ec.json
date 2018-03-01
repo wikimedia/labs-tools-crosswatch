@@ -98,7 +98,7 @@
 	"ORES_PROBABILITY": "Вероватноћа враћања по <a href=\"https://meta.wikimedia.org/wiki/ORES\">ORES-у</a>: {{probability}}",
 	"PENDING_EDITS": "измене на чекању",
 	"FLAGGEDREVS_OPTION": "Прикажи разлике за измене на чекању",
-	"FLAGGEDREVS_TOOLTIP": "Приказује разлике за непрегледане измене, ако сте патролер на викију који користи додатак „Означене ревизије“ (FlaggedRevs).",
+	"FLAGGEDREVS_TOOLTIP": "Приказује разлике за непрегледане измене, ако сте патролер на викију који користи додатак „Означене измене“ (FlaggedRevs).",
 	"SHOW_DIFF": "прикажи разлику",
 	"COLLAPSE": "скупи"
 }

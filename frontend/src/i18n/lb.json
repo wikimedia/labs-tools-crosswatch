@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Les Meloures"
 		]
 	},
 	"META_LANGUAGE": "Lëtzebuergesch",
@@ -75,7 +76,7 @@
 	"CONTRIBS": "Kontributiounen",
 	"ONELINE": "Traditionnelle Layout vun der Iwwerwaachungslëscht",
 	"NOTIFICATIONS": "Notifikatiounen",
-	"MARKALLREAD": "all als geliest markéieren",
+	"MARKALLREAD": "all als gelies markéieren",
 	"STYLE": "Stil",
 	"HIDEOWNEDITS": "Meng Ännerungen op der Iwwerwaachungslëscht verstoppen",
 	"EDIT": "Dës Säit an engem neien Tab änneren",

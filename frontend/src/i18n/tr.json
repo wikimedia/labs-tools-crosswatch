@@ -3,7 +3,8 @@
 		"authors": [
 			"Chansey",
 			"HakanIST",
-			"KorkmazO"
+			"KorkmazO",
+			"Diyapazon"
 		]
 	},
 	"META_LANGUAGE": "İngilizce",
@@ -42,6 +43,7 @@
 	"LOGEVENT_UPLOAD_REVERT": "<user>, <page> sayfasını yükledi",
 	"LOGEVENT_UPLOAD_UPLOAD": "<user>, <page> sayfasını yükledi",
 	"LOGEVENT_IMPORT_INTERWIKI": "<user>, <page> sayfasını başka bir vikiden aktardı.",
+	"LOGEVENT_RENAMEUSER": "<user>, {{edits}} değişikliği bulunan <user name={{olduser}}> adlı kullanıcıyı <user name={{newuser}}> olarak yeniden adlandırdı",
 	"LOGEVENT_PAGETRIAGE_REVIEWED": "<user>, <page> sayfasını “gözden geçirildi” olarak işaretledi.",
 	"LOGEVENT_PAGETRIAGE_DELETE": "<user>, <page> sayfasını silinmesi için {{tags|list}} gerekçesiyle işaretledi.",
 	"CLOSE": "Kapat",

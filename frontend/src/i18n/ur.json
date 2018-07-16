@@ -47,5 +47,6 @@
 	"LOGEVENT_NEWUSERS_BYEMAIL": "<user> نے صارف کھاتہ <user name={{title}}> تخلیق کیا اور پاس ورڈ ای میل سے بھیج دیا گیا",
 	"LOGEVENT_RENAMEUSER": "<user> نے صارف <user name={{olduser}}> ({{edits}} edits) کا نام بدل کر ({{edits}} edits) کردیا",
 	"LOGEVENT_TRANSLATION_MARK": "<user> نے <page> ترجمے کےلیے نشان زد کیا",
-	"NS_5": "منصوبہ بات چیت"
+	"NS_5": "منصوبہ بات چیت",
+	"MARKALLREAD": "سب کو بطور خواندہ نشان زد کریں"
 }

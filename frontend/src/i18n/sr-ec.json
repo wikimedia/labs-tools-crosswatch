@@ -4,7 +4,8 @@
 			"Milicevic01",
 			"Rancher",
 			"Nikola Smolenski",
-			"Acamicamacaraca"
+			"Acamicamacaraca",
+			"Obsuser"
 		]
 	},
 	"META_LANGUAGE": "српски",
@@ -100,5 +101,5 @@
 	"FLAGGEDREVS_OPTION": "Прикажи разлике за измене на чекању",
 	"FLAGGEDREVS_TOOLTIP": "Приказује разлике за непрегледане измене, ако сте патролер на викију који користи додатак „Означене измене“ (FlaggedRevs).",
 	"SHOW_DIFF": "прикажи разлику",
-	"COLLAPSE": "скупи"
+	"COLLAPSE": "сакриј"
 }

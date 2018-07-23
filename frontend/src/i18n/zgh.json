@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amara-Amaziɣ",
+			"Mdb897",
+			"Ya2sine",
+			"YesIn"
+		]
+	},
+	"META_LANGUAGE": "ⵜⴰⵏⴳⵍⵉⵣⵉⵜ",
+	"META_DIRECTION": "ⵥⵙⴼ",
+	"DOCUMENTATION": "ⴰⵏⵜⴰⵎ",
+	"TALK": "ⴰⵎⵙⴰⵡⴰⵍ",
+	"SIGN_IN": "ⴽⵛⵎ",
+	"SIGN_OUT": "ⵓⴼⵓⵖ",
+	"SIGN_IN_BUTTON": "ⴽⵛⵎ ⵙ OAuth",
+	"MINOREDIT_FLAG": "ⵎⵥⵢ",
+	"BOTEDIT_FLAG": "ⴱ",
+	"NEWPAGE_FLAG": "ⵎⵢⵏ",
+	"WIKIS": "ⵉⴷ ⵡⵉⴽⵉ",
+	"LASTREVONLY": "ⵙⵎⴰⵍ ⵖⴰⵙ ⴰⵙⴱⴼⵍ ⴰⵎⴳⴳⴰⵔⵓ ⵉ ⵜⴰⵙⵏⴰ",
+	"SHOW_LAST_HOURS": "ⵙⵎⴰⵍ {{number}} ⵏ ⵜⵙⵔⴰⴳⵉⵏ ⵜⵉⵎⴳⴳⵓⵔⴰ",
+	"SHOW_LAST_DAYS": "ⵙⵎⴰⵍ {{number}} ⵏ ⵡⵓⵙⵙⴰⵏ ⵉⵎⴳⴳⵓⵔⴰ",
+	"ANON_EDITS": "ⵉⵙⵏⴼⵍⵏ ⵏ ⵉⵏⵙⵙⵎⵔⵙⵏ ⵉⴷ ⵡⴰⵔ-ⵉⵙⵎ",
+	"USER_EDITS": "ⵉⵙⵏⴼⵍⵏ ⵏ ⵉⵏⵙⵙⵎⵔⵙⵏ ⵜⵜⵓⵣⵎⵎⴻⵎⵏⵉⵏ",
+	"FLAGS": "ⵙⵎⴰⵍ ⵉⵛⵏⵢⴰⵍⵏ ⴳ ⵓⴷⵖⴰⵔ ⵏ ⵉⵙⵎⴰⵡⵏ ⵏ ⵜⵓⵜⵍⴰⵢⵉⵏ",
+	"LOGEVENT_DELETE_DELETE": "ⵉⴽⴽⵙ <user> ⵜⴰⵙⵏⴰ <page>",
+	"CLOSE": "ⵔⴳⵍ",
+	"NS_0": "ⴰⵎⴳⵔⴰⴷ",
+	"NS_2": "ⴰⵏⵙⵙⵎⵔⵙ",
+	"NS_4": "ⴰⵙⵏⵜⵉ",
+	"NS_6": "ⴰⴼⴰⵢⵍⵓ",
+	"NS_12": "ⵜⵉⵡⵉⵙⵉ",
+	"NOTIFICATIONS": "ⵜⵉⵏⵖⵎⵉⵙⵉⵏ"
+}

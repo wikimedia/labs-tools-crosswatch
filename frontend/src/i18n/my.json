@@ -6,6 +6,7 @@
 		]
 	},
 	"META_LANGUAGE": "အင်္ဂလိပ်ဘာသာ",
+	"META_DIRECTION": "ဘယ်မှညာသို့",
 	"DOCUMENTATION": "မှတ်တမ်းမှတ်ရာများ",
 	"TALK": "ဆွေးနွေးချက်",
 	"REPORT_BUGS": "ယိုပေါက်များကို အစီရင်ခံရန်",
@@ -27,6 +28,7 @@
 	"SEARCH_WATCHLIST": "စောင့်ကြည့်စာရင်း ရှာဖွေရန်",
 	"LOGEVENT_DELETE_DELETE": "<user> ဖျက်ထားသော စာမျက်နှာ <page>",
 	"LOGEVENT_PROTECT_UNPROTECT": "<user> မကာကွယ်ထားသော စာမျက်နှာ <page>",
+	"LOGEVENT_NEWUSERS_CREATE": "အသုံးပြုသူအကောင့် <user name={{title}}> ကို ဖန်တီးခဲ့သည်",
 	"CLOSE": "ပိတ်ရန်",
 	"SERVER_ERROR_TITLE": "ဆာဗာ အမှား",
 	"NAMESPACES": "အမည်ညွှန်းများ",

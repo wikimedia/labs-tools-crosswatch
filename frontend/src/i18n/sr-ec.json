@@ -35,7 +35,7 @@
 	"WATCHLIST": "Списак надгледања",
 	"SEARCH_WATCHLIST": "Претрага по списку надгледања",
 	"LOGEVENT_DELETE_DELETE": "<user> је избрисао/ла страницу <page>",
-	"LOGEVENT_DELETE_REVISION": "<user> је променио/ла видљивост ревизије на страници <page>",
+	"LOGEVENT_DELETE_REVISION": "<user> је променио/ла видљивост измене на страници <page>",
 	"LOGEVENT_DELETE_RESTORE": "<user> је вратио/ла страницу <page>",
 	"LOGEVENT_PROTECT_PROTECT": "<user> је заштитио/ла страницу <page> са параметрима {{protection_level}}",
 	"LOGEVENT_PROTECT_MODIFY": "<user> је изменио/ла заштиту на страници <page> са параметрима {{protection_level}}",
@@ -100,7 +100,7 @@
 	"ORES_PROBABILITY": "Вероватноћа враћања по <a href=\"https://meta.wikimedia.org/wiki/ORES\">ORES-у</a>: {{probability}}",
 	"PENDING_EDITS": "измене на чекању",
 	"FLAGGEDREVS_OPTION": "Прикажи разлике за промене на чекању",
-	"FLAGGEDREVS_TOOLTIP": "Приказује разлике за непрегледане измене, ако имате дозволу за прегледавање на викију који користи додатак „Означене ревизије“ (FlaggedRevs).",
+	"FLAGGEDREVS_TOOLTIP": "Приказује разлике за непрегледане измене, ако имате дозволу за прегледавање на викију који користи додатак „Означене измене“ (FlaggedRevs).",
 	"SHOW_DIFF": "прикажи разлику",
 	"COLLAPSE": "скупи"
 }

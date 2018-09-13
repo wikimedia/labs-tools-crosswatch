@@ -34,7 +34,7 @@
 	"SEARCH_WATCHLIST": "주시문서 목록 검색",
 	"LOGEVENT_DELETE_DELETE": "<user>님이 <page> 문서를 삭제했습니다",
 	"LOGEVENT_DELETE_REVISION": "<user>님이 <page> 문서의 판의 보이기 설정을 바꾸었습니다",
-	"LOGEVENT_DELETE_RESTORE": "<user>님이 <page> 문서를 되살렸습니다",
+	"LOGEVENT_DELETE_RESTORE": "<user>님이 <page> 문서를 복구했습니다",
 	"LOGEVENT_PROTECT_PROTECT": "<user>님이 <page> 문서를 {{protection_level}} 설정으로 보호했습니다",
 	"LOGEVENT_PROTECT_MODIFY": "<user>님이 <page> 문서의 보호를 {{protection_level}} 설정으로 수정했습니다",
 	"LOGEVENT_PROTECT_UNPROTECT": "<user>님이 <page> 문서를 보호 해제했습니다",

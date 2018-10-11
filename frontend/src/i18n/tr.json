@@ -4,7 +4,8 @@
 			"Chansey",
 			"HakanIST",
 			"KorkmazO",
-			"Diyapazon"
+			"Diyapazon",
+			"Rapsar"
 		]
 	},
 	"META_LANGUAGE": "İngilizce",
@@ -17,7 +18,7 @@
 	"MINOREDIT_FLAG": "m",
 	"BOTEDIT_FLAG": "b",
 	"NEWPAGE_FLAG": "N",
-	"PREFERENCES": "Tercihler",
+	"PREFERENCES": "Tercihlerim",
 	"FILTER": "Filtre",
 	"WIKIS": "Vikiler",
 	"LASTREVONLY": "Her sayfa için sadece son değişikliği göster",

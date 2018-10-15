@@ -57,7 +57,7 @@
 	"LOGEVENT_TRANSLATION_ASSOCIATE": "<user> дадаў перакладаемую старонку <page> у агульную групу {{aggregategroup}}",
 	"LOGEVENT_TRANSLATION_DISSOCIATE": "<user> выдаліў перакладаемую старонку <page> з агульнай групы {{aggregategroup}}",
 	"LOGEVENT_PAGETRIAGE_REVIEWED": "<user> пазначыў <page> як прагледжаную",
-	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> пазначыў <page> як непрагледжаную",
+	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> пазначыў <page> як неправераную",
 	"LOGEVENT_PAGETRIAGE_TAG": "<user> пазначыў <page> меткамі {{tags|list}}",
 	"LOGEVENT_PAGETRIAGE_DELETE": "<user> паўначыў <page> на выдаленьне меткамі {{tags|list}}",
 	"OAUTH_FAILURE_TITLE": "Памылка аўтэнтыфікацыі OAuth",

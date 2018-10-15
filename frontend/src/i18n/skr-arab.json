@@ -26,7 +26,7 @@
 	"LOGEVENT_IMPORT_INTERWIKI": "<user> نے ٻئی وکی توں <page>  درآمد کیتا",
 	"LOGEVENT_IMPORT_UPLOAD": "<user> نے فائل اپ لوڈ نال <page> درآمد کیتا",
 	"LOGEVENT_PAGETRIAGE_REVIEWED": "<user> اہدے میں ایہ <page> ݙٹھے",
-	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> اہدے ایہ <page> کائنی ݙٹھا",
+	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> نشان لڳیا ہے جو <page> ولدا کائنی ݙٹھا",
 	"CLOSE": "بند کرو",
 	"SERVER_ERROR_TITLE": "سرور ناکم",
 	"NS_0": "مضمون",

@@ -4,7 +4,8 @@
 			"Macofe",
 			"Vitorvicentevalente",
 			"MokaAkashiyaPT",
-			"Athena in Wonderland"
+			"Athena in Wonderland",
+			"Hamilton Abreu"
 		]
 	},
 	"META_LANGUAGE": "português",
@@ -59,7 +60,7 @@
 	"LOGEVENT_TRANSLATION_ASSOCIATE": "<user> acrescentou a página traduzível <page> ao grupo agregado {{aggregategroup}}",
 	"LOGEVENT_TRANSLATION_DISSOCIATE": "<user> removeu a página traduzida <page> do grupo agregado {{aggregategroup}}",
 	"LOGEVENT_PAGETRIAGE_REVIEWED": "<user> marcou <page> como revista",
-	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> marcou <page> para revisão",
+	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> marcou <page> como não revista",
 	"LOGEVENT_PAGETRIAGE_TAG": "<user> marcou <page> com as etiquetas {{tags|list}}",
 	"LOGEVENT_PAGETRIAGE_DELETE": "<user> marcou <page> para eliminação com as etiquetas {{tags|list}}",
 	"OAUTH_FAILURE_TITLE": "Falha de autenticação OAuth",

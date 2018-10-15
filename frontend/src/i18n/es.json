@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Macofe",
-			"Fitoschido"
+			"Fitoschido",
+			"Zulema Ortega"
 		]
 	},
 	"META_LANGUAGE": "Español",
@@ -57,7 +58,7 @@
 	"LOGEVENT_TRANSLATION_ASSOCIATE": "<user> añadió la página traducible <page> al grupo de agregación {{aggregategroup}}",
 	"LOGEVENT_TRANSLATION_DISSOCIATE": "<user> eliminó la página traducible <page> del grupo de agregación {{aggregategroup}}",
 	"LOGEVENT_PAGETRIAGE_REVIEWED": "<user> marcó a <page> como revisada",
-	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> marcó a <page> como no revisada",
+	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> marcada <page> sin revisar",
 	"LOGEVENT_PAGETRIAGE_TAG": "<user> etiquetó a <page> con las etiquetas {{tags|list}}",
 	"LOGEVENT_PAGETRIAGE_DELETE": "<user> marcó a <page> para su eliminación con las etiquetas {{tags|list}}",
 	"OAUTH_FAILURE_TITLE": "Error de autenticación OAuth",

@@ -62,7 +62,7 @@
 	"LOGEVENT_TRANSLATION_ASSOCIATE": "<user>在聚合集{{aggregategroup}}裡增加可翻譯頁面<page>",
 	"LOGEVENT_TRANSLATION_DISSOCIATE": "<user>將可翻譯頁面<page>從聚合集{{aggregategroup}}裡移除",
 	"LOGEVENT_PAGETRIAGE_REVIEWED": "<user>將<page>標記為已審核",
-	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user>將<page>標記為未審核",
+	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user>標記<page>為未審核",
 	"LOGEVENT_PAGETRIAGE_TAG": "<user>在<page>標記標籤{{tags|list}}",
 	"LOGEVENT_PAGETRIAGE_DELETE": "<user>將<page>標記為需刪除並添加標籤{{tags|list}}",
 	"OAUTH_FAILURE_TITLE": "開放授權驗證失敗",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Joedalton",
-			"Mads Haupt"
+			"Mads Haupt",
+			"Saederup92"
 		]
 	},
 	"META_LANGUAGE": "Dansk",
@@ -57,7 +58,7 @@
 	"LOGEVENT_TRANSLATION_ASSOCIATE": "<user> tilføjede side der kan oversættes <page> til aggregatgruppe {{aggregategroup}}",
 	"LOGEVENT_TRANSLATION_DISSOCIATE": "<user> fjernede side der kan oversættes <page> fra aggregatgruppe {{aggregategroup}}",
 	"LOGEVENT_PAGETRIAGE_REVIEWED": "<user> arkeret <page> som revideret",
-	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> markeret <page> som ikke revideret",
+	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> markerede <page> som ikke revideret",
 	"LOGEVENT_PAGETRIAGE_TAG": "<user> mærket <page> med mærkerne {{tags|list}}",
 	"LOGEVENT_PAGETRIAGE_DELETE": "<user> markeret <page> til sletning med mærker {{tags|list}}",
 	"OAUTH_FAILURE_TITLE": "OAuth-godkendelsesfejl",

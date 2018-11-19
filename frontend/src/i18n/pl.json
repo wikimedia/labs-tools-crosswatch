@@ -3,7 +3,8 @@
 		"authors": [
 			"Chrumps",
 			"Woytecr",
-			"DeRudySoulStorm"
+			"DeRudySoulStorm",
+			"Warchlak"
 		]
 	},
 	"META_LANGUAGE": "polski",
@@ -58,7 +59,7 @@
 	"LOGEVENT_TRANSLATION_ASSOCIATE": "<user> dodał stronę do tłumaczenia <page> do grupy zbiorczej {{aggregategroup}}",
 	"LOGEVENT_TRANSLATION_DISSOCIATE": "<user> usunął stronę do tłumaczenia <page> z grupy zbiorczej {{aggregategroup}}",
 	"LOGEVENT_PAGETRIAGE_REVIEWED": "<user> oznaczył <page> jako przejrzaną",
-	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> oznaczył <page> jako przejrzaną",
+	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> oznaczył <page> jako nieprzejrzaną",
 	"LOGEVENT_PAGETRIAGE_TAG": "<user> otagował <page> tagami {{tags|list}}",
 	"LOGEVENT_PAGETRIAGE_DELETE": "<user> oznaczył <page> do usunięcia tagami {{tags|list}}",
 	"OAUTH_FAILURE_TITLE": "Błąd uwierzytelniania OAuth",

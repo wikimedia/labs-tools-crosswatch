@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pon44695"
+			"Pon44695",
+			"TrisT7"
 		]
 	},
 	"META_LANGUAGE": "อังกฤษ",
@@ -13,12 +14,12 @@
 	"SIGN_OUT": "ออกจากระบบ",
 	"DESCRIPTION": "รายการเฝ้าดูข้ามวิกิสำหรับโครงการวิกิมีเดีย",
 	"SIGN_IN_BUTTON": "เข้าสู่ระบบด้วย OAuth",
-	"MINOREDIT_FLAG": "ล",
-	"BOTEDIT_FLAG": "บ",
-	"NEWPAGE_FLAG": "ม",
+	"MINOREDIT_FLAG": "m",
+	"BOTEDIT_FLAG": "b",
+	"NEWPAGE_FLAG": "N",
 	"PREFERENCES": "การตั้งค่า",
 	"FILTER": "ตัวกรอง",
-	"WIKIS": "วิกิ",
+	"WIKIS": "วิกิส์",
 	"LASTREVONLY": "แสดงเฉพาะการเปลี่ยนแปลงล่าสุดต่อหน้า",
 	"SHOW_LAST_HOURS": "แสดงล่าสุด {{number}} ชั่วโมง",
 	"SHOW_LAST_DAYS": "แสดงล่าสุด {{number}} วัน",
@@ -29,9 +30,9 @@
 	"FLAGS": "แสดงธงแทนชื่อของภาษา",
 	"WATCHLIST": "รายการเฝ้าดู",
 	"SEARCH_WATCHLIST": "ค้นหารายการเฝ้าดู",
-	"LOGEVENT_DELETE_DELETE": "<user> ได้ลบ <page>",
+	"LOGEVENT_DELETE_DELETE": "<user> หน้าที่ได้ลบไป <page>",
 	"LOGEVENT_DELETE_REVISION": "<user> ได้เปลี่ยนแปลงการมองเห็นของการปรับปรุงใหม่บนหน้า <page>",
-	"LOGEVENT_DELETE_RESTORE": "<user> ได้ฟื้นฟู <page>",
+	"LOGEVENT_DELETE_RESTORE": "<user> ทำกลับ <page>",
 	"LOGEVENT_PROTECT_PROTECT": "<user> ได้ป้องกันหน้า <page> ด้วยพารามิเตอร์ {{protection_level}}",
 	"LOGEVENT_PROTECT_MODIFY": "<user> ได้ดัดแปลงการป้องกันบนหน้า <page> ด้วยพารามิเตอร์ {{protection_level}}",
 	"LOGEVENT_PROTECT_UNPROTECT": "<user> ได้ยกเลิกการป้องกันหน้า <page>",

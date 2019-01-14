@@ -52,7 +52,7 @@
 	"LOGEVENT_RENAMEUSER": "<user> huet de Benotzer <user name={{olduser}}> (mat {{edits}} Ännerungen) op <user name={{newuser}}> ëmbennant",
 	"LOGEVENT_TRANSLATION_MARK": "<user> markéiert <page> fir Iwwersetzung",
 	"LOGEVENT_PAGETRIAGE_REVIEWED": "<user> huet <page> als nogekuckt markéiert",
-	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> huet d'Säit <page> als net-nogekuckt markéiert",
+	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> huet <page> als net-nogekuckt markéiert",
 	"LOGEVENT_PAGETRIAGE_DELETE": "<user> huet <page> markéiert mat de Markéierungen (tags) {{tags|list}} fir se ze läschen",
 	"OAUTH_FAILURE_TITLE": "OAuth-Authentifizéierungsfeeler",
 	"CLOSE": "Zoumaachen",

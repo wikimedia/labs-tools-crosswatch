@@ -29,6 +29,7 @@
 	"SEARCH_WATCHLIST": "Etsi tarkkailulistalta",
 	"LOGEVENT_DELETE_DELETE": "<user> poistettu sivu <page>",
 	"LOGEVENT_DELETE_RESTORE": "<user> palautettu <page>",
+	"LOGEVENT_MOVE": "<user> siirsi sivun <page> nimelle <page title={{target_title}}>",
 	"LOGEVENT_IMPORT_INTERWIKI": "<user> toi sivun <page> toisesta wikistä",
 	"LOGEVENT_NEWUSERS_CREATE": "Käyttäjätili <user name={{title}}> luotiin",
 	"CLOSE": "Sulje",

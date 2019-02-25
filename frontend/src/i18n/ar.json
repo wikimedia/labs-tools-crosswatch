@@ -99,7 +99,7 @@
 	"ORES_PROBABILITY": "<a href=\"https://meta.wikimedia.org/wiki/ORES\">ORES</> نتيجة الاسترجاع: {{probability}}",
 	"PENDING_EDITS": "تعديلات معلقة",
 	"FLAGGEDREVS_OPTION": "عرض فرق التغييرات المعلقة التي تحتاج إلى مراجعة",
-	"FLAGGEDREVS_TOOLTIP": "عرض فرق التغييرات المعلقة التي لم تتم مراجعتها إذا كنت تمتلك صلاحية المراجعة للويكيات التي تستخدم ملحق FlaggedRevs",
+	"FLAGGEDREVS_TOOLTIP": "عرض فرق التغييرات المعلقة التي لم تتم مراجعتها إذا كنت تمتلك صلاحية المراجعة للويكيات التي تستخدم امتداد FlaggedRevs",
 	"SHOW_DIFF": "عرض الفرق",
 	"COLLAPSE": "اطو"
 }

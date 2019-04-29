@@ -49,7 +49,7 @@
 	"LOGEVENT_IMPORT_INTERWIKI": "<user> ја увезе <page> од друго вики",
 	"LOGEVENT_IMPORT_UPLOAD": "<user> ја увезе <page> со податотечно подигање",
 	"LOGEVENT_MERGE": "<user> ја спои <page> во <page title={{dest_title}}> (заклучно со преработката {{mergepoint|amCalendar}})",
-	"LOGEVENT_NEWUSERS_CREATE": "Напреавена корисничката сметка <user name={{title}}>",
+	"LOGEVENT_NEWUSERS_CREATE": "Направена е корисничката сметка <user name={{title}}>",
 	"LOGEVENT_NEWUSERS_CREATE2": "<user> ја направи корисничката сметка <user name={{title}}>",
 	"LOGEVENT_NEWUSERS_BYEMAIL": "<user> ја направи корисничката сметка <user name={{title}}>, а лозинката е испратена по е-пошта",
 	"LOGEVENT_RENAMEUSER": "<user> го преименуваше корисникот <user name={{olduser}}> ({{edits}} уредувања) во <user name={{newuser}}>",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Dars",
-			"Ата"
+			"Ата",
+			"Vlad5250"
 		]
 	},
 	"META_LANGUAGE": "Англійська",
@@ -49,7 +50,7 @@
 	"LOGEVENT_IMPORT_INTERWIKI": "<user> імпортував <page> з іншої вікі",
 	"LOGEVENT_IMPORT_UPLOAD": "<user> імпортував <page> шляхом вивантаження файлу",
 	"LOGEVENT_MERGE": "<user> об'єднав <page> з <page title={{dest_title}}> (версії до {{mergepoint|amCalendar}})",
-	"LOGEVENT_NEWUSERS_CREATE": "Було створено облыковий запис користувача <user name={{title}}>",
+	"LOGEVENT_NEWUSERS_CREATE": "Було створено обліковий запис користувача <user name={{title}}>",
 	"LOGEVENT_NEWUSERS_CREATE2": "Обліковий запис <user name={{title}}> був створений <user>-ом",
 	"LOGEVENT_NEWUSERS_BYEMAIL": "<user> створив обліковий запис <user name={{title}}>, пароль буде надіслано електронною поштою",
 	"LOGEVENT_RENAMEUSER": "<user> перейменував користувача <user name={{olduser}}> ({{edits}} редагувань) на <user name={{newuser}}>",

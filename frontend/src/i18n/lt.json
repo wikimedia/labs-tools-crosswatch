@@ -3,10 +3,12 @@
 		"authors": [
 			"Zygimantus",
 			"Eitvys200",
-			"Homo"
+			"Homo",
+			"Naktis"
 		]
 	},
 	"META_LANGUAGE": "Anglų kalba",
+	"META_DIRECTION": "ltr",
 	"DOCUMENTATION": "Dokumentacija",
 	"TALK": "Aptarimas",
 	"REPORT_BUGS": "Pranešti apie klaidas",
@@ -57,7 +59,7 @@
 	"LOGEVENT_TRANSLATION_ASSOCIATE": "<user> pridėjo išverstiną <page> puslapį į bendrą {{aggregategroup}} grupę",
 	"LOGEVENT_TRANSLATION_DISSOCIATE": "<user> pašalino išverstiną <page> puslapį iš bendros grupės {{aggregategroup}}",
 	"LOGEVENT_PAGETRIAGE_REVIEWED": "<user> pažymėjo <page> kaip apžvelgtą",
-	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> pažymėjo <page> kaip neapžvelgtą",
+	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> pažymėta <page> kaip neapžvelgta",
 	"LOGEVENT_PAGETRIAGE_TAG": "<user> pažymėjo <page> žymėmis {{tags|list}}",
 	"LOGEVENT_PAGETRIAGE_DELETE": "<user> pažymėjo <page> trynimui su žymėmis {{tags|list}}",
 	"OAUTH_FAILURE_TITLE": "OAuth autentifikavimo nesėkmė",
@@ -91,7 +93,12 @@
 	"UNDO": "Atšaukti šį pakeitimą, atidaromas naujas skirtukas su peržiūra",
 	"WATCHLIST_REMOVE": "Pašalinti puslapį iš stebimųjų sąrašo",
 	"WATCHLIST_ADD": "Pridėti šį puslapį į stebimųjų sąrašą",
+	"ORES_OPTION": "Rodyti prognozuojamų ORES nukrypimų skirtumus",
+	"ORES_TOOLTIP": "Automatiškai rodyti skirtumus prognozuojamiems grįžtamiesiems, žr.[[:meta:ORES]] jei norite gauti daugiau informacijos.",
+	"ORES_PROBABILITY": "<a href=\"https://meta.wikimedia.org/wiki/ORES\">ORES</a> grąžinti rezultatą:{{probability}}",
 	"PENDING_EDITS": "laukiantis pakeitimai",
+	"FLAGGEDREVS_OPTION": "Rodyti skirtingus laukiančius pakeitimus, kuriuos reikia peržiūrėti",
+	"FLAGGEDREVS_TOOLTIP": "Jei peržiūrėjote leidimą naudoti wiki, kuris naudoja FlaggedRevs plėtinį, rodyti peržiūrimų pakeitimų skirtumą.",
 	"SHOW_DIFF": "rodyti „diff“",
 	"COLLAPSE": "suskleisti"
 }

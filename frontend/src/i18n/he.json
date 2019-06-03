@@ -49,6 +49,7 @@
 	"LOGEVENT_UPLOAD_UPLOAD": "<user> העלה את <page>",
 	"LOGEVENT_IMPORT_INTERWIKI": "<user> ייבא את הדף <page> מאתר ויקי אחר",
 	"LOGEVENT_IMPORT_UPLOAD": "<user> ייבא את <page> על ידי העלאת קובץ",
+	"LOGEVENT_MERGE": "<page> מוזג לתוך <page title={{dest_title}}> על ידי <user> (גרסאות עד {{mergepoint|amCalendar}})",
 	"LOGEVENT_NEWUSERS_CREATE": "חשבון המשתמש <user name={{title}}> נוצר",
 	"LOGEVENT_NEWUSERS_CREATE2": "חשבון המשתמש <user name={{title}}> נוצר על ידי <user>",
 	"LOGEVENT_NEWUSERS_BYEMAIL": "חשבון המשתמש <user name={{title}}> נוצר על ידי <user> והססמה נשלחה בדוא״ל",

@@ -90,6 +90,7 @@
 	"WATCHLIST_REMOVE": "הסרת הדף הזה מרשימת המעקב",
 	"WATCHLIST_ADD": "הוספת הדף הזה לרשימת המעקב",
 	"PENDING_EDITS": "עריכות ממתינות",
+	"FLAGGEDREVS_OPTION": "הצגת הבדלים של גרסאות הממתינות לבדיקה",
 	"SHOW_DIFF": "הצגת הבדלים",
 	"COLLAPSE": "צמצום"
 }

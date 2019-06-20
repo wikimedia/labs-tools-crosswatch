@@ -3,7 +3,8 @@
 		"authors": [
 			"Jopparn",
 			"Josve05a",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Mjälten"
 		]
 	},
 	"META_LANGUAGE": "Svenska",
@@ -83,7 +84,7 @@
 	"NS_OTHER": "Andra namnrymder",
 	"HISTORY": "historik",
 	"CONTRIBS": "bidrag",
-	"ONELINE": "Traditionell layout för bevakningslista",
+	"ONELINE": "Traditionellt utseende för bevakningslista",
 	"NOTIFICATIONS": "Aviseringar",
 	"MARKALLREAD": "markera alla som lästa",
 	"STYLE": "Stil",

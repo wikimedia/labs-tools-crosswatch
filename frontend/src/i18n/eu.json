@@ -4,7 +4,8 @@
 			"Mikel Ibaiba",
 			"Sator",
 			"Subi",
-			"EukeneFL"
+			"EukeneFL",
+			"An13sa"
 		]
 	},
 	"META_LANGUAGE": "Euskara",
@@ -59,7 +60,7 @@
 	"LOGEVENT_TRANSLATION_ASSOCIATE": "<user>-(e)k <page> orrialde itzulgarria gehitu du {{aggregategroup}} taldera batzeko.",
 	"LOGEVENT_TRANSLATION_DISSOCIATE": "<user>-(e)k <page> orrialde itzulgarria ezabatu du {{aggregategroup}} gehitutako taldetik",
 	"LOGEVENT_PAGETRIAGE_REVIEWED": "<user>-(e)k <page> orrialdea berrikusita gisa markatu du",
-	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user>-(e)k <page> orrialdea berrikusi gabeko gisa markatu du",
+	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user>-(e)k <page> orrialdea berrikusi gabe markatu du",
 	"LOGEVENT_PAGETRIAGE_TAG": "<user>-(e)k <page> orrialdea {{tags|list}} etiketekin etiketatu du",
 	"LOGEVENT_PAGETRIAGE_DELETE": "<user>-(e)k <page> orrialdea ezabatzeko markatu du {{tags|list}} etiketekin",
 	"OAUTH_FAILURE_TITLE": "OAuth autentifikazio akatsa",

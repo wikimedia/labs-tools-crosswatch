@@ -42,7 +42,7 @@
 	"LOGEVENT_BLOCK_BLOCK": "<user name={{title}}> تي <user> {{duration}} جي عرصي بندش وڌي لاءِ جنھن جا نيمپيما {{flags|list}} آھن",
 	"LOGEVENT_BLOCK_UNBLOCK": "<user> اڻبندشيو ويو <user name={{title}}>",
 	"LOGEVENT_RIGHTS_AUTOPROMOTE": "<user> کي ترقي ڏئي {{oldgroups|list}} مان ڪڍي  {{newgroups|list}} ۾ رکيو ويو",
-	"LOGEVENT_UPLOAD_OVERWRITE": "<user> صفحي بعنوان <page> جو نئون مسودو چاڙهيو.",
+	"LOGEVENT_UPLOAD_OVERWRITE": "<user>، <page> جو نئون ورجاءُ چاڙهيو",
 	"LOGEVENT_UPLOAD_REVERT": "<user> صفحو بعنوان <page> چاڙهيو",
 	"LOGEVENT_UPLOAD_UPLOAD": "<user> صفحو بعنوان <page> چاڙهيو",
 	"LOGEVENT_IMPORT_INTERWIKI": "<user> صفحو بعنوان <page> ڪنهن ٻي وڪيءَ کان درآمديو.",

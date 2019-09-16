@@ -30,7 +30,6 @@
 	"USER_EDITS": "Checkbox to filter out registered user edits",
 	"FLAGS": "Option to show flags instead of language names (e.g. UK flag for english, flag of Germany for german, …)",
 	"WATCHLIST": "{{Identical|Watchlist}}",
-	"LOGEVENT_BLOCK_REBLOCK": "nawaf2296@gmail.com\nNAWAF&9",
 	"LOGEVENT_PAGETRIAGE_REVIEWED": "From Extension:PageTriage, log action when someone marks a page as reviewed, {{LogEntry}}.",
 	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "From Extension:PageTriage, log action when someone marks a page as unreviewed",
 	"LOGEVENT_PAGETRIAGE_TAG": "From Extension:PageTriage, log action when someone tags a page with maintenance tags. {{Logentry}}",

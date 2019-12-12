@@ -5,7 +5,8 @@
 			"Sator",
 			"Subi",
 			"EukeneFL",
-			"An13sa"
+			"An13sa",
+			"Xabier Armendaritz"
 		]
 	},
 	"META_LANGUAGE": "Euskara",
@@ -54,7 +55,7 @@
 	"LOGEVENT_MERGE": "<user>-(e)k <page> orria <page title={{dest_title}}>-ra batu du (berrikusketak {{mergepoint|amCalendar}}-ra arte)",
 	"LOGEVENT_NEWUSERS_CREATE": "<user name={{title}}> erabiltzaile-kontua sortu da",
 	"LOGEVENT_NEWUSERS_CREATE2": "<user name={{title}}> erabiltzaile-kontua <user>-(e)k sortu du",
-	"LOGEVENT_NEWUSERS_BYEMAIL": "<user name={{title}}> erabiltzaile-kontua <user>-(e)k sortu du eta pasahitza emailez bidali zaio",
+	"LOGEVENT_NEWUSERS_BYEMAIL": "<user> wikilariak <user name={{title}}> erabiltzaile kontua sortu du, eta pasahitza posta elektronikoz bidali da",
 	"LOGEVENT_RENAMEUSER": "<user>-()ek <user name={{olduser}}> berrizendatu du ({{edits}} edits)-(e)tik <user name={{newuser}}>-(e)ra",
 	"LOGEVENT_TRANSLATION_MARK": "<user>-(e)k <page> markatu du itzultzeko",
 	"LOGEVENT_TRANSLATION_ASSOCIATE": "<user>-(e)k <page> orrialde itzulgarria gehitu du {{aggregategroup}} taldera batzeko.",

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Nikosgranturismogt"
+			"Nikosgranturismogt",
+			"GhotuoIncubator"
 		]
 	},
 	"META_LANGUAGE": "Ελληνικά",
@@ -56,7 +57,7 @@
 	"LOGEVENT_TRANSLATION_ASSOCIATE": "Ο <user> πρόσθεσε την μεταφράσιμη σελίδα <page> στην συνολική ομάδα {{aggregategroup}}",
 	"LOGEVENT_TRANSLATION_DISSOCIATE": "Ο <user> αφαίρεσε την μεταφράσιμη σελίδα <page> από την συνολική ομάδα {{aggregategroup}}",
 	"LOGEVENT_PAGETRIAGE_REVIEWED": "Ο <user> επισήμανσε την <page> ως θεωρημένη",
-	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "Ο <user> επισήμανσε την σελίδα <page> ως αθεώρητη",
+	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "Ο <user> επισήμανσε την σελίδα <page> ως μή αναθεωρημένη",
 	"LOGEVENT_PAGETRIAGE_TAG": "Ο <user> σημείωσε την σελίδα <page> με τις ετικέτες {{tags|list}}",
 	"LOGEVENT_PAGETRIAGE_DELETE": "Ο <user> επισήμανε την σελίδα <page> για διαγραφή με τις ετικέτες {{tags|list}}",
 	"OAUTH_FAILURE_TITLE": "Σφάλμα ταυτοποίησης OAuth",

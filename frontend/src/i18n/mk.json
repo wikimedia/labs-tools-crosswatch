@@ -51,7 +51,7 @@
 	"LOGEVENT_MERGE": "<user> ја спои <page> во <page title={{dest_title}}> (заклучно со преработката {{mergepoint|amCalendar}})",
 	"LOGEVENT_NEWUSERS_CREATE": "Направена е корисничката сметка <user name={{title}}>",
 	"LOGEVENT_NEWUSERS_CREATE2": "<user> ја направи корисничката сметка <user name={{title}}>",
-	"LOGEVENT_NEWUSERS_BYEMAIL": "<user> ја направи корисничката сметка <user name={{title}}>, а лозинката е испратена по е-пошта",
+	"LOGEVENT_NEWUSERS_BYEMAIL": "<user> ја направи корисничката сметка <user name={{title}}>, а јавката е испратена по е-пошта",
 	"LOGEVENT_RENAMEUSER": "<user> го преименуваше корисникот <user name={{olduser}}> ({{edits}} уредувања) во <user name={{newuser}}>",
 	"LOGEVENT_TRANSLATION_MARK": "<user> ја означи <page> за преведување",
 	"LOGEVENT_TRANSLATION_ASSOCIATE": "<user> ја додаде преводливата страница <page> во збирната група {{aggregategroup}}",

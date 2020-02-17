@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Silovan"
+			"Silovan",
+			"Narazeni"
 		]
 	},
 	"META_LANGUAGE": "მარგალური",
@@ -56,7 +57,7 @@
 	"LOGEVENT_TRANSLATION_ASSOCIATE": "<user> გეუძინჷ ოთანგალფონი ხასჷლა <page> ბუნას {{aggregategroup}}",
 	"LOGEVENT_TRANSLATION_DISSOCIATE": "<user> დოლასუ ოთანგალფონი ხასჷლა <page> ბუნაშე {{aggregategroup}}",
 	"LOGEVENT_PAGETRIAGE_REVIEWED": "<user> მიორჩქინჷ <page> მუჭოთ შემოწმებული",
-	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> მიორჩქინჷ <page> მუჭოთ უშუმოწმებუ",
+	"LOGEVENT_PAGETRIAGE_UNREVIEWED": "<user> მიკიწონუ <page> მუჭოთ უგუნუჯინუ",
 	"LOGEVENT_PAGETRIAGE_TAG": "<user> მიორჩქინჷ <page> ტეგეფით {{tags|list}}",
 	"LOGEVENT_PAGETRIAGE_DELETE": "<user> მიორჩქინჷ <page> ოლასარო ტეგეფიშამო {{tags|list}}",
 	"OAUTH_FAILURE_TITLE": "OAuth ავთენტიფიკაციაშ ჩილათა",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Robby",
-			"Les Meloures"
+			"Les Meloures",
+			"Soued031"
 		]
 	},
 	"META_LANGUAGE": "Lëtzebuergesch",
@@ -57,7 +58,7 @@
 	"OAUTH_FAILURE_TITLE": "OAuth-Authentifizéierungsfeeler",
 	"CLOSE": "Zoumaachen",
 	"SERVER_ERROR_TITLE": "Feeler um Server",
-	"SERVER_ERROR_CONTENT": "Et konnt keng Iwwerwaachungslëscht ofgeruff ginn. Dat ass en interne Feeler um Server, maach w.e.g. eng Feelermeldung wann de Problem weider besteet.",
+	"SERVER_ERROR_CONTENT": "Et konnt keng Iwwerwaachungslëscht ofgeruff ginn. Dat ass en interne Feeler um Server, maach wgl. eng Feelermeldung wann de Problem weider besteet.",
 	"NAMESPACES": "Nummraim",
 	"NS_0": "Artikel",
 	"NS_1": "Diskussioun",

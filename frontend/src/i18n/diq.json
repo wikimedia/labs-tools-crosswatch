@@ -66,7 +66,7 @@
 	"LOGEVENT_PAGETRIAGE_DELETE": "Etiketê besternayışi <user>nışab bi <page>{{tags|list}}",
 	"OAUTH_FAILURE_TITLE": "OAuth xetay araşt kerdışi",
 	"OAUTH_FAILURE_CONTENT": "Qandë ena dezga icazed dayışa araşt kerdış nëbi ya. Bıveciyë u fına cı kewë. Malumata xırabi:{{error}}",
-	"CLOSE": "Bıqefelne",
+	"CLOSE": "Kip ke",
 	"SERVER_ERROR_TITLE": "Xetay rovıteri",
 	"SERVER_ERROR_CONTENT": "Qet yew listey seyri nëgëri yë. Eger kı rna xısus  dewam kena se rapora xetay ma rë bırışë.",
 	"API_ERROR_CONTENT": "API waştış alızya ya xırab kod {{errorcode}} u xırab malumati {{errorinfo}} ra bıvin",

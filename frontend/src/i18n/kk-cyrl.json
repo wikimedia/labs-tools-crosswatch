@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Arystanbek"
+			"Arystanbek",
+			"Fontan 030"
 		]
 	},
 	"META_LANGUAGE": "Ағышын",
@@ -36,5 +37,11 @@
 	"LOGEVENT_PROTECT_MODIFY": "<user> бетте қорғанысын өзгерту <page> {{protection_level}}",
 	"LOGEVENT_PROTECT_UNPROTECT": "<user> қорғалмаған бет <page>",
 	"LOGEVENT_PROTECT_MOVE": "<user>  <page> дегеннен <page title={{target_title}}> дегенге қорғаныс баптауларын жылжытты",
-	"LOGEVENT_MOVE": "<user> <page> дегеннен <page title={{target_title}}> дегенге бет жылжытылды"
+	"LOGEVENT_MOVE": "<user> <page> дегеннен <page title={{target_title}}> дегенге бет жылжытылды",
+	"NS_2": "Қатысушы",
+	"NS_3": "Қатысушы талқылауы",
+	"NS_4": "Жоба",
+	"NS_5": "Жоба талқылауы",
+	"NS_10": "Үлгі",
+	"NS_11": "Үлгі талқылауы"
 }

@@ -98,10 +98,10 @@
 	"WATCHLIST_ADD": "Sayfayı izleme listesine ekle",
 	"ORES_OPTION": "ORES tahmini geri dönüşleri için farkları göster",
 	"ORES_TOOLTIP": "Öngörülen geri dönüşler için otomatik olarak fark göster, ayrıntılar için [[:meta:ORES]] bölümüne bakın.",
-	"ORES_PROBABILITY": "<a href=\"https://meta.wikimedia.org/wiki/ORES\">ORES</a> skoru geri al: {{probability}}",
+	"ORES_PROBABILITY": "<a href=\"https://www.mediawiki.org/wiki/ORES/tr\">ORES</a> skoru geri al: {{probability}}",
 	"PENDING_EDITS": "bekleyen düzenlemeler",
 	"FLAGGEDREVS_OPTION": "İncelenmesi gereken bekleyen değişiklikler için fark göster",
-	"FLAGGEDREVS_TOOLTIP": "FlaggedRevs uzantısını kullanan bir wiki için inceleme izniniz varsa, incelenmemiş değişiklikler için fark göster.",
+	"FLAGGEDREVS_TOOLTIP": "FlaggedRevs uzantısını kullanan bir viki için inceleme izniniz varsa, incelenmemiş değişiklikler için fark göster.",
 	"SHOW_DIFF": "farkı göster",
 	"COLLAPSE": "daralt"
 }

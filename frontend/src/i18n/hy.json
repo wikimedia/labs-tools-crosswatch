@@ -5,6 +5,7 @@
 			"Kareyac"
 		]
 	},
+	"META_LANGUAGE": "Անգլերեն",
 	"DOCUMENTATION": "Փաստաթղթեր",
 	"TALK": "Քննարկում",
 	"REPORT_BUGS": "Հայտնել սխալների մասին",
@@ -14,7 +15,7 @@
 	"BOTEDIT_FLAG": "բ",
 	"NEWPAGE_FLAG": "Ն",
 	"PREFERENCES": "Նախընտրություններ",
-	"FILTER": "Ֆիլտր",
+	"FILTER": "Զտիչ",
 	"WIKIS": "Վիքի",
 	"LASTREVONLY": "Ցուցադրել էջերի միայն վերջին փոփոխությունները",
 	"SHOW_LAST_HOURS": "Ցույց տալ վերջին {{number}} ժամ",
